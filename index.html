@@ -20,8 +20,87 @@
 position: fixed !important;
 display: none !important;
 visibility: hidden !important;}
-  
+
+.logo {
+  width: 176px;
+  height: 58px;
+  background-image: url("https://raw.githubusercontent.com/mavumo/trainster/36cf12dea5232f7dbaccc3ef30abdd4b28099662/trainsterlogo.png") !important;
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.logo.pura {
+  width: 88px;
+  height: 29px;
+  background-image: url("https://raw.githubusercontent.com/mavumo/trainster/36cf12dea5232f7dbaccc3ef30abdd4b28099662/trainsterlogo.png") !important;
+  background-size: contain;
+}
+
+
+ .about-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 80px 135px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    background-image: -webkit-linear-gradient(45deg, hsla(39,100%,68%,1), hsl(39deg 98.98% 43.53%) 30%, hsl(39deg 99.89% 47.66%) 69%, hsl(39deg 100% 60.17%)) !important;
+    background-image: linear-gradient(45deg, hsla(39,100%,68%,1), hsl(39deg 100% 48.89%) 30%, hsl(39deg 100% 11.1%) 69%, hsl(0deg 0% 0%)) !important;
+}   
+
+.pink-text {
+    color: hsl(39deg 99.84% 43.02%) !important;
+}    
+
+.h5-copyright {
+    margin-top: 80px;
+    margin-bottom: 0px;
+    color: hsl(39deg 100% 48.89%) !important;
+    font-size: 14px;
+    text-align: center;
+}
+
+.huge-number {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    color: hsl(39deg 100% 48.43% / 40%) !important;
+    font-size: 120px;
+    line-height: 120px;
+    text-align: left;
+}    
+
+.btn {
+    padding: 20px 50px;
+    background-image: -webkit-linear-gradient(45deg, hsla(39,100%,68%,1), hsl(39deg 93.79% 51.67%) 31%, hsl(39deg 90.85% 45.05%) 78%, hsl(39deg 100% 33.46%)) !important;
+    background-image: linear-gradient(45deg, hsla(39,100%,68%,1), hsl(39deg 100% 57.97%) 31%, hsl(39deg 100% 40.16%) 78%, hsl(39deg 100% 25.59%)) !important;
+    -webkit-transition: background-color 300ms ease;
+    transition: background-color 300ms ease;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nav-link.w--current {
+    color: hsl(39deg 100% 38.66%) !important;
+}
+.w-nav-link.w--current {
+    color: hsl(39deg 100% 43.31%) !important;
+}    
 </style>
+
+  
   
   <script src=
   "https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"
@@ -62,20 +141,16 @@ visibility: hidden !important;}
     </div>
   </div>
   <div id="home" class="header-container">
-    <h3 data-ix="load-header-slower" class="h3-sub">We are
-    <span class="playfair">Trainster</span></h3>
+    <h3 data-ix="load-header-slower" class="h3-sub">Welcome to Trainster</h3>
     <h1 data-ix="load-header" class="heading">Training & Skills Develoment Institute</h1><a href="#about" data-ix="load-header-btn" class=
     "btn w-button">Learn More</a>
   </div>
   <div id="about" class="about-container w-clearfix">
     <h2 class="reverse">About us.</h2>
-    <p class="p-large">Pura comes with 11 unique and stunning
-    demos. We have crafted each and every demo with extensive care
-    and precision and the theme is power packed yet easy to
-    use.</p><a href="#" data-ix="load-about-btn" class=
+    <p class="p-large">All prosperous societies place very high premium on education and training and prepare citizens to become job and wealth creators. South Africa requires a huge number of entrepreneurs to create jobs that will help many of our socio- economic problems. Trainster has built a reputation around its team’s dedication, performance, and collective innovation.</p><a href="#" data-ix="load-about-btn" class=
     "btn-second w-inline-block">
     <div>
-      Portfolio.
+     Find Out More
     </div><img src=
     "https://uploads-ssl.webflow.com/5942027145541375fd9eaa52/594222af59b6346ad2dd21b8_-.png"
     class="rrow-img"></a>
@@ -84,7 +159,7 @@ visibility: hidden !important;}
     <div data-ix="hover-about-block" class="about-block">
       <h3 data-ix="initial" class="h3-number">01</h3>
       <div class="content">
-        <h4 class="h4-about">Design</h4>
+        <h4 class="h4-about">Excellence</h4>
         <p class="p-small">Proin facilisis varius nunc. Curabitur
         eros risus, ultrices et dui ut, luctus acfffcumsan nibh.
         Fusce convallis sapien placerat tellus suscipit
@@ -96,18 +171,18 @@ visibility: hidden !important;}
     <div data-ix="hover-about-block" class="about-block">
       <h3 data-ix="initial" class="h3-number">02</h3>
       <div class="content">
-        <h4 class="h4-about">New Idea’s</h4>
+        <h4 class="h4-about">Innovation</h4>
         <p class="p-small">Proin facilisis varius nunc. Curabitur
         eros risus, ultrices et dui ut, luctus accumsan nibh. Fusce
         convallis sapien placerat tellus suscipit vehicula.</p>
-        <h1 class="huge-number">02rrr</h1>
+        <h1 class="huge-number">03</h1>
       </div>
       <div class="color-bg"></div>
     </div>
     <div data-ix="hover-about-block" class="about-block">
       <h3 data-ix="initial" class="h3-number">03</h3>
       <div class="content">
-        <h4 class="h4-about">Trending</h4>
+        <h4 class="h4-about">Equity</h4>
         <p class="p-small">Proin facilisis varius nunc. Curabitur
         eros risus, ultrices et dui ut, luctus accumsan nibh. Fusce
         convallis sapien placerat tellus suscipit vehicula.</p>
@@ -126,10 +201,10 @@ visibility: hidden !important;}
           <div data-ix="initial-avatar-content" class=
           "avatar-content">
             <div class="avatar-name">
-              Mark John
+              Geoffrey hiri
             </div>
             <div class="avatar-title">
-              Developer
+             Founder/CEO
             </div>
             <div class="social-icon-block team-social">
               <a href="#" class=
@@ -141,7 +216,7 @@ visibility: hidden !important;}
           </div>
         </div>
         <div class="sub-content">
-          <h5 class="member-name">Mark John</h5>
+          <h5 class="member-name">John Doe</h5>
           <div class="avatar-title reverse">
             Developer
           </div>
@@ -154,10 +229,10 @@ visibility: hidden !important;}
           <div data-ix="initial-avatar-content" class=
           "avatar-content">
             <div class="avatar-name">
-              Sarah Levo
+              Jane Doe
             </div>
             <div class="avatar-title">
-              Designer
+              Trainer
             </div>
             <div class="social-icon-block team-social">
               <a href="#" class=
@@ -169,7 +244,7 @@ visibility: hidden !important;}
           </div>
         </div>
         <div class="sub-content">
-          <h5 class="member-name">Sarah Levo</h5>
+          <h5 class="member-name">John Doe</h5>
           <div class="avatar-title reverse">
             Designer
           </div>
@@ -182,10 +257,10 @@ visibility: hidden !important;}
           <div data-ix="initial-avatar-content" class=
           "avatar-content">
             <div class="avatar-name">
-              Xavi Miko
+              John Doe
             </div>
             <div class="avatar-title">
-              CEO
+             Trainer
             </div>
             <div class="social-icon-block team-social">
               <a href="#" class=
@@ -197,9 +272,9 @@ visibility: hidden !important;}
           </div>
         </div>
         <div class="sub-content">
-          <h5 class="member-name">Xavi Miko</h5>
+          <h5 class="member-name">Jane Doe</h5>
           <div class="avatar-title reverse">
-            CEO
+            Trainer
           </div>
         </div>
       </div>
