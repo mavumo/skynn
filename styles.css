@@ -1,0 +1,65 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #1e3d59;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #4d9fda;
+    color: white;
+    padding: 100px 20px;
+}
+
+.hero-buttons .button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #1e3d59;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about {
+    background-color: #f4f4f4;
+}
+
+/* Programs Section */
+.programs {
+    background-color: #eaeaea;
+}
+
+/* Enrollment Form */
+.enrollment input, .enrollment select, .enrollment button {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.enrollment button {
+    background-color: #1e3d59;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Contact Section */
+.contact {
+    background-color: #333;
+    color: white;
+}
