@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SKYNN® — South Africa’s Curated Skincare Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SKYNN® (formerly SkinLabs South Africa) — curated skincare guides, reviews, deals, and dermatologist-backed resources." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta property="og:title" content="SKYNN® — Curated Skincare in South Africa" />
+  <meta property="og:description" content="Guides, reviews, and exclusive offers — built for South Africans." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="SKYNN" />
+  <meta name="theme-color" content="#f2f5f7" />
+
+  <!-- AdSense global loader (Auto ads optional). Replace client ID -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --bg:#0c0e10;            /* page background */
+      --panel:#111418;         /* card/background panels */
+      --muted:#8ca5b3;         /* secondary text */
+      --brand:#6ee7d2;         /* accent mint */
+      --brand-2:#b3e5ff;       /* light accent */
+      --text:#eef3f5;          /* primary text */
+      --good:#43d17b;
+      --warn:#ffcc66;
+      --bad:#ff7d7d;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    header{
+      position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(10px);
+      background:linear-gradient(180deg,rgba(12,14,16,.9),rgba(12,14,16,.6) 60%,transparent);
+      border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;padding:14px 0;
+    }
+    .brand{
+      font-weight:800;letter-spacing:.4px;display:flex;gap:10px;align-items:center
+    }
+    .brand b{color:var(--brand)}
+    .nav a{margin:0 10px;color:#dfe8ec}
+    .badge{font-size:12px;color:var(--muted)}
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:34px 0 22px;
+    }
+    .hero h1{margin:.2rem 0 0;font-size:36px;line-height:1.15}
+    .hero p{color:var(--muted);font-size:15px}
+    .panel{
+      background:linear-gradient(180deg,#151a1f,#111418 60%);border:1px solid rgba(255,255,255,.06);
+      border-radius:var(--radius);box-shadow:var(--shadow)
+    }
+    .hero .panel{padding:20px}
+    .searchbar{
+      display:flex;gap:10px;margin-top:14px
+    }
+    .searchbar input{
+      flex:1;padding:12px 14px;border-radius:10px;background:#0d1013;border:1px solid rgba(255,255,255,.08);
+      color:var(--text)
+    }
+    .searchbar button{
+      padding:12px 16px;border-radius:10px;background:var(--brand);color:#07332b;border:none;font-weight:700;cursor:pointer
+    }
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{
+      padding:8px 10px;border-radius:999px;font-size:12px;color:#0b1415;background:var(--brand-2);cursor:pointer;border:1px solid rgba(255,255,255,.15)
+    }
+    .grid{
+      margin:22px 0;display:grid;grid-template-columns:repeat(12,1fr);gap:16px;
+    }
+    .maincol{grid-column:span 8}
+    .sidecol{grid-column:span 4;display:flex;flex-direction:column;gap:16px}
+    .card{
+      padding:16px;border-radius:16px;background:linear-gradient(180deg,#12161b,#101419 70%);border:1px solid rgba(255,255,255,.06)
+    }
+    .card h3{margin:10px 0 6px}
+    .meta{font-size:12px;color:var(--muted)}
+    .tags{display:flex;gap:8px;margin-top:8px}
+    .tag{font-size:11px;border:1px solid rgba(255,255,255,.1);padding:4px 7px;border-radius:999px;color:#cfe6f3}
+    .offerrail,.offers{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory}
+    .offer{min-width:230px;scroll-snap-align:start}
+    .rating{color:#ffdf6c}
+    .cta{display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:10px;background:#0d1013;border:1px solid rgba(255,255,255,.08);color:#dfe8ec}
+    .sticky{position:sticky;top:84px}
+    footer{margin:30px 0 60px;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:10px 0 8px}
+    .section-title h2{font-size:18px;margin:0}
+    .adbox{
+      background:#0a0d0f;border:1px dashed rgba(255,255,255,.12);border-radius:14px;padding:10px;text-align:center;font-size:12px;color:#a8b7bf
+    }
+    .pill{font-size:11px;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:#b7c7d0}
+    .review-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .review{background:#0e1216;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center}
+    .modal .inner{background:#0d1013;border:1px solid rgba(255,255,255,.08);border-radius:16px;max-width:520px;width:92%;padding:16px}
+    .gridlist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .fav{font-size:12px;color:#9ed3ff;cursor:pointer}
+    .small{font-size:12px}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:12px 0}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .maincol{grid-column:span 12}
+      .sidecol{grid-column:span 12}
+      .review-list{grid-template-columns:1fr}
+      .gridlist{grid-template-columns:1fr}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SKYNN",
+    "url":"https://skinlabs.co.za",
+    "brand":"SKYNN",
+    "sameAs":["https://instagram.com/redemption.legal"],
+    "description":"Curated skincare, reviews, and offers for South Africans.",
+    "foundingDate":"2025-08-15"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand" aria-label="SKYNN">
+      <span>SKYNN®</span><span class="badge">formerly SkinLabs South Africa</span>
+    </div>
+    <nav aria-label="Primary">
+      <a href="#explore">Explore</a>
+      <a href="#offers">Deals</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#community">Community</a>
+      <a href="#submit" class="pill">Submit a Product</a>
+      <a href="#signup" class="pill">Sign up</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- TOP LEADERBOARD AD (above the fold) -->
+  <div class="panel" style="padding:10px;margin-top:12px">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="1111111111" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <section class="hero">
+    <div class="panel">
+      <div class="badge">Launches <b>15 Aug 2025</b></div>
+      <h1>Your curated skincare nexus — made for South Africa</h1>
+      <p>Discover research‑driven guides, dermatologist tips, ingredient explainers, and verified product deals. Save favourites, add reviews, and build a routine that fits your budget.</p>
+      <div class="searchbar" role="search">
+        <input id="q" placeholder="Search guides, ingredients, brands..." aria-label="Search" />
+        <button id="btnSearch">Search</button>
+      </div>
+      <div class="chips" id="chips">
+        <!-- dynamic filter chips injected by JS -->
+      </div>
+    </div>
+    <div class="panel">
+      <div class="section-title"><h2>Sponsored Offers</h2><a class="small muted" href="#offers">See all</a></div>
+      <div class="offers" id="offersRail" aria-label="Sponsored Offers">
+        <!-- offers injected by JS -->
+      </div>
+      <div class="divider"></div>
+      <!-- IN-PANEL RESPONSIVE AD -->
+      <div class="adbox">Ad — Responsive (replace slot)</div>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+    </div>
+  </section>
+
+  <section class="grid" id="explore" aria-label="Explore content">
+    <div class="maincol">
+      <div class="section-title">
+        <h2>Latest Curations</h2>
+        <div class="small muted">Filter: <span id="activeFilter">All</span></div>
+      </div>
+      <div id="cards" class="gridlist" aria-live="polite"></div>
+
+      <!-- IN-FEED AD (inserted again every ~4 cards by JS) -->
+      <div class="panel" style="margin-top:14px">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="3333333333" data-ad-format="fluid" data-ad-layout-key="-fg+5n+6t-e7+az" ></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div style="display:flex;justify-content:center;margin:14px 0">
+        <button id="loadMore" class="cta">Load more</button>
+      </div>
+    </div>
+
+    <aside class="sidecol">
+      <div class="panel sticky">
+        <div class="section-title"><h2>Top this week</h2></div>
+        <div id="topList" class="gridlist"></div>
+        <div class="divider"></div>
+
+        <!-- SIDEBAR AD (sticky) -->
+        <div class="adbox">Ad — Sidebar</div>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="4444444444" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+        <div class="divider"></div>
+        <form id="newsletter" action="https://formspree.io/f/xeokkzle" method="POST">
+          <label class="small" for="email">Join our list (1–2 emails/month)</label>
+          <div class="searchbar" style="margin-top:6px">
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            <button type="submit">Subscribe</button>
+          </div>
+          <div class="small muted">By subscribing you agree to our Privacy Policy.</div>
+        </form>
+      </div>
+    </aside>
+  </section>
+
+  <section id="reviews" class="panel" style="padding:16px">
+    <div class="section-title"><h2>Community Reviews</h2><button id="btnAddReview" class="cta">Write a review</button></div>
+    <div class="review-list" id="reviewList"></div>
+  </section>
+
+  <!-- FOOTER ANCHOR AD (Multiplex or Auto Ad can fill this area) -->
+  <section class="panel" style="padding:10px;margin-top:16px">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="5555555555" data-ad-format="autorelaxed" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </section>
+
+  <footer class="wrap">
+    <div class="divider"></div>
+    <div class="small">
+      © 2025 SKYNN® — A Gravitas Industries Publishing Company. Curated skincare for South Africa.
+      <br/>SKYNN® is not a medical service. Always consult a qualified professional for diagnosis or treatment.
+    </div>
+  </footer>
+</main>
+
+<!-- Review Modal -->
+<div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="revTitle">
+  <div class="inner">
+    <h3 id="revTitle">Write a review</h3>
+    <form id="reviewForm">
+      <label class="small">Product/Guide</label>
+      <input name="title" required placeholder="e.g., Vitamin C Guide" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0a0d0f;color:#dfe8ec"/>
+      <div style="display:flex;gap:10px;margin-top:8px">
+        <div style="flex:1">
+          <label class="small">Rating (1–5)</label>
+          <input name="rating" type="number" min="1" max="5" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0a0d0f;color:#dfe8ec"/>
+        </div>
+        <div style="flex:1">
+          <label class="small">Skin type</label>
+          <select name="skin" style="width:100%;padding:10px;border-radius:10px;background:#0a0d0f;color:#dfe8ec;border:1px solid rgba(255,255,255,.12)">
+            <option>Normal</option><option>Dry</option><option>Oily</option><option>Combination</option><option>Sensitive</option>
+          </select>
+        </div>
+      </div>
+      <label class="small" style="margin-top:8px;display:block">Your review</label>
+      <textarea name="body" required rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0a0d0f;color:#dfe8ec"></textarea>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
+        <button type="button" id="revCancel" class="cta">Cancel</button>
+        <button type="submit" class="cta" style="background:var(--brand);color:#07332b">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ------------------------------
+   Demo Data (replace with CMS)
+-------------------------------- */
+const CATEGORIES = ["Guides","Ingredients","Routines","Reviews","Deals","Dermatologist Q&A","Local Brands"];
+const OFFERS = [
+  {brand:"Lumi Glo", title:"15% OFF ≥ R800", code:"SKYNN15", url:"#", blurb:"Valid online. One per customer.", img:"", tag:"Clean Beauty"},
+  {brand:"Faithful To Nature", title:"20% OFF sitewide", code:"SKYNN20", url:"#", blurb:"Ends soon. Some exclusions.", img:"", tag:"Retailer"},
+  {brand:"Clicks", title:"3-for-2 Skincare", code:"", url:"#", blurb:"ClubCard deals.", img:"", tag:"Pharmacy"},
+  {brand:"Dis‑Chem", title:"R100 OFF ≥ R600", code:"DERMA100", url:"#", blurb:"Derma shop promo.", img:"", tag:"Pharmacy"}
+];
+const CONTENT = [
+  {type:"Guides", title:"Vitamin C: How to layer with Niacinamide", rating:4.8, tags:["Brightening","Beginner"], featured:true},
+  {type:"Ingredients", title:"Retinoids in SA: OTC vs Rx", rating:4.6, tags:["Anti‑ageing","Night"], featured:true},
+  {type:"Routines", title:"Winter‑to‑Spring Routine (Budget)", rating:4.5, tags:["Seasonal","Budget"], featured:false},
+  {type:"Reviews", title:"Bioderma Atoderm Gel — 2‑week test", rating:4.1, tags:["Sensitive"], featured:false},
+  {type:"Deals", title:"5 SA dupes for the viral HA serum", rating:4.0, tags:["Dupe","Hydration"], featured:false},
+  {type:"Dermatologist Q&A", title:"Fragrance in skincare — when to avoid", rating:4.7, tags:["Sensitive"], featured:false},
+  {type:"Local Brands", title:"South African mineral sunscreens roundup", rating:4.3, tags:["Sunscreen","Local"], featured:false},
+  {type:"Guides", title:"Azelaic Acid for PIH in darker skin tones", rating:4.9, tags:["PIH","Derm‑backed"], featured:true},
+  {type:"Ingredients", title:"Peptides explained (with SA products)", rating:4.2, tags:["Firming"], featured:false},
+  {type:"Routines", title:"Office‑friendly SPF reapplication", rating:4.2, tags:["SPF","Makeup"], featured:false}
+];
+
+let active = "All", q="";
+
+/* ------------------------------
+   UI Wiring
+-------------------------------- */
+const chipWrap = document.getElementById('chips');
+const cardsEl  = document.getElementById('cards');
+const topList  = document.getElementById('topList');
+const offersEl = document.getElementById('offersRail');
+const activeEl = document.getElementById('activeFilter');
+const loadBtn  = document.getElementById('loadMore');
+
+function makeChip(label){
+  const b = document.createElement('button');
+  b.className='chip'; b.textContent=label;
+  b.onclick=()=>{ active=label; activeEl.textContent=active; render(); }
+  return b;
+}
+
+function renderChips(){
+  chipWrap.appendChild(makeChip("All"));
+  CATEGORIES.forEach(c=> chipWrap.appendChild(makeChip(c)));
+}
+
+function cardTemplate(item){
+  const el = document.createElement('div');
+  el.className='card';
+  el.innerHTML = `
+    <div class="meta">${item.type}${item.featured ? ' • <span class="pill">Featured</span>':''}</div>
+    <h3>${item.title}</h3>
+    <div class="rating">★ ${item.rating.toFixed(1)}</div>
+    <div class="tags">${item.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+      <button class="cta small fav" aria-label="Save to favourites">☆ Save</button>
+      <a class="small" href="#reviews">Read more →</a>
+    </div>
+  `;
+  el.querySelector('.fav').onclick=()=>{ alert('Saved to favourites (demo)'); };
+  return el;
+}
+
+let shown = 0;
+function render(){
+  cardsEl.innerHTML = '';
+  const list = CONTENT.filter(i => 
+    (active==='All' || i.type===active) && 
+    (q==='' || i.title.toLowerCase().includes(q.toLowerCase()))
+  );
+  const slice = list.slice(0, shown+6); // incremental
+  slice.forEach((item, idx)=>{
+    cardsEl.appendChild(cardTemplate(item));
+
+    // Insert an in-feed ad after every 4th card (optional)
+    if((idx+1)%4===0){
+      const ad = document.createElement('div');
+      ad.className='panel';
+      ad.innerHTML = `
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXX" data-ad-slot="6666666666" data-ad-format="fluid"></ins>
+      `;
+      cardsEl.appendChild(ad);
+      try{ (adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
+    }
+  });
+  shown = slice.length;
+  loadBtn.style.display = shown < list.length ? 'inline-flex':'none';
+  // Top list
+  topList.innerHTML='';
+  [...CONTENT].sort((a,b)=>b.rating-a.rating).slice(0,4).forEach(x=>{
+    const c = document.createElement('div'); c.className='card';
+    c.innerHTML = `<div class="meta">${x.type}</div><h3>${x.title}</h3><div class="rating">★ ${x.rating.toFixed(1)}</div>`;
+    topList.appendChild(c);
+  });
+}
+
+function renderOffers(){
+  OFFERS.forEach(o=>{
+    const d = document.createElement('div');
+    d.className='offer card';
+    d.innerHTML = `
+      <div class="meta">${o.tag || 'Offer'}</div>
+      <h3 style="margin:4px 0">${o.brand}</h3>
+      <div class="muted">${o.title}</div>
+      <div class="divider"></div>
+      <div class="gridlist">
+        <div>
+          <div class="small muted">Code</div>
+          <div class="pill">${o.code || 'N/A'}</div>
+        </div>
+        <div>
+          <div class="small muted">Details</div>
+          <div class="small">${o.blurb}</div>
+        </div>
+      </div>
+      <div style="margin-top:10px"><a class="cta" href="${o.url}">Shop now</a></div>
+    `;
+    offersEl.appendChild(d);
+  });
+}
+
+document.getElementById('btnSearch').onclick = ()=>{
+  q = document.getElementById('q').value || '';
+  shown = 0; render();
+};
+document.getElementById('loadMore').onclick = ()=>{ render(); }
+
+// Reviews (localStorage demo)
+const modal = document.getElementById('reviewModal');
+document.getElementById('btnAddReview').onclick = ()=>{ modal.style.display='grid'; }
+document.getElementById('revCancel').onclick = ()=>{ modal.style.display='none'; }
+document.getElementById('reviewForm').onsubmit = (e)=>{
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const item = Object.fromEntries(fd.entries());
+  item.rating = Number(item.rating)||0;
+  const ar = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
+  ar.unshift({...item, ts:Date.now()});
+  localStorage.setItem('skynn_reviews', JSON.stringify(ar));
+  modal.style.display='none';
+  paintReviews();
+};
+function paintReviews(){
+  const list = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
+  const box = document.getElementById('reviewList');
+  box.innerHTML = '';
+  if(list.length===0){
+    box.innerHTML = '<div class="muted small">No reviews yet — be the first.</div>'; return;
+  }
+  list.slice(0,6).forEach(r=>{
+    const el = document.createElement('div');
+    el.className='review';
+    el.innerHTML = `<b>${r.title}</b> <span class="small muted">• ${r.skin}</span><div class="rating">★ ${Number(r.rating).toFixed(1)}</div><div class="small">${r.body}</div>`;
+    box.appendChild(el);
+  });
+}
+
+/* Boot */
+renderChips();
+renderOffers();
+render();
+paintReviews();
+</script>
+</body>
+</html>
