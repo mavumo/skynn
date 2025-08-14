@@ -8,45 +8,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400" rel="stylesheet" />
   <meta name="theme-color" content="#0c0e10" />
 
-  <!-- Your AdSense client ID (load once, at the top) -->
+  <!-- AdSense loader (your client ID) — load once -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727" crossorigin="anonymous"></script>
 
   <style>
-    /* ---------- Base / Reset ---------- */
+    /* ---------- Design tokens ---------- */
     :root{
       --bg:#0c0e10; --panel:#111418; --muted:#8ca5b3; --brand:#6ee7d2; --brand-2:#b3e5ff;
       --text:#eef3f5; --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.35);
-      --max-w:1100px;
+      --max-w:1080px; --gap:14px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
     img{max-width:100%;height:auto;display:block}
     a{color:var(--brand);text-decoration:none}
-    button{font:inherit}
+    button{font:inherit;cursor:pointer}
     .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
 
     /* ---------- Layout ---------- */
-    .wrap{max-width:var(--max-w);margin:0 auto;padding:0 16px}
+    .wrap{max-width:var(--max-w);margin:0 auto;padding:0 14px}
     header{
-      position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(8px);
-      background:rgba(12,14,16,.85);border-bottom:1px solid rgba(255,255,255,.08)
+      position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
+      background:rgba(12,14,16,.9);border-bottom:1px solid rgba(255,255,255,.08)
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{font-weight:800;letter-spacing:.4px;display:flex;gap:10px;align-items:center;font-size:clamp(18px,2.2vw,22px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.3px;font-size:18px}
+    .brand-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#6ee7d2,#b3e5ff);color:#052a23}
     .badge{font-size:12px;color:var(--muted)}
-    .menu{display:flex;gap:10px;align-items:center}
+    .menu{display:flex;gap:8px;align-items:center}
     .menu a{color:#dfe8ec;padding:8px 10px;border-radius:10px}
     .pill{font-size:12px;padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);color:#b7c7d0}
 
-    /* Mobile nav toggle */
-    .hamburger{display:none;background:none;border:none;color:#dfe8ec;font-weight:700}
-    .drawer{display:flex;gap:8px;align-items:center}
-    @media (max-width: 820px){
-      .drawer{display:none}
-      .hamburger{display:inline-flex}
-      .drawer.open{position:absolute;inset:auto 16px auto auto;top:56px;display:flex;flex-direction:column;background:#0e1114;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px}
+    /* Mobile drawer */
+    .hamburger{display:inline-flex;gap:6px;align-items:center;background:#0e1114;border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#dfe8ec;padding:8px 10px}
+    .drawer{display:none}
+    .drawer.open{
+      position:fixed;inset:56px 10px auto 10px;z-index:70;display:flex;flex-direction:column;gap:6px;
+      background:#0e1114;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px
+    }
+    .drawer a{display:flex;align-items:center;gap:8px;color:#eaf2f6;padding:10px;border-radius:10px}
+    .drawer a:hover{background:#12161b}
+    .icon{font-family:"Material Symbols Outlined";font-size:18px;line-height:1}
+
+    @media (min-width: 880px){
+      .hamburger{display:none}
+      .drawer{display:flex;position:static;flex-direction:row;gap:10px;background:transparent;border:none;padding:0}
+      .drawer a{padding:8px 10px}
     }
 
     .panel{
@@ -54,193 +64,224 @@
       border-radius:var(--radius);box-shadow:var(--shadow)
     }
 
-    .hero{
-      display:grid;grid-template-columns:1fr;gap:16px;padding:16px 0 10px;
-    }
-    @media (min-width: 940px){
-      .hero{grid-template-columns:1.15fr .85fr}
-    }
-    .hero .panel{padding:16px}
-    .hero h1{margin:.2rem 0 0;font-size:clamp(22px,3.2vw,36px);line-height:1.15}
-    .hero p{color:var(--muted);font-size:clamp(14px,1.8vw,16px)}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:var(--gap);padding:var(--gap) 0 8px}
+    @media (min-width: 960px){ .hero{grid-template-columns:1.2fr .8fr} }
+    .hero .panel{padding:14px}
+    .hero h1{margin:.2rem 0 0;font-size:clamp(20px,5vw,34px);line-height:1.15}
+    .hero p{color:var(--muted);font-size:clamp(14px,2.5vw,16px)}
 
-    .searchbar{display:flex;gap:8px;margin-top:12px}
+    .searchbar{display:flex;gap:8px;margin-top:10px}
     .input{flex:1;padding:12px 14px;border-radius:10px;background:#0d1013;border:1px solid rgba(255,255,255,.10);color:var(--text)}
-    .btn{padding:12px 16px;border-radius:10px;background:var(--brand);color:#07332b;border:none;font-weight:700;cursor:pointer}
+    .btn{padding:12px 14px;border-radius:10px;background:var(--brand);color:#07332b;border:none;font-weight:700}
 
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .chip{padding:8px 10px;border-radius:999px;font-size:12px;color:#0b1415;background:var(--brand-2);cursor:pointer;border:1px solid rgba(255,255,255,.15)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{padding:7px 10px;border-radius:999px;font-size:12px;color:#0b1415;background:var(--brand-2);border:1px solid rgba(255,255,255,.15)}
 
-    /* Main grid */
-    .grid{margin:14px 0 24px;display:grid;grid-template-columns:1fr;gap:16px}
-    @media (min-width: 980px){
-      .grid{grid-template-columns:2fr 1fr}
+    /* Carousels (mobile) / Grid (desktop) */
+    .hcarousel{
+      display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+      padding:2px 2px 8px;scrollbar-width:thin;scrollbar-color:#2a3340 transparent
+    }
+    .hcarousel > *{scroll-snap-align:start}
+    .carousel-wrap{position:relative}
+    .car-btn{
+      position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:none;background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);color:#fff;width:32px;height:32px;border-radius:10px;display:none;align-items:center;justify-content:center
+    }
+    .car-btn.prev{left:6px}
+    .car-btn.next{right:6px}
+
+    /* Show arrows on wider phones and up */
+    @media (min-width: 420px){ .car-btn{display:flex} }
+    /* Tablets/desktops: switch to grid */
+    @media (min-width: 900px){
+      .hcarousel{display:grid;grid-auto-flow:initial;grid-auto-columns:initial;grid-template-columns:repeat(3,1fr);overflow:visible;scroll-snap-type:none}
+      .car-btn{display:none}
     }
 
-    .card{padding:14px;border-radius:16px;background:linear-gradient(180deg,#12161b,#101419 70%);border:1px solid rgba(255,255,255,.06)}
-    .card h3{margin:10px 0 6px;font-size:clamp(15px,2vw,18px)}
+    .card{padding:12px;border-radius:16px;background:linear-gradient(180deg,#12161b,#101419 70%);border:1px solid rgba(255,255,255,.06)}
+    .card h3{margin:8px 0 4px;font-size:clamp(14px,2.4vw,18px)}
     .meta{font-size:12px;color:var(--muted)}
-    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .tag{font-size:11px;border:1px solid rgba(255,255,255,.1);padding:4px 7px;border-radius:999px;color:#cfe6f3}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .tag{font-size:11px;border:1px solid rgba(255,255,255,.1);padding:3px 7px;border-radius:999px;color:#cfe6f3}
     .rating{color:#ffdf6c}
-    .cta{display:inline-flex;gap:8px;align-items:center;padding:9px 12px;border-radius:10px;background:#0d1013;border:1px solid rgba(255,255,255,.08);color:#dfe8ec}
-
-    .gridlist{display:grid;grid-template-columns:1fr;gap:12px}
-    @media (min-width: 560px){ .gridlist{grid-template-columns:repeat(2,1fr)} }
-
-    .offerrail{display:flex;gap:12px;overflow:auto;scroll-snap-type:x mandatory}
-    .offer{min-width:230px;scroll-snap-align:start}
-
-    .sticky{position:sticky;top:84px}
-    footer{margin:30px 0 60px;color:var(--muted)}
-    .muted{color:var(--muted)}
-    .section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 0 8px}
-    .section-title h2{font-size:clamp(16px,2.2vw,20px);margin:0}
+    .cta{display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border-radius:10px;background:#0d1013;border:1px solid rgba(255,255,255,.08);color:#dfe8ec}
     .small{font-size:12px}
+    .muted{color:var(--muted)}
     .divider{height:1px;background:rgba(255,255,255,.08);margin:10px 0}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 0 8px}
+    .section-title h2{font-size:clamp(15px,2.4vw,20px);margin:0}
 
-    .adbox{background:#0a0d0f;border:1px dashed rgba(255,255,255,.12);border-radius:14px;padding:10px;text-align:center;font-size:12px;color:#a8b7bf}
+    /* Grid blocks beneath hero */
+    .grid{margin:10px 0 22px;display:grid;grid-template-columns:1fr;gap:var(--gap)}
+    @media (min-width: 980px){ .grid{grid-template-columns:2fr 1fr} }
+
+    /* Reviews */
     .review-list{display:grid;grid-template-columns:1fr;gap:12px}
     @media (min-width: 700px){ .review-list{grid-template-columns:repeat(2,1fr)} }
     .review{background:#0e1216;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:12px}
 
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center;padding:14px}
-    .modal .inner{background:#0d1013;border:1px solid rgba(255,255,255,.08);border-radius:16px;max-width:520px;width:100%;padding:16px}
+    /* Ads: never overflow */
+    .ad-container{display:flex;justify-content:center;margin:10px 0}
+    .ad-inner{width:100%;max-width:728px}
+    .adsbygoogle{display:block;width:100%}
+    /* Mobile clamps */
+    @media (max-width: 600px){
+      .ad-inner{max-width:336px}
+    }
+
+    /* Sticky sidebar becomes block on mobile */
+    .sticky{position:static}
+    @media (min-width:980px){ .sticky{position:sticky;top:76px} }
+
+    footer{margin:26px 0 60px;color:var(--muted)}
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important} }
   </style>
 
-  <!-- Structured data -->
+  <!-- Schema -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"SKYNN",
-    "url":"https://skinlabs.co.za",
-    "brand":"SKYNN",
-    "description":"Curated skincare, reviews, and offers for South Africans.",
-    "foundingDate":"2025-08-15"
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"SKYNN","url":"https://skinlabs.co.za","brand":"SKYNN","description":"Curated skincare, reviews, and offers for South Africans.","foundingDate":"2025-08-15"}
   </script>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="brand">SKYNN® <span class="badge">formerly SkinLabs South Africa</span></div>
+    <div class="brand" aria-label="SKYNN">
+      <span class="brand-icon">S</span>
+      <span>SKYNN®</span>
+      <span class="badge">formerly SkinLabs South Africa</span>
+    </div>
 
-    <button class="hamburger" id="navToggle" aria-label="Open navigation">☰</button>
+    <!-- Mobile menu -->
+    <button class="hamburger" id="navToggle" aria-label="Open menu">
+      <span class="icon">menu</span> Menu
+    </button>
     <nav class="drawer" id="drawer" aria-label="Primary">
-      <a href="#explore">Explore</a>
-      <a href="#offers">Deals</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#submit" class="pill">Submit</a>
-      <a href="#signup" class="pill">Sign up</a>
+      <a href="#explore"><span class="icon">explore</span> Explore</a>
+      <a href="#offers"><span class="icon">local_mall</span> Deals</a>
+      <a href="#reviews"><span class="icon">reviews</span> Reviews</a>
+      <a href="#submit" class="pill"><span class="icon">upload</span> Submit</a>
+      <a href="#signup" class="pill"><span class="icon">person_add</span> Sign up</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- TOP LEADERBOARD AD -->
-  <div class="panel" style="padding:8px;margin-top:12px">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="1111111111" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-    <script> (adsbygoogle=window.adsbygoogle||[]).push({}); </script>
+  <!-- Leaderboard (clamped) -->
+  <div class="panel ad-container" style="padding:6px;margin-top:10px">
+    <div class="ad-inner">
+      <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
   <section class="hero">
-    <div class="panel">
+    <div class="panel" style="padding:14px">
       <div class="badge">Launches <b>15 Aug 2025</b></div>
       <h1>Curated skincare for South Africa</h1>
-      <p>Guides, ingredient explainers, local brand roundups, and smart deals. Save favourites, add reviews, and build routines that fit your budget.</p>
+      <p>Guides, ingredient explainers, local brand roundups, and smart deals. Save favourites, write reviews, and build routines that fit your budget.</p>
 
-      <div class="searchbar" role="search">
-        <input id="q" class="input" placeholder="Search guides, ingredients, brands..." aria-label="Search" />
-        <button id="btnSearch" class="btn">Search</button>
+      <div class="searchbar" role="search" aria-label="Site search">
+        <input id="q" class="input" placeholder="Search guides, ingredients, brands…" aria-label="Search" />
+        <button id="btnSearch" class="btn"><span class="icon">search</span></button>
       </div>
 
       <div class="chips" id="chips" aria-label="Filters"></div>
     </div>
 
-    <div class="panel" id="offers" aria-label="Sponsored Offers">
+    <div class="panel" id="offers" aria-label="Sponsored Offers" style="padding:14px">
       <div class="section-title"><h2>Sponsored Offers</h2><a class="small muted" href="#offers">See all</a></div>
-      <div class="offerrail" id="offersRail" aria-live="polite"></div>
-      <div class="divider"></div>
 
-      <!-- IN-PANEL RESPONSIVE AD -->
-      <div class="adbox">Ad — Responsive</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script> (adsbygoogle=window.adsbygoogle||[]).push({}); </script>
+      <div class="carousel-wrap">
+        <button class="car-btn prev" data-target="offersRail" aria-label="Scroll left"><span class="icon">chevron_left</span></button>
+        <div class="hcarousel" id="offersRail" aria-live="polite"></div>
+        <button class="car-btn next" data-target="offersRail" aria-label="Scroll right"><span class="icon">chevron_right</span></button>
+      </div>
+
+      <div class="divider"></div>
+      <!-- Responsive ad in panel -->
+      <div class="ad-container">
+        <div class="ad-inner">
+          <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="2222222222" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </div>
+      </div>
+      <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
     </div>
   </section>
 
-  <section class="grid" id="explore" aria-label="Explore content">
-    <div>
-      <div class="section-title">
-        <h2>Latest Curations</h2>
-        <div class="small muted">Filter: <span id="activeFilter">All</span></div>
-      </div>
-      <div id="cards" class="gridlist" aria-live="polite"></div>
+  <section id="explore" aria-label="Explore content">
+    <div class="section-title"><h2>Latest Curations</h2><div class="small muted">Filter: <span id="activeFilter">All</span></div></div>
 
-      <!-- IN-FEED AD (rendered again via JS between cards on large screens) -->
-      <div class="panel" style="margin-top:12px">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="3333333333" data-ad-format="fluid" data-ad-layout-key="-fg+5n+6t-e7+az"></ins>
-        <script> (adsbygoogle=window.adsbygoogle||[]).push({}); </script>
-      </div>
-
-      <div style="display:flex;justify-content:center;margin:14px 0">
-        <button id="loadMore" class="cta">Load more</button>
-      </div>
+    <!-- Cards carousel on mobile, grid on desktop -->
+    <div class="carousel-wrap">
+      <button class="car-btn prev" data-target="cards" aria-label="Scroll left"><span class="icon">chevron_left</span></button>
+      <div id="cards" class="hcarousel" aria-live="polite"></div>
+      <button class="car-btn next" data-target="cards" aria-label="Scroll right"><span class="icon">chevron_right</span></button>
     </div>
 
-    <aside>
+    <div style="display:flex;justify-content:center;margin:10px 0">
+      <button id="loadMore" class="cta"><span class="icon">unfold_more</span> Load more</button>
+    </div>
+
+    <div class="grid" style="margin-top:var(--gap)">
       <div class="panel sticky" style="padding:12px">
         <div class="section-title"><h2>Top this week</h2></div>
-        <div id="topList" class="gridlist"></div>
-        <div class="divider"></div>
-
-        <!-- SIDEBAR AD -->
-        <div class="adbox">Ad — Sidebar</div>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="4444444444" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
-        <script> (adsbygoogle=window.adsbygoogle||[]).push({}); </script>
+        <div id="topList" class="hcarousel" style="grid-auto-columns:75%"></div>
 
         <div class="divider"></div>
-        <!-- Newsletter (uses your Formspree endpoint) -->
+        <!-- Sidebar ad (clamped) -->
+        <div class="ad-container">
+          <div class="ad-inner">
+            <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
+          </div>
+        </div>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+        <div class="divider"></div>
         <form id="newsletter" action="https://formspree.io/f/xeokkzle" method="POST">
           <label class="small" for="email">Join our list (1–2 emails/month)</label>
           <div class="searchbar" style="margin-top:6px">
-            <input type="email" id="email" name="email" class="input" placeholder="your@email.com" required />
-            <button type="submit" class="btn">Subscribe</button>
+            <input type="email" id="email" name="email" class="input" placeholder="you@example.com" required />
+            <button type="submit" class="btn"><span class="icon">send</span></button>
           </div>
           <div class="small muted">By subscribing you agree to our Privacy Policy.</div>
         </form>
       </div>
-    </aside>
+    </div>
   </section>
 
   <section id="reviews" class="panel" style="padding:14px">
-    <div class="section-title"><h2>Community Reviews</h2><button id="btnAddReview" class="cta">Write a review</button></div>
+    <div class="section-title">
+      <h2>Community Reviews</h2>
+      <button id="btnAddReview" class="cta"><span class="icon">rate_review</span> Write a review</button>
+    </div>
     <div class="review-list" id="reviewList"></div>
   </section>
 
-  <!-- FOOTER AD (Multiplex / AutoRelaxed) -->
-  <section class="panel" style="padding:8px;margin-top:12px">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="5555555555" data-ad-format="autorelaxed" data-full-width-responsive="true"></ins>
-    <script> (adsbygoogle=window.adsbygoogle||[]).push({}); </script>
-  </section>
+  <!-- Footer multiplex (stays within container) -->
+  <div class="panel ad-container" style="padding:6px;margin-top:10px">
+    <div class="ad-inner" style="max-width:100%">
+      <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="5555555555" data-ad-format="autorelaxed" data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
 
   <footer class="wrap">
     <div class="divider"></div>
-    <div class="small">
-      © 2025 SKYNN® — Curated skincare for South Africa. Not medical advice.
-    </div>
+    <div class="small">© 2025 SKYNN® — Curated skincare for South Africa. Not medical advice.</div>
   </footer>
 </main>
 
 <!-- Review Modal -->
 <div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="revTitle">
-  <div class="inner">
-    <h3 id="revTitle">Write a review</h3>
+  <div class="inner" style="background:#0d1013;border:1px solid rgba(255,255,255,.08);border-radius:16px;max-width:520px;width:calc(100% - 28px);padding:14px;margin:0 auto">
+    <h3 id="revTitle" style="margin:0 0 6px">Write a review</h3>
     <form id="reviewForm">
       <label class="small">Product/Guide</label>
       <input name="title" required placeholder="e.g., Vitamin C Guide" class="input" style="width:100%"/>
+
       <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
         <div style="flex:1;min-width:150px">
           <label class="small">Rating (1–5)</label>
@@ -253,17 +294,19 @@
           </select>
         </div>
       </div>
+
       <label class="small" style="margin-top:8px;display:block">Your review</label>
       <textarea name="body" required rows="4" class="input" style="width:100%"></textarea>
+
       <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
-        <button type="button" id="revCancel" class="cta">Cancel</button>
-        <button type="submit" class="cta" style="background:var(--brand);color:#07332b">Save</button>
+        <button type="button" id="revCancel" class="cta"><span class="icon">close</span> Cancel</button>
+        <button type="submit" class="cta" style="background:var(--brand);color:#07332b"><span class="icon">save</span> Save</button>
       </div>
     </form>
   </div>
 </div>
 
-<script defer>
+<script>
 /* ===========================
    NAV (mobile drawer)
 =========================== */
@@ -273,10 +316,7 @@ navToggle?.addEventListener('click', ()=> drawer.classList.toggle('open'));
 
 /* ===========================
    Dynamic Content (JSON)
-   - /data/content.json
-   - /data/offers.json
 =========================== */
-
 const CATEGORIES = ["Guides","Ingredients","Routines","Reviews","Deals","Dermatologist Q&A","Local Brands"];
 const chipWrap = document.getElementById('chips');
 const cardsEl  = document.getElementById('cards');
@@ -289,7 +329,6 @@ const qInput   = document.getElementById('q');
 
 let active = "All", q="", shown = 0, CONTENT = [], OFFERS = [];
 
-/* Load JSON files (works on GitHub Pages as long as files are in /data/) */
 async function loadJSON(path){
   const res = await fetch(path, {cache:'no-store'});
   if(!res.ok) throw new Error(`Failed to load ${path}`);
@@ -302,8 +341,8 @@ async function initData(){
       loadJSON('./data/offers.json')
     ]);
   } catch(e){
-    console.error(e);
-    // Fallback minimal demo data
+    console.warn(e);
+    // Minimal fallback demo
     CONTENT = [
       {"type":"Guides","title":"Vitamin C: How to layer with Niacinamide","rating":4.8,"tags":["Brightening","Beginner"],"featured":true},
       {"type":"Ingredients","title":"Retinoids in SA: OTC vs Rx","rating":4.6,"tags":["Anti-ageing","Night"],"featured":true},
@@ -322,16 +361,11 @@ async function initData(){
 function makeChip(label){
   const b = document.createElement('button');
   b.className='chip'; b.textContent=label;
-  b.onclick=()=>{ active=label; activeEl.textContent=active; shown=0; render(); }
+  b.onclick=()=>{ active=label; activeEl.textContent=active; shown=0; render(); };
   return b;
 }
-function renderChips(){
-  chipWrap.innerHTML='';
-  chipWrap.appendChild(makeChip("All"));
-  CATEGORIES.forEach(c=> chipWrap.appendChild(makeChip(c)));
-}
 
-/* Cards */
+/* Templates */
 function cardTemplate(item){
   const el = document.createElement('div');
   el.className='card';
@@ -340,80 +374,76 @@ function cardTemplate(item){
     <h3>${item.title}</h3>
     <div class="rating">★ ${Number(item.rating||0).toFixed(1)}</div>
     <div class="tags">${(item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-      <button class="cta small fav" aria-label="Save to favourites">☆ Save</button>
-      ${item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read more →</a>` : `<a class="small" href="#reviews">Read more →</a>`}
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+      <button class="cta small" aria-label="Save to favourites"><span class="icon">grade</span> Save</button>
+      ${item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read →</a>` : `<a class="small" href="#reviews">Read →</a>`}
     </div>
   `;
-  el.querySelector('.fav').onclick=()=> alert('Saved to favourites (demo)');
   return el;
 }
-
-function renderOffers(){
-  offersEl.innerHTML='';
-  OFFERS.forEach(o=>{
-    const d = document.createElement('div');
-    d.className='offer card';
-    d.innerHTML = `
-      <div class="meta">${o.tag || 'Offer'}</div>
-      <h3 style="margin:4px 0">${o.brand||''}</h3>
-      <div class="muted">${o.title||''}</div>
-      <div class="divider"></div>
-      <div class="gridlist">
-        <div>
-          <div class="small muted">Code</div>
-          <div class="pill">${o.code || 'N/A'}</div>
-        </div>
-        <div>
-          <div class="small muted">Details</div>
-          <div class="small">${o.blurb||''}</div>
-        </div>
-      </div>
-      <div style="margin-top:10px"><a class="cta" href="${o.url||'#'}" target="_blank" rel="noopener">Shop now</a></div>
-    `;
-    offersEl.appendChild(d);
-  });
+function offerTemplate(o){
+  const d = document.createElement('div');
+  d.className='card'; d.style.minWidth='260px';
+  d.innerHTML = `
+    <div class="meta">${o.tag || 'Offer'}</div>
+    <h3 style="margin:4px 0">${o.brand||''}</h3>
+    <div class="muted">${o.title||''}</div>
+    <div class="divider"></div>
+    <div class="small"><b>Code:</b> ${o.code || 'N/A'}</div>
+    <div class="small muted">${o.blurb||''}</div>
+    <div style="margin-top:10px"><a class="cta" href="${o.url||'#'}" target="_blank" rel="noopener"><span class="icon">shopping_bag</span> Shop now</a></div>
+  `;
+  return d;
 }
 
+/* Render */
+function renderChips(){
+  chipWrap.innerHTML='';
+  chipWrap.appendChild(makeChip("All"));
+  CATEGORIES.forEach(c=> chipWrap.appendChild(makeChip(c)));
+}
+function renderOffers(){
+  offersEl.innerHTML='';
+  OFFERS.forEach(o=> offersEl.appendChild(offerTemplate(o)));
+}
 function render(){
   cardsEl.innerHTML = '';
   let list = CONTENT.filter(i =>
     (active==='All' || i.type===active) &&
     (q==='' || (i.title||'').toLowerCase().includes(q.toLowerCase()))
   );
-  const slice = list.slice(0, shown + 8); // show more per click
-  slice.forEach((item, idx)=>{
-    cardsEl.appendChild(cardTemplate(item));
-    // Optional in-feed ad on larger screens every 4th card
-    if (window.innerWidth >= 980 && (idx+1)%4===0){
-      const ad = document.createElement('div');
-      ad.className='panel';
-      ad.style.marginTop = '8px';
-      ad.innerHTML = `
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1237323355260727" data-ad-slot="6666666666" data-ad-format="fluid"></ins>
-      `;
-      cardsEl.appendChild(ad);
-      try{ (adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
-    }
-  });
+
+  const slice = list.slice(0, shown + 12);
+  slice.forEach(item => cardsEl.appendChild(cardTemplate(item)));
   shown = slice.length;
   loadBtn.style.display = shown < list.length ? 'inline-flex':'none';
 
-  // Top list
+  // Top list carousel (ratings)
   topList.innerHTML='';
-  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,4).forEach(x=>{
-    const c = document.createElement('div'); c.className='card';
+  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,6).forEach(x=>{
+    const c = document.createElement('div'); c.className='card'; c.style.minWidth='240px';
     c.innerHTML = `<div class="meta">${x.type}</div><h3>${x.title}</h3><div class="rating">★ ${Number(x.rating||0).toFixed(1)}</div>`;
     topList.appendChild(c);
   });
 }
 
-/* Search & Load More */
-searchBtn?.addEventListener('click', ()=>{ q = qInput.value||''; shown=0; render(); });
+/* Carousel controls */
+function scrollByBtn(btn, dir){
+  const targetId = btn.getAttribute('data-target');
+  const el = document.getElementById(targetId);
+  if(!el) return;
+  const delta = Math.round(el.clientWidth * 0.9) * (dir==='next'?1:-1);
+  el.scrollBy({left: delta, behavior: 'smooth'});
+}
+document.querySelectorAll('.car-btn.prev').forEach(b=> b.addEventListener('click', ()=> scrollByBtn(b,'prev')));
+document.querySelectorAll('.car-btn.next').forEach(b=> b.addEventListener('click', ()=> scrollByBtn(b,'next')));
+
+/* Search & Load */
+document.getElementById('btnSearch')?.addEventListener('click', ()=>{ q = qInput.value||''; shown=0; render(); });
 qInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ q = qInput.value||''; shown=0; render(); } });
 loadBtn?.addEventListener('click', ()=> render());
 
-/* Reviews (localStorage for now) */
+/* Reviews (localStorage demo) */
 const modal = document.getElementById('reviewModal');
 document.getElementById('btnAddReview').onclick = ()=>{ modal.style.display='grid'; }
 document.getElementById('revCancel').onclick = ()=>{ modal.style.display='none'; }
@@ -443,15 +473,13 @@ function paintReviews(){
 
 /* Boot */
 (async function(){
-  // Build chips early (so UI is visible while JSON loads)
-  chipWrap.innerHTML = '';
-  chipWrap.appendChild(makeChip("All"));
-  CATEGORIES.forEach(c=> chipWrap.appendChild(makeChip(c)));
-
+  renderChips();
   await initData();
   renderOffers();
   render();
   paintReviews();
+  // Push ads once the DOM has initial content
+  try{ (adsbygoogle=window.adsbygoogle||[]).push({}); }catch(e){}
 })();
 </script>
 </body>
