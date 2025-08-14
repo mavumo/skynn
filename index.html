@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <title>SKYNN® — Curated Skincare for South Africa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SKYNN® (formerly SkinLabs South Africa) curates dermatologist-informed guides, reviews, local deals and personalised routines for South Africans." />
+  <meta name="description" content="SKYNN® (formerly SkinLabs South Africa) — derm-informed guides, deals, reviews, and personalised routines for South Africans." />
   <link rel="canonical" href="https://skinlabs.co.za/" />
 
-  <!-- Social -->
+  <!-- OG/Twitter -->
   <meta property="og:title" content="SKYNN® — Curated Skincare for South Africa" />
   <meta property="og:description" content="Derm-informed guides, reviews, deals & personalised routines." />
   <meta property="og:type" content="website" />
@@ -20,43 +20,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined" rel="stylesheet" />
 
-  <!-- AdSense loader (YOUR client ID; load once) -->
+  <!-- AdSense (your client) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727" crossorigin="anonymous"></script>
 
   <!-- JSON-LD: Organization + WebSite (SearchAction) -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"SKYNN",
-    "url":"https://skinlabs.co.za",
-    "logo":"https://skinlabs.co.za/assets/logo.png",
-    "sameAs":[]
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"SKYNN","url":"https://skinlabs.co.za","logo":"https://skinlabs.co.za/assets/logo.png"}
   </script>
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "url":"https://skinlabs.co.za/",
-    "name":"SKYNN",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://skinlabs.co.za/?q={search_term_string}",
-      "query-input":"required name=search_term_string"
-    }
-  }
+  {"@context":"https://schema.org","@type":"WebSite","url":"https://skinlabs.co.za/","name":"SKYNN","potentialAction":{"@type":"SearchAction","target":"https://skinlabs.co.za/?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
   <style>
-    /* ---------------------- Design tokens ---------------------- */
     :root{
       --bg:#0c0e10; --panel:#111418; --muted:#8ca5b3; --brand:#6ee7d2; --brand2:#b3e5ff; --text:#eef3f5;
       --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1080px; --gap:14px;
       --ad-desktop:728px; --ad-mobile:336px;
     }
     html[data-theme="light"]{
-      --bg:#f6f7f9; --panel:#ffffff; --muted:#5c6b76; --brand:#0bb3a0; --brand2:#007aff1a; --text:#182026;
+      --bg:#f6f7f9; --panel:#ffffff; --muted:#5c6b76; --brand:#0bb3a0; --brand2:#e6f4ff; --text:#182026;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
@@ -66,46 +48,26 @@
     .wrap{max-width:var(--maxw);margin:0 auto;padding:0 14px}
     .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
 
-    /* ---------------------- Header / Nav ----------------------- */
-    header{
-      position:sticky;top:0;z-index:100;backdrop-filter:saturate(1.2) blur(8px);
-      background:color-mix(in oklab, var(--bg) 90%, transparent);border-bottom:1px solid rgba(255,255,255,.08)
-    }
+    header{position:sticky;top:0;z-index:100;backdrop-filter:saturate(1.2) blur(8px);background:color-mix(in oklab, var(--bg) 90%, transparent);border-bottom:1px solid rgba(0,0,0,.08)}
     .nav{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0}
     .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px;font-size:18px;white-space:nowrap}
     .brand-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#052a23}
     .badge{font-size:12px;color:var(--muted)}
     .drawer{display:none}
-    .hamburger,.theme-btn{
-      display:inline-flex;gap:6px;align-items:center;background:var(--panel);border:1px solid rgba(0,0,0,.12);
-      border-radius:10px;color:inherit;padding:8px 10px
-    }
+    .hamburger,.theme-btn{display:inline-flex;gap:6px;align-items:center;background:var(--panel);border:1px solid rgba(0,0,0,.12);border-radius:10px;color:inherit;padding:8px 10px}
     .theme-btn .material-symbols-outlined{font-size:18px}
-    .drawer.open{
-      position:fixed;inset:56px 10px auto 10px;z-index:120;display:flex;flex-direction:column;gap:6px;background:var(--panel);
-      border:1px solid rgba(0,0,0,.1);border-radius:12px;padding:10px;max-width:calc(var(--maxw) - 20px);width:calc(100% - 20px)
-    }
+    .drawer.open{position:fixed;inset:56px 10px auto 10px;z-index:120;display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid rgba(0,0,0,.1);border-radius:12px;padding:10px;max-width:calc(var(--maxw) - 20px);width:calc(100% - 20px)}
     .drawer a{display:flex;align-items:center;gap:8px;color:inherit;padding:10px;border-radius:10px}
     .drawer a:hover{background:color-mix(in oklab, var(--panel) 85%, #0000)}
-    .icon{font-family:"Material Symbols Outlined";font-weight:400;font-style:normal;font-size:18px;line-height:1}
+    .icon{font-family:"Material Symbols Outlined";font-size:18px;line-height:1}
+    @media (min-width: 900px){ .hamburger{display:none} .drawer{display:flex;position:static;flex-direction:row;gap:10px;background:transparent;border:none;padding:0} .drawer a{padding:8px 10px} }
 
-    @media (min-width: 900px){
-      .hamburger{display:none}
-      .drawer{display:flex;position:static;flex-direction:row;gap:10px;background:transparent;border:none;padding:0}
-      .drawer a{padding:8px 10px}
-    }
-
-    /* ---------------------- Panels & Layout -------------------- */
-    .panel{
-      background:linear-gradient(180deg,color-mix(in oklab, var(--panel) 100%, #0000), color-mix(in oklab, var(--panel) 95%, #0000) 60%);
-      border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0
-    }
+    .panel{background:linear-gradient(180deg,color-mix(in oklab, var(--panel) 100%, #0000), color-mix(in oklab, var(--panel) 95%, #0000) 60%);border:1px solid rgba(0,0,0,.08);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}
     .section-title{display:flex;align-items:center;justify-content:space-between;margin:6px 0 8px}
     .section-title h2{font-size:clamp(15px,2.4vw,20px);margin:0}
     .small{font-size:12px}.muted{color:var(--muted)}
     .divider{height:1px;background:rgba(0,0,0,.12);margin:10px 0}
 
-    /* ---------------------- Hero ------------------------------- */
     .hero{display:grid;grid-template-columns:1fr;gap:var(--gap);padding:var(--gap) 0 8px}
     @media (min-width: 980px){ .hero{grid-template-columns:1.2fr .8fr} }
     .hero .panel{padding:14px}
@@ -117,26 +79,17 @@
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .chip{padding:7px 10px;border-radius:999px;font-size:12px;color:#0b1415;background:var(--brand2);border:1px solid rgba(0,0,0,.12)}
 
-    /* ---------------------- Sliders ---------------------------- */
+    /* Sliders */
     .slider{position:relative;overflow:hidden}
-    .slides{display:flex;transition:transform .35s ease;will-change:transform}
+    .slides{display:flex;transition:transform .35s ease;will-change:transform;touch-action:pan-y}
     .slide{flex:0 0 auto;width:100%;padding:0 6px;box-sizing:border-box}
     .dots{display:flex;gap:6px;justify-content:center;margin:8px 0 2px}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(127,140,153,.45)}
-    .dot.active{background:var(--brand)}
-    .navbtn{
-      position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:none;background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);color:#fff;width:32px;height:32px;border-radius:10px;display:none;align-items:center;justify-content:center
-    }
+    .dot{width:8px;height:8px;border-radius:999px;background:rgba(127,140,153,.45)} .dot.active{background:var(--brand)}
+    .navbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:none;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);color:#fff;width:32px;height:32px;border-radius:10px;display:none;align-items:center;justify-content:center}
     .navbtn.prev{left:6px}.navbtn.next{right:6px}
     @media (min-width: 480px){ .navbtn{display:flex} }
+    .slides[data-per="1"] .slide{width:100%} .slides[data-per="2"] .slide{width:50%} .slides[data-per="3"] .slide{width:33.3333%}
 
-    /* Per-view widths (responsive) */
-    .slides[data-per="1"] .slide{width:100%}
-    .slides[data-per="2"] .slide{width:50%}
-    .slides[data-per="3"] .slide{width:33.3333%}
-
-    /* Cards & lists */
     .card{padding:12px;border-radius:16px;background:linear-gradient(180deg,color-mix(in oklab, var(--panel) 95%, #0000), color-mix(in oklab, var(--panel) 92%, #0000) 70%);border:1px solid rgba(0,0,0,.08)}
     .card h3{margin:8px 0 4px;font-size:clamp(14px,2.4vw,18px)}
     .meta{font-size:12px;color:var(--muted)}
@@ -145,35 +98,26 @@
     .rating{color:#ffdf6c}
     .cta{display:inline-flex;gap:6px;align-items:center;padding:8px 10px;border-radius:10px;background:color-mix(in oklab, var(--bg) 92%, #0000);border:1px solid rgba(0,0,0,.12);color:inherit}
 
-    /* Grid below hero (ensures no overflow) */
     .grid{margin:10px 0 22px;display:grid;grid-template-columns:1fr;gap:var(--gap);min-width:0}
     @media (min-width: 980px){ .grid{grid-template-columns:2fr 1fr} }
-    .sticky{position:static}
-    @media (min-width:980px){ .sticky{position:sticky;top:76px} }
+    .sticky{position:static} @media (min-width:980px){ .sticky{position:sticky;top:76px} }
 
-    /* Reviews */
     .review-list{display:grid;grid-template-columns:1fr;gap:12px}
     @media (min-width: 700px){ .review-list{grid-template-columns:repeat(2,1fr)} }
     .review{background:color-mix(in oklab, var(--panel) 92%, #0000);border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:12px}
 
-    /* Ads (clamped; no overflow) */
     .adbox{display:flex;justify-content:center;margin:10px 0}
-    .ad-inner{width:100%;max-width:var(--ad-desktop)}
-    .adsbygoogle{display:block;width:100%}
+    .ad-inner{width:100%;max-width:var(--ad-desktop)} .adsbygoogle{display:block;width:100%}
     @media (max-width: 600px){ .ad-inner{max-width:var(--ad-mobile)} }
 
     footer{margin:26px 0 60px;color:var(--muted)}
+    .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .socials a{display:inline-flex;gap:6px;align-items:center;color:inherit}
 
-    /* ---------------------- Modals ----------------------------- */
     .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;place-items:center;padding:14px;z-index:200}
-    .modal .inner{background:var(--panel);border:1px solid rgba(0,0,0,.1);border-radius:16px;max-width:520px;width:calc(100% - 28px);padding:14px;color:inherit}
+    .modal .inner{background:var(--panel);border:1px solid rgba(0,0,0,.1);border-radius:16px;max-width:620px;width:calc(100% - 28px);padding:14px;color:inherit}
 
-    /* ---------------------- FAB Chat --------------------------- */
-    #fabChat{
-      position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:150;border:none;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));color:#052a23;border-radius:50%;width:56px;height:56px;
-      box-shadow:0 10px 25px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center
-    }
+    #fabChat{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:150;border:none;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#052a23;border-radius:50%;width:56px;height:56px;box-shadow:0 10px 25px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
     #chatPanel{position:fixed;right:16px;bottom:86px;width:min(420px,calc(100% - 32px));z-index:160;display:none}
     #chatPanel .inner{background:var(--panel);border:1px solid rgba(0,0,0,.1);border-radius:16px;overflow:hidden}
     .chat-head{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.08)}
@@ -184,9 +128,8 @@
     .chat-foot{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(0,0,0,.08)}
     .chat-foot .input{flex:1}
 
-    /* ---------------------- Locked state ----------------------- */
     .locked-note{padding:12px;border-radius:12px;background:color-mix(in oklab, var(--panel) 94%, #0000);border:1px dashed rgba(0,0,0,.2);text-align:center}
-    .blurred{filter:blur(3px);pointer-events:none;user-select:none}
+    .hidden{display:none !important}
   </style>
 </head>
 <body>
@@ -195,7 +138,7 @@
     <div class="brand">
       <span class="brand-icon">S</span>
       <span>SKYNN®</span>
-      <span class="badge">formerly SkinLabs</span>
+      <span class="badge">formerly SkinLabs South Africa</span>
     </div>
     <div style="display:flex;gap:8px;align-items:center">
       <button id="themeToggle" class="theme-btn" aria-label="Toggle theme"><span class="material-symbols-outlined">dark_mode</span></button>
@@ -205,13 +148,14 @@
       <a href="#explore"><span class="material-symbols-outlined">explore</span> Explore</a>
       <a href="#offers"><span class="material-symbols-outlined">local_mall</span> Deals</a>
       <a href="#reviews"><span class="material-symbols-outlined">reviews</span> Reviews</a>
-      <a href="#signup" class="cta"><span class="material-symbols-outlined">person_add</span> Sign up</a>
+      <a href="#signup" class="cta js-signup"><span class="material-symbols-outlined">person_add</span> Sign up</a>
+      <a href="#login" class="cta js-signin"><span class="material-symbols-outlined">login</span> Login</a>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- Above-the-fold ad (clamped) -->
+  <!-- Above-the-fold ad -->
   <div class="panel adbox" style="padding:6px;margin-top:10px">
     <div class="ad-inner">
       <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -223,7 +167,7 @@
     <div class="panel" style="padding:14px">
       <div class="badge">Launches <b>15 Aug 2025</b></div>
       <h1>Curated skincare for South Africa</h1>
-      <p>Derm‑informed guides, ingredient explainers, local brand roundups and smarter deals. Join to unlock all features, AI chat, and member‑only content.</p>
+      <p>Derm‑informed guides, ingredient explainers, local brand roundups and smarter deals. <span class="js-locked-copy">Join to unlock all features, AI chat, and member‑only content.</span></p>
 
       <div class="searchbar" role="search" aria-label="Site search">
         <input id="q" class="input" placeholder="Search guides, ingredients, brands…" aria-label="Search" />
@@ -231,15 +175,18 @@
       </div>
 
       <div class="chips" id="chips" aria-label="Filters"></div>
-      <div id="gateNote" class="locked-note" style="display:none;margin-top:10px">
-        🔒 Sign up (R99/year) to read all curated content, save favourites, write reviews and use AI chat.
-        <div style="margin-top:8px"><button class="btn" id="openSignupFromNote">Unlock access</button></div>
+      <div id="gateNote" class="locked-note js-locked-copy" style="margin-top:10px">
+        🔒 Sign up (R99/year) to read all content, save favourites, write reviews and use AI chat.
+        <div style="margin-top:8px"><button class="btn js-signup">Unlock access</button></div>
       </div>
     </div>
 
     <!-- Sponsored Offers slider -->
     <div class="panel" id="offersPanel" aria-label="Sponsored Offers" style="padding:14px">
-      <div class="section-title"><h2>Sponsored Offers</h2><a class="small muted" href="#offers">See all</a></div>
+      <div class="section-title">
+        <h2>Sponsored Offers</h2>
+        <a class="small muted" href="#offers">See all</a>
+      </div>
       <div class="slider" id="offersSlider">
         <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
         <div class="slides" id="offersSlides" data-per="1"></div>
@@ -259,7 +206,10 @@
 
   <!-- Explore -->
   <section id="explore" aria-label="Explore content">
-    <div class="section-title"><h2>Latest Curations</h2><div class="small muted">Filter: <span id="activeFilter">All</span></div></div>
+    <div class="section-title">
+      <h2>Latest Curations</h2>
+      <div class="small muted">Filter: <span id="activeFilter">All</span></div>
+    </div>
 
     <div class="slider" id="cardsSlider">
       <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
@@ -279,7 +229,7 @@
         <div class="dots" id="topDots"></div>
 
         <div class="divider"></div>
-        <!-- Newsletter (never overflows) -->
+        <!-- Newsletter -->
         <form id="newsletter" action="https://formspree.io/f/xeokkzle" method="POST" style="max-width:100%">
           <label class="small" for="email">Join our list (1–2 emails/month)</label>
           <div class="searchbar" style="margin-top:6px">
@@ -290,7 +240,7 @@
         </form>
 
         <div class="divider"></div>
-        <!-- Sidebar ad (clamped) -->
+        <!-- Sidebar ad -->
         <div class="adbox">
           <div class="ad-inner">
             <ins class="adsbygoogle" data-ad-client="ca-pub-1237323355260727" data-ad-slot="4444444444" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -301,11 +251,22 @@
     </div>
   </section>
 
-  <!-- Reviews (gated to signed-in) -->
+  <!-- Featured Articles (Medium) -->
+  <section id="featured" class="panel" style="padding:14px;margin-top:12px">
+    <div class="section-title"><h2>Featured on our Medium</h2><a class="small" href="https://blog.skinlabs.africa" target="_blank" rel="noopener">Visit blog</a></div>
+    <div class="slider" id="featSlider">
+      <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+      <div id="featSlides" class="slides" data-per="1"></div>
+      <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+    </div>
+    <div class="dots" id="featDots"></div>
+  </section>
+
+  <!-- Reviews (gated) -->
   <section id="reviews" class="panel" style="padding:14px">
     <div class="section-title">
       <h2>Community Reviews</h2>
-      <button id="btnAddReview" class="cta"><span class="material-symbols-outlined">rate_review</span> Write a review</button>
+      <button id="btnAddReview" class="cta js-signin"><span class="material-symbols-outlined">rate_review</span> Write a review</button>
     </div>
     <div class="review-list" id="reviewList"></div>
   </section>
@@ -321,35 +282,120 @@
   <footer class="wrap">
     <div class="divider"></div>
     <div class="small">© 2025 SKYNN® — Curated skincare for South Africa. Not medical advice.</div>
+    <div class="socials small">
+      <a href="https://facebook.com/skinlabs.co.za" target="_blank" rel="noopener"><span class="material-symbols-outlined">public</span> Facebook</a>
+      <a href="https://facebook.com/skinlabsza" target="_blank" rel="noopener"><span class="material-symbols-outlined">group</span> Instagram</a>
+      <a href="https://wa.me/+27680200749" target="_blank" rel="noopener"><span class="material-symbols-outlined">chat</span> WhatsApp</a>
+      <a href="https://tiktok.com/@skinlabsza" target="_blank" rel="noopener"><span class="material-symbols-outlined">play_circle</span> TikTok</a>
+    </div>
   </footer>
 </main>
 
-<!-- Sign-up Modal (R99/year) -->
-<div class="modal" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+<!-- Onboarding Modal (multi-step) -->
+<div class="modal" id="onboardModal" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
   <div class="inner">
-    <h3 id="signupTitle" style="margin:0 0 6px">Unlock SKYNN® — R99/year</h3>
-    <p class="small">Full access to guides, reviews, saved items and AI chat. Billing is annual. Cancel anytime.</p>
-    <ul class="small">
-      <li>Full content library</li>
-      <li>Derm‑informed AI chat (GPT‑5 mini)</li>
-      <li>Member‑only deals</li>
-    </ul>
-    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
-      <button id="signupCancel" class="cta"><span class="material-symbols-outlined">close</span> Cancel</button>
-      <button id="signupGo" class="btn"><span class="material-symbols-outlined">lock_open</span> Sign up (R99)</button>
+    <h3 id="onboardTitle" style="margin:0 0 6px">Join SKYNN® — R99/year</h3>
+    <div id="onboardSteps">
+      <!-- Step 1: Account -->
+      <div class="step" data-step="1">
+        <p class="small muted">Create your account to save your profile and access all features.</p>
+        <label class="small">Email</label>
+        <input id="obEmail" type="email" class="input" placeholder="you@example.com" required/>
+        <label class="small" style="margin-top:8px">Password</label>
+        <input id="obPwd" type="password" class="input" placeholder="••••••••" required/>
+        <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+          <button class="cta" data-next>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Skin basics -->
+      <div class="step hidden" data-step="2">
+        <p class="small muted">Tell us about your skin so we can personalise your routine.</p>
+        <label class="small">Skin type</label>
+        <select id="obSkinType" class="input">
+          <option>Normal</option><option>Dry</option><option>Oily</option><option>Combination</option><option>Sensitive</option>
+        </select>
+        <label class="small" style="margin-top:8px">Primary concerns</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <label class="chip"><input type="checkbox" value="Acne" /> Acne</label>
+          <label class="chip"><input type="checkbox" value="PIH" /> Pigmentation (PIH)</label>
+          <label class="chip"><input type="checkbox" value="Sensitivity" /> Sensitivity</label>
+          <label class="chip"><input type="checkbox" value="Dryness" /> Dryness</label>
+          <label class="chip"><input type="checkbox" value="Pores" /> Pores/Texture</label>
+        </div>
+        <label class="small" style="margin-top:8px">Fitzpatrick scale</label>
+        <select id="obFitz" class="input">
+          <option>I</option><option>II</option><option>III</option><option>IV</option><option>V</option><option>VI</option>
+        </select>
+        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+          <button class="cta" data-prev>Back</button>
+          <button class="cta" data-next>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Preferences -->
+      <div class="step hidden" data-step="3">
+        <p class="small muted">A few preferences to fine‑tune recommendations.</p>
+        <label class="small">Monthly budget (R)</label>
+        <input id="obBudget" type="number" class="input" min="0" step="10" placeholder="500" />
+        <label class="small" style="margin-top:8px">Routine style</label>
+        <select id="obRoutine" class="input">
+          <option>Minimal (2–3 steps)</option><option>Balanced (4–5)</option><option>Maximal (6+)</option>
+        </select>
+        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+          <button class="cta" data-prev>Back</button>
+          <button class="cta" data-next>Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Review + Pay -->
+      <div class="step hidden" data-step="4">
+        <p class="small muted">Almost there. Continue to secure PayFast checkout.</p>
+        <ul class="small" id="obSummary"></ul>
+        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+          <button class="cta" data-prev>Back</button>
+          <button id="obGoPay" class="btn">Continue to PayFast (R99)</button>
+        </div>
+        <p class="small muted" style="margin-top:8px">You’ll be redirected back here after payment is verified.</p>
+      </div>
     </div>
-    <p class="small muted" style="margin-top:8px">After payment you’ll be redirected back. Access is activated automatically.</p>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+      <button class="cta" id="obCancel"><span class="material-symbols-outlined">close</span> Cancel</button>
+    </div>
   </div>
 </div>
 
-<!-- Review Modal -->
+<!-- Login Modal -->
+<div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="inner">
+    <h3 id="loginTitle" style="margin:0 0 6px">Sign in</h3>
+    <label class="small">Email</label>
+    <input id="liEmail" type="email" class="input" placeholder="you@example.com" required/>
+    <label class="small" style="margin-top:8px">Password</label>
+    <input id="liPwd" type="password" class="input" placeholder="••••••••" required/>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+      <button class="cta" id="liCancel"><span class="material-symbols-outlined">close</span> Cancel</button>
+      <button class="btn" id="liGo"><span class="material-symbols-outlined">login</span> Sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- Thank You Modal -->
+<div class="modal" id="thanksModal" role="dialog" aria-modal="true" aria-labelledby="thanksTitle">
+  <div class="inner">
+    <h3 id="thanksTitle" style="margin:0 0 6px">You’re in 🎉</h3>
+    <p>Membership activated. You now have full access to guides, reviews, favourites and SKYNN AI.</p>
+    <div style="display:flex;justify-content:flex-end"><button class="cta" id="thanksClose">Close</button></div>
+  </div>
+</div>
+
+<!-- Review Modal (gated) -->
 <div class="modal" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="revTitle">
   <div class="inner">
     <h3 id="revTitle" style="margin:0 0 6px">Write a review</h3>
     <form id="reviewForm">
       <label class="small">Product/Guide</label>
       <input name="title" required placeholder="e.g., Vitamin C Guide" class="input" style="width:100%"/>
-
       <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
         <div style="flex:1;min-width:150px">
           <label class="small">Rating (1–5)</label>
@@ -364,7 +410,6 @@
       </div>
       <label class="small" style="margin-top:8px;display:block">Your review</label>
       <textarea name="body" required rows="4" class="input" style="width:100%"></textarea>
-
       <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
         <button type="button" id="revCancel" class="cta"><span class="material-symbols-outlined">close</span> Cancel</button>
         <button type="submit" class="cta" style="background:var(--brand);color:#07332b"><span class="material-symbols-outlined">save</span> Save</button>
@@ -373,7 +418,7 @@
   </div>
 </div>
 
-<!-- Floating AI Chat -->
+<!-- Floating AI Chat (gated) -->
 <button id="fabChat" aria-label="Open AI chat"><span class="material-symbols-outlined">smart_toy</span></button>
 <div id="chatPanel">
   <div class="inner">
@@ -382,9 +427,7 @@
       <button id="chatClose" class="hamburger" style="padding:6px 8px"><span class="material-symbols-outlined">close</span></button>
     </div>
     <div class="chat-body" id="chatBody">
-      <div class="msg ai"><b>Hi!</b> I can suggest evidence‑based routines for your skin goals.
-        <br/><span class="small muted">Not medical advice. For diagnosis, consult a professional.</span>
-      </div>
+      <div class="msg ai"><b>Hi!</b> Ask me anything skincare. I’ll suggest evidence‑based options (not medical advice).</div>
     </div>
     <div class="chat-foot">
       <input id="chatInput" class="input" placeholder="Ask about acne, pigmentation, SPF…" />
@@ -394,73 +437,11 @@
 </div>
 
 <script>
-/* ============================================================
-   SKYNN Front-end App
-   - Mobile-first, sliders, theme toggle
-   - Gated membership (client-side) for GitHub Pages
-   - AI Chat via a secure serverless proxy (instructions below)
-   ============================================================
-
-   IMPORTANT — AI Proxy Setup (do NOT put your OpenAI key in this file)
-   --------------------------------------------------------------------
-   1) Create a small serverless endpoint (e.g., Cloudflare Worker, Netlify Function, Vercel Function)
-      that calls OpenAI's Responses API with model "gpt-5-mini". Recommended:
-      - Responses API JS example: https://cookbook.openai.com/examples/responses_api/responses_example  
-      - Models page: https://platform.openai.com/docs/models/gpt-5-mini  
-      - GPT‑5 developer intro: https://openai.com/index/introducing-gpt-5-for-developers/  
-      - API reference index: https://platform.openai.com/docs/api-reference  
-      - NEVER expose API keys client-side: https://help.openai.com/en/articles/5112595-best-practices-for-api-key  
-
-   2) Example Cloudflare Worker (JavaScript) — paste into your Worker and set the OPENAI_API_KEY secret.
-      ------------------------------------------------------------------
-      import { OpenAI } from "npm:openai";
-      export default {
-        async fetch(req, env) {
-          if (req.method !== "POST") return new Response("Method Not Allowed", {status:405});
-          const body = await req.json();
-          const messages = body.messages || [];
-          const client = new OpenAI({ apiKey: env.OPENAI_API_KEY });
-          // System prompt: derm-informed, SA context, safety-first
-          const system = "You are SKYNN AI, providing evidence-based skincare guidance for South Africans. \
-Avoid diagnosis, give dermatologist-level education, highlight red flags, and suggest seeing a professional when appropriate. \
-Be concise, friendly, and specific. Include local product types without naming prescription medicines.";
-          const resp = await client.responses.create({
-            model: "gpt-5-mini",
-            input: [
-              { role: "system", content: system },
-              ...messages
-            ]
-          });
-          // Responses API returns a content array; return first text block
-          const out = resp.output_text || (resp.output && resp.output[0]?.content[0]?.text) || "";
-          return new Response(JSON.stringify({ output: out }), {
-            headers: { "content-type": "application/json", "access-control-allow-origin": "*" }
-          });
-        }
-      };
-
-      // In Cloudflare: wrangler secret put OPENAI_API_KEY
-      // In Netlify/Vercel Functions the code is similar; set env var OPENAI_API_KEY.
-
-   3) Set your public proxy URL below in AI_PROXY_ENDPOINT. The browser will POST:
-      { messages: [{role:'user', content:'...'}, ...] }
-      and expects { output: "answer" } back.
-
-   --------------------------------------------------------------------
-   Membership & Paywall (client-side for GitHub Pages)
-   --------------------------------------------------------------------
-   • This demo uses localStorage to enforce membership in the browser
-     (no server on GitHub Pages). For production-grade control, use a
-     server / edge function to verify entitlements and gate content.
-   • Integrate Stripe Checkout (or PayFast) and set CHECKOUT_URL below.
-     After successful payment, redirect back with ?member=1.
-*/
-
+/* ---------------- Config ---------------- */
+const API_BASE = "https://api.skinlabs.co.za"; // <-- set to your Worker/Function base
 const PRICE_ZAR = 99;
-const CHECKOUT_URL = "https://your-checkout.example/stripe-session"; // TODO: replace with Stripe/PayFast hosted checkout link
-const AI_PROXY_ENDPOINT = "https://your-ai-proxy.example/chat";      // TODO: replace with your Worker/Function URL
 
-/* --------------- Theme Toggle --------------- */
+/* -------------- Theme Toggle -------------- */
 const themeBtn = document.getElementById('themeToggle');
 const savedTheme = localStorage.getItem('skynn_theme');
 if(savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
@@ -471,78 +452,236 @@ themeBtn.onclick = ()=>{
   localStorage.setItem('skynn_theme', next);
   themeBtn.innerHTML = `<span class="material-symbols-outlined">${next==='dark'?'dark_mode':'light_mode'}</span>`;
 };
-themeBtn.dispatchEvent(new Event('click')); themeBtn.dispatchEvent(new Event('click')); // refresh icon on load
+themeBtn.dispatchEvent(new Event('click')); themeBtn.dispatchEvent(new Event('click'));
 
-/* --------------- Nav Drawer --------------- */
-const navToggle = document.getElementById('navToggle');
-const drawer = document.getElementById('drawer');
-navToggle?.addEventListener('click', ()=> drawer.classList.toggle('open'));
+/* -------------- Nav -------------- */
+document.getElementById('navToggle')?.addEventListener('click', ()=> document.getElementById('drawer').classList.toggle('open'));
 
-/* --------------- JSON Content --------------- */
-const chipWrap = document.getElementById('chips');
-const cardsSlides = document.getElementById('cardsSlides');
-const cardsDots = document.getElementById('cardsDots');
-const offersSlides = document.getElementById('offersSlides');
-const offersDots = document.getElementById('offersDots');
-const topSlides = document.getElementById('topSlides');
-const topDots = document.getElementById('topDots');
-const activeEl = document.getElementById('activeFilter');
-const searchBtn = document.getElementById('btnSearch');
-const qInput = document.getElementById('q');
-const gateNote = document.getElementById('gateNote');
-const openSignupFromNote = document.getElementById('openSignupFromNote');
+/* -------------- Gate helpers -------------- */
+let MEMBER = false;
+function setSignedInUI(on){
+  MEMBER = !!on;
+  document.querySelectorAll('.js-locked-copy').forEach(el=> el.classList.toggle('hidden', !!on));
+  document.querySelectorAll('.js-signup').forEach(el=> el.classList.toggle('hidden', !!on));
+  document.querySelectorAll('.js-signin').forEach(el=> el.classList.toggle('hidden', !!on));
+}
+async function fetchSession(){
+  try{
+    const r = await fetch(`${API_BASE}/session`, {credentials:'include'});
+    const j = await r.json();
+    setSignedInUI(j.active === true);
+    return j.active === true;
+  }catch(e){ setSignedInUI(false); return false; }
+}
 
+/* -------------- JSON content -------------- */
 const CATEGORIES = ["Guides","Ingredients","Routines","Reviews","Deals","Dermatologist Q&A","Local Brands"];
-let active = "All", q="", CONTENT=[], OFFERS=[], shown=0;
+let CONTENT=[], OFFERS=[], q="", active="All", shown=0;
 
-/* --------------- Membership gating --------------- */
-function memberUntil(){ return Number(localStorage.getItem('skynn_member_until')||0); }
-function isMember(){ return Date.now() < memberUntil(); }
-function setMember(years=1){
-  const until = Date.now() + years*365*24*3600*1000;
-  localStorage.setItem('skynn_member_until', String(until));
+/* -------------- Signup/Login triggers -------------- */
+function openModal(id){ document.getElementById(id).style.display='grid'; }
+function closeModal(id){ document.getElementById(id).style.display='none'; }
+document.body.addEventListener('click', (e)=>{
+  if(e.target.classList.contains('js-signup')){ e.preventDefault(); openModal('onboardModal'); }
+  if(e.target.classList.contains('js-signin')){ e.preventDefault(); openModal('loginModal'); }
+});
+['onboardModal','loginModal','reviewModal','thanksModal'].forEach(id=>{
+  document.getElementById(id).addEventListener('click', (e)=>{ if(e.target.id===id) closeModal(id); });
+});
+
+/* -------------- Onboarding (multi-step) -------------- */
+const steps = [...document.querySelectorAll('#onboardSteps .step')];
+let stepIdx = 0;
+function showStep(i){ steps.forEach((s,k)=> s.classList.toggle('hidden', k!==i)); stepIdx=i; }
+document.querySelectorAll('[data-next]').forEach(b=> b.onclick=()=> showStep(Math.min(stepIdx+1, steps.length-1)));
+document.querySelectorAll('[data-prev]').forEach(b=> b.onclick=()=> showStep(Math.max(stepIdx-1, 0)));
+document.getElementById('obCancel').onclick = ()=> closeModal('onboardModal');
+
+function gatherOnboard(){
+  const email = document.getElementById('obEmail').value.trim();
+  const pwd = document.getElementById('obPwd').value.trim();
+  const skinType = document.getElementById('obSkinType').value;
+  const fitz = document.getElementById('obFitz').value;
+  const budget = Number(document.getElementById('obBudget').value||0);
+  const routine = document.getElementById('obRoutine').value;
+  const concerns = [...document.querySelectorAll('[data-step="2"] input[type=checkbox]:checked')].map(i=>i.value);
+  return { email, password: pwd, profile:{ skinType, concerns, fitz, budget, routine } };
 }
-function requireMember(action){
-  if(!isMember()){
-    openSignup();
-    return false;
-  }
-  return true;
-}
+document.querySelector('[data-step="4"]').addEventListener('show', ()=>{
+  const d = gatherOnboard();
+  const ul = document.getElementById('obSummary');
+  ul.innerHTML = `
+    <li>Email: ${d.email}</li>
+    <li>Skin type: ${d.profile.skinType}</li>
+    <li>Concerns: ${d.profile.concerns.join(', ')||'—'}</li>
+    <li>Fitzpatrick: ${d.profile.fitz}</li>
+    <li>Budget: R${d.profile.budget||0}</li>
+    <li>Routine: ${d.profile.routine}</li>`;
+});
+function emitStepShow(){ steps[stepIdx].dispatchEvent(new Event('show')); }
+['data-next','data-prev'].forEach(sel=> document.querySelectorAll(`[${sel}]`).forEach(b=> b.addEventListener('click', ()=> setTimeout(emitStepShow, 0))));
 
-function openSignup(){ document.getElementById('signupModal').style.display='grid'; }
-function closeSignup(){ document.getElementById('signupModal').style.display='none'; }
+/* -------------- Register + PayFast redirect -------------- */
+document.getElementById('obGoPay').onclick = async ()=>{
+  const data = gatherOnboard();
+  if(!data.email || !data.password){ alert('Please enter email & password'); return; }
+  try{
+    // 1) Register account (hashed server-side)
+    await fetch(`${API_BASE}/auth/register`, {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(data)});
 
-/* --------------- Sign-up Modal wiring --------------- */
-document.getElementById('signupCancel').onclick = closeSignup;
-document.getElementById('signupGo').onclick = ()=>{
-  // Redirect to your hosted checkout page.
-  // After successful payment, configure your gateway to redirect back to:
-  // https://skinlabs.co.za/?member=1 (or your GitHub Pages domain)
-  window.location.href = CHECKOUT_URL;
+    // 2) Create signed PayFast form (server-side signature)
+    const r = await fetch(`${API_BASE}/payfast/sign`, {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ email: data.email, amount: PRICE_ZAR, item_name: "SKYNN Annual Membership" })});
+    const j = await r.json();
+    // 3) Inject & submit form to PayFast
+    const f = document.createElement('form'); f.action = j.action; f.method='POST';
+    for(const [k,v] of Object.entries(j.fields)){ const i=document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; f.appendChild(i); }
+    document.body.appendChild(f); f.submit();
+  }catch(e){ console.error(e); alert('Could not start checkout. Please try again.'); }
 };
-openSignupFromNote.onclick = openSignup;
 
-// Auto-activate membership if gateway redirected with ?member=1 (demo)
-if(new URLSearchParams(location.search).get('member')==='1'){
-  setMember(1);
-  history.replaceState({}, "", location.pathname); // clean URL
+/* -------------- Login -------------- */
+document.getElementById('liCancel').onclick = ()=> closeModal('loginModal');
+document.getElementById('liGo').onclick = async ()=>{
+  const email = document.getElementById('liEmail').value.trim();
+  const password = document.getElementById('liPwd').value.trim();
+  try{
+    const r = await fetch(`${API_BASE}/auth/login`, {method:'POST', headers:{'content-type':'application/json'}, credentials:'include', body: JSON.stringify({ email, password })});
+    const j = await r.json();
+    if(j.ok){ closeModal('loginModal'); await fetchSession(); renderAll(); } else { alert(j.error||'Login failed'); }
+  }catch(e){ alert('Login error'); }
+};
+
+/* -------------- Return (thank you + claim cookie) -------------- */
+async function handleReturn(){
+  const u = new URL(location.href);
+  const m = u.searchParams.get('m');        // m_payment_id
+  const ty = u.searchParams.get('thankyou'); // set by Worker redirect or PayFast return_url
+  if(m){
+    // Poll claim endpoint (ITN may arrive slightly later)
+    const start=Date.now();
+    while(Date.now()-start < 60000){
+      try{
+        const r = await fetch(`${API_BASE}/payfast/claim?m=${encodeURIComponent(m)}`, {credentials:'include'});
+        const j = await r.json();
+        if(j.activated){ break; }
+      }catch(e){}
+      await new Promise(res=> setTimeout(res, 2500));
+    }
+  }
+  if(ty==='1'){ openModal('thanksModal'); document.getElementById('thanksClose').onclick = ()=> closeModal('thanksModal'); }
+  // Clean URL
+  if(m || ty){ history.replaceState({}, "", location.pathname); }
 }
 
-/* --------------- Load JSON --------------- */
-async function loadJSON(path){
-  const res = await fetch(path, {cache:'no-store'});
-  if(!res.ok) throw new Error('Failed to load '+path);
-  return res.json();
+/* -------------- Search & chips -------------- */
+const chipWrap = document.getElementById('chips'); const activeEl = document.getElementById('activeFilter');
+function makeChip(label){ const b=document.createElement('button'); b.className='chip'; b.textContent=label; b.onclick=()=>{ active=label; activeEl.textContent=active; renderAll(); }; return b; }
+function renderChips(){ chipWrap.innerHTML=''; chipWrap.appendChild(makeChip('All')); CATEGORIES.forEach(c=> chipWrap.appendChild(makeChip(c))); }
+document.getElementById('btnSearch')?.addEventListener('click', ()=>{ q = document.getElementById('q').value||''; renderAll(); });
+document.getElementById('q')?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ q = e.target.value||''; renderAll(); }});
+
+/* -------------- Sliders (with swipe) -------------- */
+function slider(root, dots, opts={per:[1,2,3], breakpoints:[0,600,900], autoplayMs:0}){
+  const slidesEl = root.querySelector('.slides'), prev = root.querySelector('.prev'), next = root.querySelector('.next');
+  let page=0, pages=1, timer=null, startX=0, curX=0, dragging=false, width=0;
+  function curPer(){
+    const w = root.clientWidth || window.innerWidth; let p = opts.per[0];
+    if(w>=opts.breakpoints[1]) p = opts.per[1]||p; if(w>=opts.breakpoints[2]) p = opts.per[2]||p;
+    slidesEl.dataset.per = String(p); return p;
+  }
+  function recalc(){ const p = curPer(); const n = slidesEl.children.length; pages = Math.max(1, Math.ceil(n/p)); page=Math.min(page,pages-1); go(page,true); renderDots(); width = root.clientWidth; }
+  function go(n, instant){ page=Math.max(0,Math.min(n,pages-1)); const x = page*100; slidesEl.style.transition = instant? 'none' : ''; slidesEl.style.transform = `translateX(-${x}%)`; requestAnimationFrame(()=> slidesEl.style.transition = 'transform .35s ease'); updateDots(); }
+  function renderDots(){ if(!dots) return; dots.innerHTML=''; for(let i=0;i<pages;i++){ const d=document.createElement('button'); d.className='dot'; if(i===page) d.classList.add('active'); d.onclick=()=>go(i); dots.appendChild(d); } }
+  function updateDots(){ if(!dots) return; [...dots.children].forEach((d,i)=> d.classList.toggle('active', i===page)); }
+  function auto(){ if(!opts.autoplayMs) return; stop(); timer=setInterval(()=> go((page+1)%pages), opts.autoplayMs); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  // swipe
+  slidesEl.addEventListener('pointerdown', e=>{ dragging=true; startX=e.clientX; curX=startX; slidesEl.setPointerCapture(e.pointerId); slidesEl.style.transition='none'; });
+  slidesEl.addEventListener('pointermove', e=>{ if(!dragging) return; curX=e.clientX; const dx=curX-startX; const pcent = (dx/width)*100; slidesEl.style.transform=`translateX(calc(-${page*100}% + ${pcent}%))`; });
+  slidesEl.addEventListener('pointerup', e=>{ if(!dragging) return; dragging=false; const dx=curX-startX; const thr=width*0.18; if(Math.abs(dx)>thr){ go(page + (dx<0?1:-1)); } else { go(page); } slidesEl.releasePointerCapture(e.pointerId); });
+  prev?.addEventListener('click', ()=> go(page-1)); next?.addEventListener('click', ()=> go(page+1));
+  root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', auto); window.addEventListener('resize', recalc, {passive:true});
+  recalc(); auto();
+  return {recalc, go};
 }
+
+/* -------------- Renderers -------------- */
+const cardsSlider = slider(document.getElementById('cardsSlider'), document.getElementById('cardsDots'), {per:[1,2,3], breakpoints:[0,600,900]});
+const offersSlider = slider(document.getElementById('offersSlider'), document.getElementById('offersDots'), {per:[1,2,3], breakpoints:[0,600,900]});
+const topSlider    = slider(document.getElementById('topSlider'), document.getElementById('topDots'), {per:[1,1,2], breakpoints:[0,700,980], autoplayMs:4000});
+
+function cardHTML(item){
+  return `<div class="card">
+    <div class="meta">${item.type}${item.featured ? ' • <span class="chip">Featured</span>':''}</div>
+    <h3>${item.title}</h3>
+    <div class="rating">★ ${Number(item.rating||0).toFixed(1)}</div>
+    <div class="tags">${(item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+      <button class="cta small btnSave ${MEMBER?'':'js-signin'}"><span class="material-symbols-outlined">grade</span> Save</button>
+      ${MEMBER && item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read →</a>` : `<span class="small muted js-locked-copy">Join to read</span>`}
+    </div></div>`;
+}
+function offerHTML(o){
+  return `<div class="card">
+    <div class="meta">${o.tag || 'Offer'}</div>
+    <h3 style="margin:4px 0">${o.brand||''}</h3>
+    <div class="muted">${o.title||''}</div>
+    <div class="divider"></div>
+    <div class="small"><b>Code:</b> ${o.code || 'N/A'}</div>
+    <div class="small muted">${o.blurb||''}</div>
+    <div style="margin-top:10px"><a class="cta ${MEMBER?'':'js-signin'}" href="${MEMBER?(o.url||'#'):'#'}" target="_blank" rel="noopener"><span class="material-symbols-outlined">shopping_bag</span> Shop now</a></div>
+  </div>`;
+}
+function featHTML(a){
+  return `<div class="card" style="overflow:hidden">
+    <img src="${a.img}" alt="${a.alt}" style="border-radius:10px"/>
+    <div class="meta" style="margin-top:6px">Evergreen</div>
+    <h3>${a.title}</h3>
+    <p class="small muted">${a.excerpt}</p>
+    <div><a class="cta" href="${a.url}" target="_blank" rel="noopener"><span class="material-symbols-outlined">open_in_new</span> Read on Medium</a></div>
+  </div>`;
+}
+function injectItemListSchema(items){
+  try{
+    const ld = {"@context":"https://schema.org","@type":"ItemList","itemListElement":items.slice(0,10).map((it,idx)=>({"@type":"ListItem","position":idx+1,"name":it.title,"url":it.url || "https://skinlabs.co.za/"}))};
+    const s=document.createElement('script'); s.type="application/ld+json"; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
+  }catch(e){}
+}
+
+function renderAll(){
+  const list = CONTENT.filter(i => (active==='All'||i.type===active) && (q===''||(i.title||'').toLowerCase().includes(q.toLowerCase())));
+  // Cards
+  const cardsEl = document.getElementById('cardsSlides'); cardsEl.innerHTML='';
+  (MEMBER ? list : list.slice(0,3)).forEach(item=>{ const d=document.createElement('div'); d.className='slide'; d.innerHTML=cardHTML(item); cardsEl.appendChild(d); });
+  if(!MEMBER){ const d=document.createElement('div'); d.className='slide'; d.innerHTML='<div class="locked-note js-locked-copy">Sign up to unlock the full library and tools.</div>'; cardsEl.appendChild(d); }
+  cardsSlider.recalc();
+
+  // Offers
+  const offersEl = document.getElementById('offersSlides'); offersEl.innerHTML='';
+  (MEMBER ? OFFERS : OFFERS.slice(0,2)).forEach(o=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=offerHTML(o); offersEl.appendChild(w); });
+  offersSlider.recalc();
+
+  // Top
+  const topEl = document.getElementById('topSlides'); topEl.innerHTML='';
+  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,6).forEach(x=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=`<div class="card"><div class="meta">${x.type}</div><h3>${x.title}</h3><div class="rating">★ ${Number(x.rating||0).toFixed(1)}</div></div>`; topEl.appendChild(w); });
+  topSlider.recalc();
+
+  // Reviews
+  const listR = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
+  const box = document.getElementById('reviewList');
+  box.innerHTML = MEMBER ? (listR.length? '' : '<div class="muted small">No reviews yet — be the first.</div>') : '<div class="locked-note js-locked-copy">Sign in to read community reviews.</div>';
+  if(MEMBER){ listR.slice(0,6).forEach(r=>{ const el=document.createElement('div'); el.className='review'; el.innerHTML = `<b>${r.title}</b> <span class="small muted">• ${r.skin}</span><div class="rating">★ ${Number(r.rating).toFixed(1)}</div><div class="small">${r.body}</div>`; box.appendChild(el); }); }
+
+  // SEO
+  injectItemListSchema(list);
+}
+
+/* -------------- Data -------------- */
+async function loadJSON(path){ const r=await fetch(path,{cache:'no-store'}); if(!r.ok) throw 0; return r.json(); }
 async function initData(){
   try{
-    [CONTENT, OFFERS] = await Promise.all([
-      loadJSON('./data/content.json'),
-      loadJSON('./data/offers.json')
-    ]);
+    [CONTENT, OFFERS] = await Promise.all([loadJSON('./data/content.json'), loadJSON('./data/offers.json')]);
   }catch(e){
-    // Fallback demo
     CONTENT = [
       {"type":"Guides","title":"Vitamin C: How to layer with Niacinamide","rating":4.8,"tags":["Brightening","Beginner"],"featured":true},
       {"type":"Ingredients","title":"Retinoids in SA: OTC vs Rx","rating":4.6,"tags":["Anti-ageing","Night"],"featured":true},
@@ -557,284 +696,57 @@ async function initData(){
   }
 }
 
-/* --------------- SEO: ItemList JSON-LD from CONTENT --------------- */
-function injectItemListSchema(items){
-  try{
-    const ld = {
-      "@context":"https://schema.org",
-      "@type":"ItemList",
-      "itemListElement": items.slice(0,10).map((it, idx)=>({
-        "@type":"ListItem",
-        "position": idx+1,
-        "name": it.title,
-        "url": it.url || "https://skinlabs.co.za/"
-      }))
-    };
-    const s = document.createElement('script');
-    s.type="application/ld+json";
-    s.textContent = JSON.stringify(ld);
-    document.head.appendChild(s);
-  }catch(e){}
-}
+/* -------------- Featured (Medium) -------------- */
+const FEATURED = [
+  {title:"Derm‑Backed Sunscreen Guide for Every Skin Tone", excerpt:"SPF filters, PA ratings and re‑application tips tailored to South African sun.", img:"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=1600&auto=format&fit=crop", alt:"Sunscreen on skin", url:"https://blog.skinlabs.africa/sunscreen-for-every-skin-tone"},
+  {title:"Retinoids 101: Start Without Irritation", excerpt:"A gentle ramp‑up plan and what to combine (or avoid) in your night routine.", img:"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=1600&auto=format&fit=crop", alt:"Retinoid bottle", url:"https://blog.skinlabs.africa/retinoids-101-south-africa"},
+  {title:"Hyperpigmentation in SA: What Actually Works", excerpt:"Evidence‑based actives — azelaic acid, niacinamide, arbutin — and how to layer.", img:"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=1600&auto=format&fit=crop", alt:"Skincare routine", url:"https://blog.skinlabs.africa/hyperpigmentation-south-africa-guide"},
+  {title:"Hydration Myths — and Products that Truly Help", excerpt:"Humectants vs emollients vs occlusives, simplified.", img:"https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=1600&auto=format&fit=crop", alt:"Water drop on leaf", url:"https://blog.skinlabs.africa/hydration-myths-products"},
+  {title:"Morning Routine Builder: 3 Price Tiers", excerpt:"Budget, mid‑range and premium picks you can buy locally.", img:"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=1600&auto=format&fit=crop", alt:"Bathroom counter", url:"https://blog.skinlabs.africa/morning-routine-builder-tiers"},
+  {title:"Sensitive Skin? A Fragrance‑Smart Routine", excerpt:"Reduce flare‑ups with simple swaps and smarter patch testing.", img:"https://images.unsplash.com/photo-1585238341951-452dc6e0f3a9?q=80&w=1600&auto=format&fit=crop", alt:"Serum dropper", url:"https://blog.skinlabs.africa/sensitive-skin-fragrance-smart"}
+];
+(function renderFeatured(){
+  const slides=document.getElementById('featSlides'); slides.innerHTML='';
+  FEATURED.forEach(a=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=featHTML(a); slides.appendChild(w); });
+  slider(document.getElementById('featSlider'), document.getElementById('featDots'), {per:[1,2,3], breakpoints:[0,700,980]});
+})();
 
-/* --------------- Filters --------------- */
-function makeChip(label){
-  const b = document.createElement('button');
-  b.className='chip'; b.textContent=label;
-  b.onclick=()=>{ active=label; activeEl.textContent=active; shown=0; renderAll(); };
-  return b;
-}
-function renderChips(){
-  const chips = document.getElementById('chips'); chips.innerHTML='';
-  chips.appendChild(makeChip("All"));
-  CATEGORIES.forEach(c=> chips.appendChild(makeChip(c)));
-}
-
-/* --------------- Card / Offer Templates --------------- */
-function cardHTML(item){
-  return `
-    <div class="card">
-      <div class="meta">${item.type}${item.featured ? ' • <span class="chip">Featured</span>':''}</div>
-      <h3>${item.title}</h3>
-      <div class="rating">★ ${Number(item.rating||0).toFixed(1)}</div>
-      <div class="tags">${(item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-        <button class="cta small btnSave"><span class="material-symbols-outlined">grade</span> Save</button>
-        ${item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read →</a>` : `<span class="small muted">Read →</span>`}
-      </div>
-    </div>`;
-}
-function offerHTML(o){
-  return `
-    <div class="card">
-      <div class="meta">${o.tag || 'Offer'}</div>
-      <h3 style="margin:4px 0">${o.brand||''}</h3>
-      <div class="muted">${o.title||''}</div>
-      <div class="divider"></div>
-      <div class="small"><b>Code:</b> ${o.code || 'N/A'}</div>
-      <div class="small muted">${o.blurb||''}</div>
-      <div style="margin-top:10px"><a class="cta" href="${o.url||'#'}" target="_blank" rel="noopener"><span class="material-symbols-outlined">shopping_bag</span> Shop now</a></div>
-    </div>`;
-}
-
-/* --------------- Slider Engine --------------- */
-function initSlider(rootEl, dotsEl, {per=[1,2,3], breakpoints=[0,600,900], autoplayMs=0}={}){
-  // per: slides per view across breakpoints
-  const slidesEl = rootEl.querySelector('.slides');
-  const prev = rootEl.querySelector('.prev') || rootEl.querySelector('.navbtn.prev');
-  const next = rootEl.querySelector('.next') || rootEl.querySelector('.navbtn.next');
-  let page=0, pages=1, timer=null;
-
-  function currentPer(){
-    const w = rootEl.clientWidth || window.innerWidth;
-    let p = per[0];
-    if(w>=breakpoints[1]) p = per[1]||p;
-    if(w>=breakpoints[2]) p = per[2]||p;
-    slidesEl.dataset.per = String(p);
-    return p;
-  }
-  function recalc(){
-    const children = slidesEl.children.length;
-    const p = currentPer();
-    pages = Math.max(1, Math.ceil(children / p));
-    page = Math.min(page, pages-1);
-    goto(page);
-    renderDots();
-  }
-  function goto(n){
-    page = Math.max(0, Math.min(n, pages-1));
-    const perView = Number(slidesEl.dataset.per||1);
-    const offset = page * (100); // page-based (each page = 100% width)
-    slidesEl.style.transform = `translateX(-${offset}%)`;
-    updateDots();
-  }
-  function renderDots(){
-    if(!dotsEl) return;
-    dotsEl.innerHTML='';
-    for(let i=0;i<pages;i++){
-      const d=document.createElement('button'); d.className='dot'; if(i===page) d.classList.add('active');
-      d.onclick=()=>goto(i); dotsEl.appendChild(d);
-    }
-  }
-  function updateDots(){
-    if(!dotsEl) return;
-    [...dotsEl.children].forEach((d,i)=> d.classList.toggle('active', i===page));
-  }
-  function startAuto(){
-    if(!autoplayMs) return;
-    stopAuto();
-    timer = setInterval(()=> goto((page+1)%pages), autoplayMs);
-  }
-  function stopAuto(){ if(timer){ clearInterval(timer); timer=null; } }
-
-  prev?.addEventListener('click', ()=>goto(page-1));
-  next?.addEventListener('click', ()=>goto(page+1));
-  rootEl.addEventListener('mouseenter', stopAuto);
-  rootEl.addEventListener('mouseleave', startAuto);
-  window.addEventListener('resize', recalc, {passive:true});
-
-  recalc(); startAuto();
-  return {recalc, goto, startAuto, stopAuto};
-}
-
-/* --------------- Renderers --------------- */
-let cardsSliderCtrl=null, offersSliderCtrl=null, topSliderCtrl=null;
-
-function renderAll(){
-  const allowed = isMember();
-  // Gate UI
-  gateNote.style.display = allowed ? 'none' : 'block';
-
-  // FILTER
-  const list = CONTENT.filter(i =>
-    (active==='All' || i.type===active) &&
-    (q==='' || (i.title||'').toLowerCase().includes(q.toLowerCase()))
-  );
-
-  // Cards (gated: if not member, show locked preview only)
-  cardsSlides.innerHTML = '';
-  const renderItems = allowed ? list : list.slice(0, 3);
-  renderItems.forEach(item=>{
-    const wrap = document.createElement('div'); wrap.className='slide';
-    wrap.innerHTML = cardHTML(item);
-    // Save button hook (gated)
-    wrap.querySelector('.btnSave').onclick = ()=> { if(!requireMember()) return; alert('Saved ✓'); };
-    cardsSlides.appendChild(wrap);
-  });
-  if(!allowed){
-    const lock = document.createElement('div'); lock.className='slide';
-    lock.innerHTML = `<div class="locked-note">Join to unlock the full library and member tools.</div>`;
-    cardsSlides.appendChild(lock);
-  }
-
-  // Offers (also gated for details; still render titles if locked)
-  offersSlides.innerHTML='';
-  const offerItems = allowed ? OFFERS : OFFERS.slice(0,2);
-  offerItems.forEach(o=>{
-    const wrap = document.createElement('div'); wrap.className='slide';
-    wrap.innerHTML = offerHTML(o);
-    offersSlides.appendChild(wrap);
-  });
-
-  // Top this week (auto-rotate)
-  topSlides.innerHTML='';
-  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,6).forEach(x=>{
-    const wrap = document.createElement('div'); wrap.className='slide';
-    wrap.innerHTML = `<div class="card"><div class="meta">${x.type}</div><h3>${x.title}</h3><div class="rating">★ ${Number(x.rating||0).toFixed(1)}</div></div>`;
-    topSlides.appendChild(wrap);
-  });
-
-  // Re-init sliders with responsive per-view
-  if(cardsSliderCtrl){ cardsSliderCtrl.recalc(); } else {
-    cardsSliderCtrl = initSlider(document.getElementById('cardsSlider'), cardsDots, { per:[1,2,3], breakpoints:[0,600,900] });
-  }
-  if(offersSliderCtrl){ offersSliderCtrl.recalc(); } else {
-    offersSliderCtrl = initSlider(document.getElementById('offersSlider'), offersDots, { per:[1,2,3], breakpoints:[0,600,900] });
-  }
-  if(topSliderCtrl){ topSliderCtrl.recalc(); } else {
-    topSliderCtrl = initSlider(document.getElementById('topSlider'), topDots, { per:[1,1,2], breakpoints:[0,600,900], autoplayMs: 4000 });
-  }
-
-  // Reviews list (gated)
-  paintReviews(allowed);
-
-  // Update SEO ItemList (first load or when filter changes)
-  injectItemListSchema(list);
-}
-
-/* --------------- Search --------------- */
-document.getElementById('btnSearch')?.addEventListener('click', ()=>{ q = qInput.value||''; renderAll(); });
-qInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ q = qInput.value||''; renderAll(); } });
-
-/* --------------- Reviews (gated write/read) --------------- */
-const modal = document.getElementById('reviewModal');
-document.getElementById('btnAddReview').onclick = ()=>{ if(!requireMember()) return; modal.style.display='grid'; }
-document.getElementById('revCancel').onclick = ()=>{ modal.style.display='none'; }
-
-function paintReviews(allowed){
-  const list = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
-  const box = document.getElementById('reviewList');
-  box.innerHTML = '';
-  if(!allowed){
-    box.innerHTML = `<div class="locked-note">Sign in to read community reviews.</div>`;
-    return;
-  }
-  if(list.length===0){ box.innerHTML = '<div class="muted small">No reviews yet — be the first.</div>'; return; }
-  list.slice(0,6).forEach(r=>{
-    const el = document.createElement('div');
-    el.className='review';
-    el.innerHTML = `<b>${r.title}</b> <span class="small muted">• ${r.skin}</span><div class="rating">★ ${Number(r.rating).toFixed(1)}</div><div class="small">${r.body}</div>`;
-    box.appendChild(el);
-  });
-}
+/* -------------- Reviews (submit) -------------- */
+document.getElementById('btnAddReview').onclick = ()=>{ if(!MEMBER){ openModal('loginModal'); return; } openModal('reviewModal'); };
+document.getElementById('revCancel').onclick = ()=> closeModal('reviewModal');
 document.getElementById('reviewForm').onsubmit = (e)=>{
-  e.preventDefault();
-  if(!requireMember()) return;
-  const fd = new FormData(e.target);
-  const item = Object.fromEntries(fd.entries());
-  item.rating = Number(item.rating)||0;
-  const ar = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
-  ar.unshift({...item, ts:Date.now()});
-  localStorage.setItem('skynn_reviews', JSON.stringify(ar));
-  modal.style.display='none';
-  paintReviews(true);
+  e.preventDefault(); if(!MEMBER){ openModal('loginModal'); return; }
+  const fd=new FormData(e.target); const item=Object.fromEntries(fd.entries()); item.rating=Number(item.rating)||0;
+  const ar=JSON.parse(localStorage.getItem('skynn_reviews')||'[]'); ar.unshift({...item, ts:Date.now()}); localStorage.setItem('skynn_reviews', JSON.stringify(ar));
+  closeModal('reviewModal'); renderAll();
 };
 
-/* --------------- AI Chat (requires membership) --------------- */
-const fab = document.getElementById('fabChat');
-const chatPanel = document.getElementById('chatPanel');
-const chatBody = document.getElementById('chatBody');
-const chatInput = document.getElementById('chatInput');
-document.getElementById('chatClose').onclick = ()=> chatPanel.style.display='none';
-
-fab.onclick = ()=> { if(!requireMember()) return; chatPanel.style.display = chatPanel.style.display==='block' ? 'none' : 'block'; };
-document.getElementById('chatSend').onclick = sendChat;
-chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); sendChat(); } });
-
-let convo = [{role:"system", content:"You are SKYNN AI. Provide evidence-based skincare guidance. Not medical advice. Ask clarifying questions before recommending routines. South Africa context."}];
-
+/* -------------- AI Chat (gated, via Worker proxy to GPT‑5 mini) -------------- */
+const fab=document.getElementById('fabChat'); const chatPanel=document.getElementById('chatPanel'); const chatBody=document.getElementById('chatBody'); const chatInput=document.getElementById('chatInput');
+document.getElementById('chatClose').onclick=()=> chatPanel.style.display='none';
+fab.onclick=()=>{ if(!MEMBER){ openModal('loginModal'); return; } chatPanel.style.display = (chatPanel.style.display==='block'?'none':'block'); };
+document.getElementById('chatSend').onclick = sendChat; chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); sendChat(); } });
+let convo=[{role:"system",content:"You are SKYNN AI. Provide evidence-based skincare guidance for South Africans. Not medical advice. Ask clarifying questions."}];
 async function sendChat(){
-  if(!requireMember()) return;
-  const text = chatInput.value.trim(); if(!text) return;
-  chatInput.value='';
-  chatBody.appendChild(msg('me', text));
-  chatBody.scrollTop = chatBody.scrollHeight;
-
-  // Post to your proxy which calls OpenAI Responses API (model: gpt-5-mini)
+  if(!MEMBER) return;
+  const t=chatInput.value.trim(); if(!t) return; chatInput.value='';
+  chatBody.appendChild(msg('me', t)); chatBody.scrollTop=chatBody.scrollHeight;
   try{
-    const res = await fetch(AI_PROXY_ENDPOINT, {
-      method:'POST',
-      headers:{'content-type':'application/json'},
-      body: JSON.stringify({ messages:[...convo, {role:'user', content:text}] })
-    });
-    const data = await res.json();
-    const out = (data && (data.output || data.message || data.text)) || 'Sorry, I could not reply.';
-    convo.push({role:'user', content:text}, {role:'assistant', content:out});
-    chatBody.appendChild(msg('ai', out));
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }catch(err){
-    chatBody.appendChild(msg('ai', 'Network error. Please try again.'));
-  }
+    const r=await fetch(`${API_BASE}/ai`, {method:'POST', headers:{'content-type':'application/json'}, credentials:'include', body: JSON.stringify({ messages:[...convo,{role:'user',content:t}] })});
+    const j=await r.json(); const out=j.output || 'Sorry, I could not reply.'; convo.push({role:'user',content:t},{role:'assistant',content:out});
+    chatBody.appendChild(msg('ai', out)); chatBody.scrollTop=chatBody.scrollHeight;
+  }catch(e){ chatBody.appendChild(msg('ai','Network error. Try again.')); }
 }
-function msg(cls, text){
-  const d=document.createElement('div'); d.className=`msg ${cls}`; d.innerHTML = sanitize(text).replace(/\n/g,'<br/>'); return d;
-}
-function sanitize(s){ return s.replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function msg(cls,text){ const d=document.createElement('div'); d.className=`msg ${cls}`; d.innerHTML = text.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\n/g,'<br/>'); return d; }
 
-/* --------------- Boot --------------- */
-function boot(){
+/* -------------- Boot -------------- */
+(async function boot(){
   renderChips();
-  initData().then(()=>{
-    // If not a member, open signup on first visit
-    if(!isMember()) openSignup();
-    renderAll();
-  });
-}
-boot();
-
-/* --------------- Signup Modal close on outside click --------------- */
-document.getElementById('signupModal').addEventListener('click', e=>{ if(e.target.id==='signupModal') closeSignup(); });
-
+  await initData();
+  await fetchSession();
+  await handleReturn();    // claim cookie & show thank you if needed
+  renderAll();
+})();
 </script>
 </body>
 </html>
