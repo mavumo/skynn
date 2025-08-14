@@ -1,0 +1,50 @@
+[
+  {
+    "type": "Guides",
+    "title": "Vitamin C: How to layer with Niacinamide",
+    "rating": 4.8,
+    "tags": ["Brightening", "Beginner"],
+    "featured": true,
+    "url": "https://skinlabs.co.za/guide/vitamin-c-niacinamide"
+  },
+  {
+    "type": "Ingredients",
+    "title": "Retinoids in SA: OTC vs Rx",
+    "rating": 4.6,
+    "tags": ["Anti-ageing", "Night"],
+    "featured": true,
+    "url": "https://skinlabs.co.za/ingredients/retinoids"
+  },
+  {
+    "type": "Routines",
+    "title": "Winter-to-Spring Routine (Budget)",
+    "rating": 4.5,
+    "tags": ["Seasonal", "Budget"],
+    "featured": false,
+    "url": "https://skinlabs.co.za/routines/winter-to-spring-budget"
+  },
+  {
+    "type": "Reviews",
+    "title": "Bioderma Atoderm Gel — 2-week test",
+    "rating": 4.1,
+    "tags": ["Sensitive"],
+    "featured": false,
+    "url": "https://skinlabs.co.za/reviews/bioderma-atoderm-gel"
+  },
+  {
+    "type": "Deals",
+    "title": "5 SA dupes for the viral HA serum",
+    "rating": 4.0,
+    "tags": ["Dupe", "Hydration"],
+    "featured": false,
+    "url": "https://skinlabs.co.za/deals/ha-dupes"
+  },
+  {
+    "type": "Local Brands",
+    "title": "South African mineral sunscreens roundup",
+    "rating": 4.3,
+    "tags": ["Sunscreen", "Local"],
+    "featured": false,
+    "url": "https://skinlabs.co.za/local/mineral-spf-roundup"
+  }
+]
