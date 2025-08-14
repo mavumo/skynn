@@ -7,20 +7,68 @@
     "blurb": "Valid online. One per customer.",
     "tag": "Clean Beauty"
   },
-  {
-    "brand": "Faithful To Nature",
-    "title": "20% OFF sitewide",
-    "code": "SKYNN20",
-    "url": "https://example.com/deal/ftn",
-    "blurb": "Ends soon. Some exclusions.",
-    "tag": "Retailer"
+   {
+    "brand": "Clicks",
+    "title": "3-for-2 Skincare Range",
+    "code": "CLUBCARD",
+    "url": "https://clicks.co.za/",
+    "blurb": "ClubCard members only. Selected brands.",
+    "tag": "Pharmacy"
   },
   {
-    "brand": "Clicks",
-    "title": "3-for-2 Skincare",
-    "code": "Claim in-store",
-    "url": "https://example.com/deal/clicks",
-    "blurb": "ClubCard deals.",
-    "tag": "Pharmacy"
+    "brand": "Faithful to Nature",
+    "title": "R100 OFF orders R400+",
+    "code": "NATURAL100",
+    "url": "https://faithful-to-nature.co.za/skincare",
+    "blurb": "Newsletter signup required. Natural brands.",
+    "tag": "Organic"
+  },
+  {
+    "brand": "The Body Shop SA",
+    "title": "Buy 3 Get 1 FREE",
+    "code": "",
+    "url": "https://thebodyshop.co.za/skincare-promo",
+    "blurb": "Skincare, makeup & accessories. Valid Aug 2025.",
+    "tag": "Natural"
+  },
+  {
+    "brand": "Standard Beauty",
+    "title": "20% OFF First Order",
+    "code": "WELCOME20",
+    "url": "https://standard-beauty.co.za/promo",
+    "blurb": "Local brand discount. New customers only.",
+    "tag": "Local Brand"
+  },
+  {
+    "brand": "Annique",
+    "title": "Up to 50% OFF August Specials",
+    "code": "",
+    "url": "https://annique.com/august-specials",
+    "blurb": "Rooibos skincare range. While stocks last.",
+    "tag": "Local Brand"
+  },
+  {
+    "brand": "Secret Skin",
+    "title": "15% OFF with SHEGLOW",
+    "code": "SHEGLOW",
+    "url": "https://secretskin.co.za/k-beauty",
+    "blurb": "K-beauty products. Buy 2 Jumiso items.",
+    "tag": "K-Beauty"
+  },
+  {
+    "brand": "BABOR SA",
+    "title": "FREE Hyaluronic Ampoules R1800+",
+    "code": "",
+    "url": "https://babor.co.za/august-promo",
+    "blurb": "Travel-size gift with qualifying purchase.",
+    "tag": "Professional"
+  },
+  {
+    "brand": "Silki Skincare",
+    "title": "10% OFF First Order",
+    "code": "FIRST10",
+    "url": "https://feelsilki.com/discount",
+    "blurb": "Email signup required. Local brand.",
+    "tag": "Local Brand"
   }
 ]
