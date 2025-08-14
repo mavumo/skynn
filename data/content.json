@@ -24,14 +24,6 @@
     "url": "https://skinlabs.co.za/routines/winter-to-spring-budget"
   },
   {
-    "type": "Reviews",
-    "title": "Bioderma Atoderm Gel — 2-week test",
-    "rating": 4.1,
-    "tags": ["Sensitive"],
-    "featured": false,
-    "url": "https://skinlabs.co.za/reviews/bioderma-atoderm-gel"
-  },
-  {
     "type": "Deals",
     "title": "5 SA dupes for the viral HA serum",
     "rating": 4.0,
@@ -41,7 +33,7 @@
   },
   {
     "type": "Local Brands",
-    "title": "South African mineral sunscreens roundup",
+    "title": "SA mineral sunscreens roundup",
     "rating": 4.3,
     "tags": ["Sunscreen", "Local"],
     "featured": false,
