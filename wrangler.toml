@@ -1,2 +1,3 @@
-name = "your-project-name"
-type = "javascript"
+name = "skynn-api"
+main = "worker.js"
+date = "2025-08-14"
