@@ -20,7 +20,7 @@
     "title": "Winter-to-Spring Routine (Budget)",
     "rating": 4.5,
     "tags": ["Seasonal", "Budget"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/routines/winter-to-spring-budget"
   },
   {
@@ -28,7 +28,7 @@
     "title": "5 SA dupes for the viral HA serum",
     "rating": 4.0,
     "tags": ["Dupe", "Hydration"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/deals/ha-dupes"
   },
   {
@@ -36,7 +36,7 @@
     "title": "SA mineral sunscreens roundup",
     "rating": 4.3,
     "tags": ["Sunscreen", "Local"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/local/mineral-spf-roundup"
   },
   {
@@ -68,15 +68,15 @@
     "title": "Hyaluronic Acid Deep Dive: SA Serums Compared",
     "rating": 4.6,
     "tags": ["Hydration", "Anti-aging", "Science"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/ingredients/hyaluronic-acid-sa"
   },
   {
-    "type": "Recipes & Ingredients",
+    "type": "Ingredients",
     "title": "DIY Rooibos & Marula Oil Anti-Aging Serum",
     "rating": 4.5,
     "tags": ["DIY", "Local Ingredients", "Natural"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/recipes/rooibos-marula-serum"
   },
   {
@@ -92,7 +92,7 @@
     "title": "Retinol for Beginners: SA Dermatologist Approved Guide",
     "rating": 4.7,
     "tags": ["Anti-aging", "Beginner", "Night Care"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/guide/retinol-beginners-sa"
   },
   {
@@ -108,7 +108,7 @@
     "title": "Collagen Banking: SA's Next Big Skincare Trend",
     "rating": 4.6,
     "tags": ["Anti-aging", "Trending", "Professional"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/trends/collagen-banking-sa"
   },
   {
@@ -116,19 +116,19 @@
     "title": "Oily Skin Winter Routine: Beat the Highveld Dry Air",
     "rating": 4.2,
     "tags": ["Oily Skin", "Winter", "Climate-specific"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/routines/oily-skin-winter-sa"
   },
   {
-    "type": "Supplier Directory",
+    "type": "Local Brands",
     "title": "Top 10 Skincare Ingredient Suppliers in SA",
     "rating": 4.1,
     "tags": ["DIY", "Suppliers", "Business"],
-    "featured": false,
+    "featured": true,
     "url": "https://skinlabs.co.za/directory/ingredient-suppliers-sa"
   },
   {
-    "type": "Editorials/Articles",
+    "type": "Guides",
     "title": "The Science Behind SA's Indigenous Skincare Ingredients",
     "rating": 4.8,
     "tags": ["Science", "Indigenous", "Research"],
