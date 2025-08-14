@@ -1,0 +1,26 @@
+[
+  {
+    "brand": "Lumi Glo",
+    "title": "15% OFF ≥ R800",
+    "code": "SKYNN15",
+    "url": "https://example.com/deal/lumiglo",
+    "blurb": "Valid online. One per customer.",
+    "tag": "Clean Beauty"
+  },
+  {
+    "brand": "Faithful To Nature",
+    "title": "20% OFF sitewide",
+    "code": "SKYNN20",
+    "url": "https://example.com/deal/ftn",
+    "blurb": "Ends soon. Some exclusions.",
+    "tag": "Retailer"
+  },
+  {
+    "brand": "Clicks",
+    "title": "3-for-2 Skincare",
+    "code": "",
+    "url": "https://example.com/deal/clicks",
+    "blurb": "ClubCard deals.",
+    "tag": "Pharmacy"
+  }
+]
