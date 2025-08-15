@@ -909,6 +909,7 @@ function msg(cls,text){ const d=document.createElement('div'); d.className=`msg 
   await initData();
   await fetchSession();
   await handleReturn();    // claim cookie & show thank you if needed
+  await loadStories();
   renderAll();
 })();
 </script>
