@@ -20,12 +20,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined" rel="stylesheet" />
 
-  <!-- AdSense (your client) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727" crossorigin="anonymous"></script>
+  <!-- AdSense (ONE-TIME loader, in <head>) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727" crossorigin="anonymous"></script>
+
+<!-- AMP Story Player (for embedding stories in non-AMP pages) -->
+<script async src="https://cdn.ampproject.org/amp-story-player-v0.js"></script>
+<link rel="stylesheet" href="https://cdn.ampproject.org/amp-story-player-v0.css"/>
 
   <!-- JSON-LD: Organization + WebSite (SearchAction) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"SKYNN","url":"https://skinlabs.co.za","logo":"https://skinlabs.co.za/assets/logo.png"}
+  {"@context":"https://schema.org","@type":"Organization","name":"SKYNN","url":"https://skinlabs.co.za","logo":"https://skinlabs.co.za/skynnlogo.png"}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","url":"https://skinlabs.co.za/","name":"SKYNN","potentialAction":{"@type":"SearchAction","target":"https://skinlabs.co.za/?q={search_term_string}","query-input":"required name=search_term_string"}}
@@ -106,9 +110,12 @@
     @media (min-width: 700px){ .review-list{grid-template-columns:repeat(2,1fr)} }
     .review{background:color-mix(in oklab, var(--panel) 92%, #0000);border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:12px}
 
-    .adbox{display:flex;justify-content:center;margin:10px 0}
-    .ad-inner{width:100%;max-width:var(--ad-desktop)} .adsbygoogle{display:block;width:100%}
-    @media (max-width: 600px){ .ad-inner{max-width:var(--ad-mobile)} }
+
+.adbox { display:flex; justify-content:center; margin:10px 0 }
+.ad-inner { width:100%; max-width: 728px } /* desktop cap */
+.adsbygoogle { display:block; width:100% }
+@media (max-width:600px){ .ad-inner { max-width: 336px } } /* mobile cap */
+
 
     footer{margin:26px 0 60px;color:var(--muted)}
     .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
@@ -133,6 +140,49 @@
   </style>
 </head>
 <body>
+  
+  
+  <!-- ===== Web Stories Rail (IG-style) ===== -->
+<section id="storiesRail" class="wrap" style="padding:10px 0">
+  <div class="stories-scroller" aria-label="Web Stories">
+    <!-- bubbles injected by JS -->
+  </div>
+</section>
+
+<style>
+  .stories-scroller{
+    display:flex; gap:10px; overflow:auto; padding:6px 0; -webkit-overflow-scrolling: touch;
+  }
+  .story-bubble{
+    flex:0 0 auto; width:76px; text-align:center; cursor:pointer;
+  }
+  .story-ring{
+    width:72px; height:72px; border-radius:50%;
+    padding:3px; background: conic-gradient(var(--brand), var(--brand2), var(--brand));
+  }
+  .story-ring img{
+    width:100%; height:100%; object-fit:cover; border-radius:50%; display:block;
+    border:2px solid var(--bg);
+  }
+  .story-label{ font-size:11px; margin-top:6px; color:var(--muted) }
+</style>
+
+<!-- Story Player Modal -->
+<div class="modal" id="storiesModal" role="dialog" aria-modal="true" aria-labelledby="storiesTitle">
+  <div class="inner" style="max-width:420px; padding:0; overflow:hidden">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-bottom:1px solid rgba(0,0,0,.08)">
+      <strong id="storiesTitle">Stories</strong>
+      <button class="hamburger" id="storiesClose" style="padding:6px 8px"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <amp-story-player style="width:100%; height:72vh" layout="fixed">
+      <!-- Stories will be injected here from stories.json -->
+    </amp-story-player>
+  </div>
+</div>
+  
+  
+  
+  
 <header>
   <div class="wrap nav">
     <div class="brand">
@@ -396,11 +446,32 @@
       <div class="step hidden" data-step="4">
         <p class="small muted">Almost there. Continue to secure PayFast checkout.</p>
         <ul class="small" id="obSummary"></ul>
-        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+     
+    
+    <!-- FREE LAUNCH TRIAL -->
+<div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+  <button class="cta" data-prev>Back</button>
+  <div style="display:flex; gap:8px; flex-wrap:wrap">
+    <button id="obFreeTrial" class="cta" title="Launch campaign free access">Claim 30-Day Free Access</button>
+    <button id="obGoPay" class="btn">Continue to PayFast (R99)</button>
+  </div>
+</div>
+<p class="small muted" style="margin-top:8px">
+  Free launch access grants full features for 30 days. You can upgrade to annual anytime.
+</p>
+<!------FREE LAUNCH TRIAL--->
+        
+          <!---
+               <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
           <button class="cta" data-prev>Back</button>
           <button id="obGoPay" class="btn">Continue to PayFast (R99)</button>
+          
+             
         </div>
         <p class="small muted" style="margin-top:8px">You’ll be redirected back here after payment is verified.</p>
+        --->
+        
+      
       </div>
     </div>
     <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
@@ -408,6 +479,47 @@
     </div>
   </div>
 </div>
+
+
+
+
+<script>
+/* ---- Free Trial (30 days) ---- */
+function startFreeTrial(email){
+  // Note: client-side token; production can also mint a server trial cookie.
+  const exp = Date.now() + 30*24*60*60*1000; // 30 days
+  const trial = { email, exp };
+  localStorage.setItem('skynn_trial', JSON.stringify(trial));
+  setSignedInUI(true); // unlock UI
+  closeModal('onboardModal');
+  openModal('thanksModal');
+}
+
+document.getElementById('obFreeTrial').onclick = async ()=>{
+  const d = gatherOnboard();
+  if(!d.email){ alert('Please enter your email'); return; }
+  try{
+    // create a lightweight account client-side; optionally call your API if you want to persist
+    // await fetch(`${API_BASE}/auth/register`, { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({...d, free:true})});
+  }catch(e){}
+  startFreeTrial(d.email);
+};
+
+// Respect trial on load
+function checkTrial(){
+  try{
+    const t = JSON.parse(localStorage.getItem('skynn_trial')||'null');
+    if(t && t.exp > Date.now()){
+      setSignedInUI(true);
+      return true;
+    }else if(t){ localStorage.removeItem('skynn_trial'); }
+  }catch(e){}
+  return false;
+}
+</script>
+
+
+
 
 <!-- Login Modal -->
 <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
@@ -591,7 +703,21 @@ document.getElementById('liGo').onclick = async ()=>{
   try{
     const r = await fetch(`${API_BASE}/auth/login`, {method:'POST', headers:{'content-type':'application/json'}, credentials:'include', body: JSON.stringify({ email, password })});
     const j = await r.json();
-    if(j.ok){ closeModal('loginModal'); await fetchSession(); renderAll(); } else { alert(j.error||'Login failed'); }
+    if(j.ok){ closeModal('loginModal'); await fetchSession(); 
+      
+      
+      
+      
+      await initData();
+const hasTrial = checkTrial();
+if(!hasTrial){ await fetchSession(); }
+await handleReturn();
+renderAll();
+      
+      
+      
+      
+      renderAll(); } else { alert(j.error||'Login failed'); }
   }catch(e){ alert('Login error'); }
 };
 
@@ -792,5 +918,52 @@ function msg(cls,text){ const d=document.createElement('div'); d.className=`msg 
   renderAll();
 })();
 </script>
+
+
+
+
+
+
+<script>
+/* ---------- Web Stories ---------- */
+async function loadStories(){
+  try{
+    const data = await (await fetch('./data/stories.json', {cache:'no-store'})).json();
+    const rail = document.querySelector('.stories-scroller');
+    rail.innerHTML = '';
+    data.slice(0,10).forEach(st=>{
+      const b = document.createElement('button');
+      b.className = 'story-bubble';
+      b.setAttribute('aria-label', st.title);
+      b.innerHTML = `
+        <span class="story-ring"><img src="${st.cover}" alt="${st.title}"></span>
+        <div class="story-label">${st.short}</div>`;
+      b.onclick = ()=> openStory(st.id, data);
+      rail.appendChild(b);
+    });
+    // preload player list
+    window.__STORY_LIST__ = data;
+  }catch(e){ console.warn('stories load failed', e); }
+}
+
+function openStory(id, list){
+  const modal = document.getElementById('storiesModal');
+  const player = modal.querySelector('amp-story-player');
+  player.innerHTML = '';
+  // Put the clicked story first; include all 10 for swipe-through
+  const ordered = [list.find(s=>s.id===id), ...list.filter(s=>s.id!==id)];
+  ordered.forEach(s=>{
+    const a = document.createElement('a');
+    a.setAttribute('href', s.url);
+    a.setAttribute('data-poster-portrait-src', s.posterPortrait);
+    player.appendChild(a);
+  });
+  modal.style.display='grid';
+}
+document.getElementById('storiesClose').onclick = ()=> document.getElementById('storiesModal').style.display='none';
+</script>
+
+
+
 </body>
 </html>
