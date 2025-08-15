@@ -70,5 +70,10 @@
     "url": "https://feelsilki.com/discount",
     "blurb": "Email signup required. Local brand.",
     "tag": "Local Brand"
-  }
+  },
+  {"brand":"Dis-Chem","title":"R100 OFF when you spend ≥ R600","code":"DERMA100","url":"https://www.dischem.co.za/","blurb":"Selected dermatological brands.","tag":"Pharmacy"},
+  {"brand":"Skin Renewal","title":"Spring Glow Facial – 20% Off","code":"SPRINGGLOW","url":"https://www.skinrenewal.co.za/","blurb":"Intro offer for new clients.","tag":"Clinic"},
+  {"brand":"Faithful to Nature","title":"Natural Beauty Payday – 15% Off","code":"FTN15","url":"https://www.faithful-to-nature.co.za/","blurb":"Clean beauty picks.","tag":"E-tail"},
+  {"brand":"Takealot","title":"Daily Deals: Serums under R299","code":"","url":"https://www.takealot.com/","blurb":"Limited quantities.","tag":"Marketplace"}
+  
 ]
