@@ -134,7 +134,14 @@
     "tags": ["Science", "Indigenous", "Research"],
     "featured": true,
     "url": "https://medium.com/@skinlabs/indigenous-skincare-science-sa"
-  }
+  },
+  {"type":"Ingredients","title":"Azelaic Acid: Best Local Picks","rating":4.5,"tags":["PIH","Sensitive-skin friendly"],"url":"https://blog.skinlabs.africa/azelaic-acid-za"},
+  {"type":"Local Brands","title":"5 South African Indie Brands to Watch","rating":4.3,"tags":["Local brands"],"url":"https://blog.skinlabs.africa/za-indie-brands"},
+  {"type":"Deals","title":"Clicks & Dis-Chem: This Week’s Top 5 Deals","rating":4.0,"tags":["Deals","Pharmacy"],"url":"https://blog.skinlabs.africa/weekly-deals"},
+  {"type":"Dermatologist Q&A","title":"Ask a Derm: Sunscreen for Darker Skin Tones","rating":4.6,"tags":["SPF","Expert tips"],"url":"https://blog.skinlabs.africa/ask-a-derm-spf-tones"},
+  {"type":"Reviews","title":"Review: Mineral vs Chemical SPF for Daily Wear","rating":4.2,"tags":["Review","SPF"],"url":"https://blog.skinlabs.africa/mineral-vs-chemical-spf"},
+  {"type":"Routines","title":"Morning Routine Builder: 3 Price Tiers","rating":4.4,"tags":["AM routine","ZA retailers"],"url":"https://blog.skinlabs.africa/morning-routine-tiers"},
+  {"type":"Guides","title":"Hyperpigmentation in SA: What Actually Works","rating":4.7,"tags":["PIH","Evidence-based"],"url":"https://blog.skinlabs.africa/pih-what-works"}
 ]
 
 
