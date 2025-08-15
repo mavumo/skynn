@@ -1,0 +1,82 @@
+[
+  {
+    "id":"spf-workday",
+    "title":"SPF Re-App at Work",
+    "short":"SPF @ work",
+    "cover":"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/spf-workday.html"
+  },
+  {
+    "id":"vitc-layer",
+    "title":"Layer Vitamin C Right",
+    "short":"Vitamin C",
+    "cover":"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/vitamin-c-layer.html"
+  },
+  {
+    "id":"retinoid-ramp",
+    "title":"Retinoid Ramp-Up",
+    "short":"Retinoids",
+    "cover":"https://images.unsplash.com/photo-1585238341951-452dc6e0f3a9?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1585238341951-452dc6e0f3a9?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/retinoid-ramp.html"
+  },
+  {
+    "id":"pih-starter",
+    "title":"Fade Dark Spots",
+    "short":"PIH 101",
+    "cover":"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/pih-starter.html"
+  },
+  {
+    "id":"barrier-fix",
+    "title":"Fix Your Barrier",
+    "short":"Barrier",
+    "cover":"https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/barrier-fix.html"
+  },
+  {
+    "id":"dupe-week",
+    "title":"Dupe of the Week",
+    "short":"Dupe",
+    "cover":"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/dupe-week.html"
+  },
+  {
+    "id":"mineral-spf",
+    "title":"Mineral vs Chemical",
+    "short":"Mineral",
+    "cover":"https://images.unsplash.com/photo-1505577082941-34c6d8e6ff5c?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1505577082941-34c6d8e6ff5c?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/mineral-chemical.html"
+  },
+  {
+    "id":"spring-reset",
+    "title":"Spring Reset Routine",
+    "short":"Spring",
+    "cover":"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/spring-reset.html"
+  },
+  {
+    "id":"sensitive-safe",
+    "title":"Sensitive-Safe Picks",
+    "short":"Sensitive",
+    "cover":"https://images.unsplash.com/photo-1603654354412-bf6c671b7481?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1603654354412-bf6c671b7481?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/sensitive-safe.html"
+  },
+  {
+    "id":"travel-kit",
+    "title":"Holiday Travel Kit",
+    "short":"Travel",
+    "cover":"https://images.unsplash.com/photo-1535916397932-4fbd84f6c36c?q=80&w=300&h=300&fit=crop",
+    "posterPortrait":"https://images.unsplash.com/photo-1535916397932-4fbd84f6c36c?q=80&w=720&h=1280&fit=crop",
+    "url":"/stories/travel-kit.html"
+  }
+]
