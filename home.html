@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://skinlabs.co.za/" />
 
   <!-- OG/Twitter -->
-  <meta property="og:title" content="SKYNN® — Curated Skincare for South Africa" />
+  <meta property="og:title" content="SKINLABS® — Curated Skincare for South Africa" />
   <meta property="og:description" content="Derm-informed guides, reviews, deals & personalised routines." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://skinlabs.co.za/" />
@@ -25,10 +25,10 @@
 
   <!-- JSON-LD: Organization + WebSite (SearchAction) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"SKYNN","url":"https://skinlabs.co.za","logo":"https://skinlabs.co.za/assets/logo.png"}
+  {"@context":"https://schema.org","@type":"Organization","name":"SKINLABS","url":"https://skinlabs.co.za","logo":"https://skinlabs.co.za/assets/logo.png"}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","url":"https://skinlabs.co.za/","name":"SKYNN","potentialAction":{"@type":"SearchAction","target":"https://skinlabs.co.za/?q={search_term_string}","query-input":"required name=search_term_string"}}
+  {"@context":"https://schema.org","@type":"WebSite","url":"https://skinlabs.co.za/","name":"SKINLABS","potentialAction":{"@type":"SearchAction","target":"https://skinlabs.co.za/?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
   <style>
@@ -81,10 +81,8 @@
 
     /* Sliders */
     .slider{position:relative;overflow:hidden}
-    .slides{display:flex;transition:transform .35s ease;will-change:transform;touch-action:pan-y}
+    .slides{display:flex;transition:transform .35s ease;will-change:transform;touch-action:pan-y pinch-zoom}
     .slide{flex:0 0 auto;width:100%;padding:0 6px;box-sizing:border-box}
-    .dots{display:flex;gap:6px;justify-content:center;margin:8px 0 2px}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(127,140,153,.45)} .dot.active{background:var(--brand)}
     .navbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:none;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);color:#fff;width:32px;height:32px;border-radius:10px;display:none;align-items:center;justify-content:center}
     .navbtn.prev{left:6px}.navbtn.next{right:6px}
     @media (min-width: 480px){ .navbtn{display:flex} }
@@ -110,6 +108,7 @@
     .ad-inner{width:100%;max-width:var(--ad-desktop)} .adsbygoogle{display:block;width:100%}
     @media (max-width: 600px){ .ad-inner{max-width:var(--ad-mobile)} }
 
+    /* Footer */
     footer{margin:26px 0 60px;color:var(--muted)}
     .socials{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
     .socials a{display:inline-flex;gap:6px;align-items:center;color:inherit}
@@ -130,6 +129,35 @@
 
     .locked-note{padding:12px;border-radius:12px;background:color-mix(in oklab, var(--panel) 94%, #0000);border:1px dashed rgba(0,0,0,.2);text-align:center}
     .hidden{display:none !important}
+
+    /* --- New: onboarding visuals & progress --- */
+    .ob-hero{display:flex;align-items:center;gap:10px;padding:6px 0}
+    .ob-hero img{width:40px;height:40px;border-radius:12px}
+    #obProgress{position:relative;height:6px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin:10px 0 4px}
+    #obProgBar{position:absolute;inset:0 auto 0 0;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .25s ease;border-radius:inherit}
+    #obStepsRow{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+    #onboardSteps .step{animation:.15s ease obStepFade}
+    @keyframes obStepFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .step .chip{border-radius:999px;border:1px dashed rgba(255,255,255,.18);background:transparent;padding:6px 10px}
+    .step .chip input{margin-right:6px}
+
+    /* --- Store badges uniform size (placeholders) --- */
+    .store-badges{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .store-badges img{height:44px;width:auto;display:block}
+
+    /* --- Featured Collections + Stories smaller --- */
+    .story-card{max-width:230px;margin:0 auto}
+    .forum .review{position:relative}
+    .star{font-family:"Material Symbols Outlined";font-size:16px;vertical-align:-2px}
+    .verified{font-family:"Material Symbols Outlined";font-size:16px;color:#6ee7d2}
+    .helpful{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(255,255,255,.1);padding:4px 8px;border-radius:999px;background:color-mix(in oklab, var(--panel) 96%, #0000)}
+    .post-meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+    .poll{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px;background:color-mix(in oklab, var(--panel) 94%, #0000)}
+    .poll .bar{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+    .poll .bar > span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .25s ease}
+
+    /* --- Remove pagination dots globally --- */
+    .dots{display:none !important}
   </style>
 </head>
 <body>
@@ -138,7 +166,6 @@
     <div class="brand">
       <span class="brand-icon">🇿🇦</span>
       <span>SKINLABS®</span>
-      
     </div>
     <div style="display:flex;gap:8px;align-items:center">
       <button id="themeToggle" class="theme-btn" aria-label="Toggle theme"><span class="material-symbols-outlined">dark_mode</span></button>
@@ -148,6 +175,7 @@
       <a href="#explore"><span class="material-symbols-outlined">explore</span> Explore</a>
       <a href="#offers"><span class="material-symbols-outlined">local_mall</span> Deals</a>
       <a href="#reviews"><span class="material-symbols-outlined">reviews</span> Reviews</a>
+      <a href="#trending"><span class="material-symbols-outlined">trending_up</span> Trending</a>
       <a href="#signup" class="cta js-signup"><span class="material-symbols-outlined">person_add</span> Sign up</a>
       <a href="#login" class="cta js-signin"><span class="material-symbols-outlined">login</span> Login</a>
     </nav>
@@ -156,32 +184,24 @@
 
 <main class="wrap">
 
-
-  
   <!-- Above-the-fold ad -->
   <div class="panel adbox" style="padding:6px;margin-top:10px">
     <div class="ad-inner">
-
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="+1v+s2-4-5g+9z"
-     data-ad-client="ca-pub-1237323355260727"
-     data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-      
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="fluid"
+           data-ad-layout-key="+1v+s2-4-5g+9z"
+           data-ad-client="ca-pub-1237323355260727"
+           data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
   </div>
 
   <section class="hero" id="hero">
     <div class="panel" style="padding:14px">
       <div class="badge">Launches <b>15 Aug 2025</b></div>
-      <h1>Curated skincare for South Africa</h1>
-      <p>Derm‑informed guides, ingredient explainers, local brand roundups and smarter deals. <span class="js-locked-copy">Join to unlock all features, AI chat, and member‑only content.</span></p>
+      <h1>The expertly curated, trusted guide to healthy skin</h1>
+      <p>Derm-informed guides, ingredient explainers, local brand roundups and smarter deals. <span class="js-locked-copy">Join to unlock all features, AI chat, and member-only content.</span></p>
 
       <div class="searchbar" role="search" aria-label="Site search">
         <input id="q" class="input" placeholder="Search guides, ingredients, brands…" aria-label="Search" />
@@ -189,6 +209,7 @@
       </div>
 
       <div class="chips" id="chips" aria-label="Filters"></div>
+      <!-- Gate note kept but hidden by JS when not needed -->
       <div id="gateNote" class="locked-note js-locked-copy" style="margin-top:10px">
         🔒 Sign up (R99/year) to read all content, save favourites, write reviews and use AI chat.
         <div style="margin-top:8px"><button class="btn js-signup">Unlock access</button></div>
@@ -206,25 +227,6 @@
         <div class="slides" id="offersSlides" data-per="1"></div>
         <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
       </div>
-      <div class="dots" id="offersDots"></div>
-
-      <div class="divider"></div>
-      <div class="adbox">
-        <div class="ad-inner">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="+1v+s2-4-5g+9z"
-     data-ad-client="ca-pub-1237323355260727"
-     data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>   
-        </div>
-      </div>
-    
     </div>
   </section>
 
@@ -240,48 +242,25 @@
       <div id="cardsSlides" class="slides" data-per="1"></div>
       <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
     </div>
-    <div class="dots" id="cardsDots"></div>
+  </section>
 
-    <div class="grid" style="margin-top:var(--gap)">
-      <div class="panel sticky" style="padding:12px;min-width:0">
-        <div class="section-title"><h2>Top this week</h2></div>
-        <div class="slider" id="topSlider">
-          <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
-          <div id="topSlides" class="slides" data-per="1"></div>
-          <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
-        </div>
-        <div class="dots" id="topDots"></div>
+  <!-- Featured Collections (new carousel) -->
+  <section id="featuredCats" class="panel" style="padding:14px;margin-top:12px">
+    <div class="section-title"><h2>Featured Collections</h2></div>
+    <div class="slider" id="catsSlider">
+      <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+      <div id="catsSlides" class="slides" data-per="1"></div>
+      <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+    </div>
+  </section>
 
-        <div class="divider"></div>
-        <!-- Newsletter -->
-        <form id="newsletter" action="https://formspree.io/f/xeokkzle" method="POST" style="max-width:100%">
-          <label class="small" for="email">Join our list (1–2 emails/month)</label>
-          <div class="searchbar" style="margin-top:6px">
-            <input type="email" id="email" name="email" class="input" placeholder="you@example.com" required />
-            <button type="submit" class="btn"><span class="material-symbols-outlined">send</span></button>
-          </div>
-          <div class="small muted">By subscribing you agree to our Privacy Policy.</div>
-        </form>
-
-        <div class="divider"></div>
-        <!-- Sidebar ad -->
-        <div class="adbox">
-          <div class="ad-inner">
-             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="+1v+s2-4-5g+9z"
-     data-ad-client="ca-pub-1237323355260727"
-     data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>   
-          </div>
-        </div>
-     
-      </div>
+  <!-- Trending (renamed from Top) -->
+  <section id="trending" class="panel" style="padding:14px; margin-top:12px">
+    <div class="section-title"><h2>Trending this week</h2></div>
+    <div class="slider" id="topSlider">
+      <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+      <div id="topSlides" class="slides" data-per="1"></div>
+      <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
     </div>
   </section>
 
@@ -293,40 +272,54 @@
       <div id="featSlides" class="slides" data-per="1"></div>
       <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
     </div>
-    <div class="dots" id="featDots"></div>
   </section>
 
-  <!-- Reviews (gated) -->
+  <!-- Community Forum (renamed & enhanced) -->
   <section id="reviews" class="panel" style="padding:14px">
     <div class="section-title">
-      <h2>Community Reviews</h2>
+      <h2>Community Forum</h2>
       <button id="btnAddReview" class="cta js-signin"><span class="material-symbols-outlined">rate_review</span> Write a review</button>
     </div>
     <div class="review-list" id="reviewList"></div>
   </section>
 
+  <!-- Web Stories (moved to bottom & smaller) -->
+  <section id="storyReels" class="panel" style="padding:14px;margin-top:12px">
+    <div class="section-title">
+      <h2>Web Stories</h2>
+      <div class="small muted">Tap to view short skincare stories</div>
+    </div>
+    <div class="slider" id="storiesSlider">
+      <button class="navbtn prev" aria-label="Previous"><span class="material-symbols-outlined">chevron_left</span></button>
+      <div class="slides" id="storiesSlides" data-per="1"></div>
+      <button class="navbtn next" aria-label="Next"><span class="material-symbols-outlined">chevron_right</span></button>
+    </div>
+  </section>
+
   <!-- Footer ad -->
   <div class="panel adbox" style="padding:6px;margin-top:10px">
     <div class="ad-inner" style="max-width:100%">
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1237323355260727"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="+1v+s2-4-5g+9z"
-     data-ad-client="ca-pub-1237323355260727"
-     data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>   
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-format="fluid"
+           data-ad-layout-key="+1v+s2-4-5g+9z"
+           data-ad-client="ca-pub-1237323355260727"
+           data-ad-slot="3319371201" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
   </div>
 
   <footer class="wrap">
     <div class="divider"></div>
     <div class="small">© 2025 SKYNN® — Curated skincare for South Africa. Not medical advice.</div>
-    <div class="socials small">
+
+    <!-- Store badges: placeholders, same size -->
+    <div class="store-badges" style="margin:10px 0 0">
+      <a href="#" aria-label="Get it on Google Play"><img src="/assets/google-play-badge-placeholder.svg" alt="Get it on Google Play"></a>
+      <a href="#" aria-label="Download on the App Store"><img src="/assets/app-store-badge-placeholder.svg" alt="Download on the App Store"></a>
+    </div>
+
+    <div class="socials small" style="margin-top:10px">
       <a href="https://facebook.com/skinlabs.co.za" target="_blank" rel="noopener"><span class="material-symbols-outlined">public</span> Facebook</a>
       <a href="https://facebook.com/skinlabsza" target="_blank" rel="noopener"><span class="material-symbols-outlined">group</span> Instagram</a>
       <a href="https://wa.me/+27680200749" target="_blank" rel="noopener"><span class="material-symbols-outlined">chat</span> WhatsApp</a>
@@ -335,10 +328,20 @@
   </footer>
 </main>
 
-<!-- Onboarding Modal (multi-step) -->
+<!-- Onboarding Modal (multi-step, polished) -->
 <div class="modal" id="onboardModal" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
   <div class="inner">
-    <h3 id="onboardTitle" style="margin:0 0 6px">Join SKYNN® — R99/year</h3>
+    <div class="ob-hero">
+      <img src="/assets/onboarding-placeholder.svg" alt="Skincare illustration" />
+      <div>
+        <div class="small muted">Join SKYNN® — R99/year</div>
+        <strong id="onboardTitle">Personalise your routine</strong>
+      </div>
+    </div>
+    <div id="obProgress"><div id="obProgBar"></div></div>
+    <div id="obStepsRow" class="small muted">
+      <span>Account</span><span>Skin basics</span><span>Preferences</span><span>Review</span>
+    </div>
     <div id="onboardSteps">
       <!-- Step 1: Account -->
       <div class="step" data-step="1">
@@ -379,7 +382,7 @@
 
       <!-- Step 3: Preferences -->
       <div class="step hidden" data-step="3">
-        <p class="small muted">A few preferences to fine‑tune recommendations.</p>
+        <p class="small muted">A few preferences to fine-tune recommendations.</p>
         <label class="small">Monthly budget (R)</label>
         <input id="obBudget" type="number" class="input" min="0" step="10" placeholder="500" />
         <label class="small" style="margin-top:8px">Routine style</label>
@@ -396,7 +399,7 @@
       <div class="step hidden" data-step="4">
         <p class="small muted">Almost there. Continue to secure PayFast checkout.</p>
         <ul class="small" id="obSummary"></ul>
-        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px">
+        <div style="display:flex;gap:8px;justify-content:space-between;margin-top:10px;flex-wrap:wrap">
           <button class="cta" data-prev>Back</button>
           <button id="obGoPay" class="btn">Continue to PayFast (R99)</button>
         </div>
@@ -467,11 +470,11 @@
 <div id="chatPanel">
   <div class="inner">
     <div class="chat-head">
-      <strong>SKYNN AI (Derm‑informed)</strong>
+      <strong>SKYNN AI (Derm-informed)</strong>
       <button id="chatClose" class="hamburger" style="padding:6px 8px"><span class="material-symbols-outlined">close</span></button>
     </div>
     <div class="chat-body" id="chatBody">
-      <div class="msg ai"><b>Hi!</b> Ask me anything skincare. I’ll suggest evidence‑based options (not medical advice).</div>
+      <div class="msg ai"><b>Hi!</b> Ask me anything skincare. I’ll suggest evidence-based options (not medical advice).</div>
     </div>
     <div class="chat-foot">
       <input id="chatInput" class="input" placeholder="Ask about acne, pigmentation, SPF…" />
@@ -482,7 +485,7 @@
 
 <script>
 /* ---------------- Config ---------------- */
-const API_BASE = "https://api.skinlabs.co.za"; // <-- set to your Worker/Function base
+const API_BASE = "https://api.skinlabs.co.za";
 const PRICE_ZAR = 99;
 
 /* -------------- Theme Toggle -------------- */
@@ -520,7 +523,7 @@ async function fetchSession(){
 
 /* -------------- JSON content -------------- */
 const CATEGORIES = ["Guides","Ingredients","Routines","Reviews","Deals","Dermatologist Q&A","Local Brands"];
-let CONTENT=[], OFFERS=[], q="", active="All", shown=0;
+let CONTENT=[], OFFERS=[], q="", active="All";
 
 /* -------------- Signup/Login triggers -------------- */
 function openModal(id){ document.getElementById(id).style.display='grid'; }
@@ -536,7 +539,14 @@ document.body.addEventListener('click', (e)=>{
 /* -------------- Onboarding (multi-step) -------------- */
 const steps = [...document.querySelectorAll('#onboardSteps .step')];
 let stepIdx = 0;
-function showStep(i){ steps.forEach((s,k)=> s.classList.toggle('hidden', k!==i)); stepIdx=i; }
+function updateProgress(){
+  const pct = ((stepIdx+1)/steps.length)*100;
+  document.getElementById('obProgBar').style.width = pct + '%';
+}
+function showStep(i){
+  steps.forEach((s,k)=> s.classList.toggle('hidden', k!==i));
+  stepIdx=i; updateProgress();
+}
 document.querySelectorAll('[data-next]').forEach(b=> b.onclick=()=> showStep(Math.min(stepIdx+1, steps.length-1)));
 document.querySelectorAll('[data-prev]').forEach(b=> b.onclick=()=> showStep(Math.max(stepIdx-1, 0)));
 document.getElementById('obCancel').onclick = ()=> closeModal('onboardModal');
@@ -564,19 +574,16 @@ document.querySelector('[data-step="4"]').addEventListener('show', ()=>{
 });
 function emitStepShow(){ steps[stepIdx].dispatchEvent(new Event('show')); }
 ['data-next','data-prev'].forEach(sel=> document.querySelectorAll(`[${sel}]`).forEach(b=> b.addEventListener('click', ()=> setTimeout(emitStepShow, 0))));
+updateProgress();
 
 /* -------------- Register + PayFast redirect -------------- */
 document.getElementById('obGoPay').onclick = async ()=>{
   const data = gatherOnboard();
   if(!data.email || !data.password){ alert('Please enter email & password'); return; }
   try{
-    // 1) Register account (hashed server-side)
     await fetch(`${API_BASE}/auth/register`, {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(data)});
-
-    // 2) Create signed PayFast form (server-side signature)
     const r = await fetch(`${API_BASE}/payfast/sign`, {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ email: data.email, amount: PRICE_ZAR, item_name: "SKYNN Annual Membership" })});
     const j = await r.json();
-    // 3) Inject & submit form to PayFast
     const f = document.createElement('form'); f.action = j.action; f.method='POST';
     for(const [k,v] of Object.entries(j.fields)){ const i=document.createElement('input'); i.type='hidden'; i.name=k; i.value=v; f.appendChild(i); }
     document.body.appendChild(f); f.submit();
@@ -624,35 +631,69 @@ function renderChips(){ chipWrap.innerHTML=''; chipWrap.appendChild(makeChip('Al
 document.getElementById('btnSearch')?.addEventListener('click', ()=>{ q = document.getElementById('q').value||''; renderAll(); });
 document.getElementById('q')?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ q = e.target.value||''; renderAll(); }});
 
-/* -------------- Sliders (with swipe) -------------- */
-function slider(root, dots, opts={per:[1,2,3], breakpoints:[0,600,900], autoplayMs:0}){
+/* -------------- Sliders (robust swipe, no dots) -------------- */
+function slider(root, opts={per:[1,2,3], breakpoints:[0,600,900], autoplayMs:0}){
   const slidesEl = root.querySelector('.slides'), prev = root.querySelector('.prev'), next = root.querySelector('.next');
-  let page=0, pages=1, timer=null, startX=0, curX=0, dragging=false, width=0;
+  let page=0, pages=1, timer=null, startX=0, startY=0, curX=0, dragging=false, width=0, threshold=0.18;
+
   function curPer(){
     const w = root.clientWidth || window.innerWidth; let p = opts.per[0];
     if(w>=opts.breakpoints[1]) p = opts.per[1]||p; if(w>=opts.breakpoints[2]) p = opts.per[2]||p;
     slidesEl.dataset.per = String(p); return p;
   }
-  function recalc(){ const p = curPer(); const n = slidesEl.children.length; pages = Math.max(1, Math.ceil(n/p)); page=Math.min(page,pages-1); go(page,true); renderDots(); width = root.clientWidth; }
-  function go(n, instant){ page=Math.max(0,Math.min(n,pages-1)); const x = page*100; slidesEl.style.transition = instant? 'none' : ''; slidesEl.style.transform = `translateX(-${x}%)`; requestAnimationFrame(()=> slidesEl.style.transition = 'transform .35s ease'); updateDots(); }
-  function renderDots(){ if(!dots) return; dots.innerHTML=''; for(let i=0;i<pages;i++){ const d=document.createElement('button'); d.className='dot'; if(i===page) d.classList.add('active'); d.onclick=()=>go(i); dots.appendChild(d); } }
-  function updateDots(){ if(!dots) return; [...dots.children].forEach((d,i)=> d.classList.toggle('active', i===page)); }
-  function auto(){ if(!opts.autoplayMs) return; stop(); timer=setInterval(()=> go((page+1)%pages), opts.autoplayMs); }
+  function recalc(){
+    const p = curPer(); const n = slidesEl.children.length; pages = Math.max(1, Math.ceil(n/p));
+    page = Math.min(page, pages-1); go(page, true); width = root.clientWidth || slidesEl.clientWidth;
+  }
+  function go(n, instant){
+    page = Math.max(0, Math.min(n, pages-1));
+    const x = page*100; slidesEl.style.transition = instant ? 'none' : 'transform .35s ease';
+    slidesEl.style.transform = `translateX(-${x}%)`;
+  }
+  function auto(){ if(!opts.autoplayMs) return; stop(); timer = setInterval(()=> go((page+1)%pages), opts.autoplayMs); }
   function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-  // swipe
-  slidesEl.addEventListener('pointerdown', e=>{ dragging=true; startX=e.clientX; curX=startX; slidesEl.setPointerCapture(e.pointerId); slidesEl.style.transition='none'; });
-  slidesEl.addEventListener('pointermove', e=>{ if(!dragging) return; curX=e.clientX; const dx=curX-startX; const pcent = (dx/width)*100; slidesEl.style.transform=`translateX(calc(-${page*100}% + ${pcent}%))`; });
-  slidesEl.addEventListener('pointerup', e=>{ if(!dragging) return; dragging=false; const dx=curX-startX; const thr=width*0.18; if(Math.abs(dx)>thr){ go(page + (dx<0?1:-1)); } else { go(page); } slidesEl.releasePointerCapture(e.pointerId); });
-  prev?.addEventListener('click', ()=> go(page-1)); next?.addEventListener('click', ()=> go(page+1));
-  root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', auto); window.addEventListener('resize', recalc, {passive:true});
+
+  // pointer + touch (iOS-friendly)
+  function onStart(x, y, id){
+    dragging = true; startX = curX = x; startY = y; slidesEl.style.transition='none';
+  }
+  function onMove(x, y, e){
+    if(!dragging) return;
+    curX = x;
+    const dx = curX - startX, dy = (y - startY);
+    if(Math.abs(dx) > Math.abs(dy) + 6) e && e.preventDefault(); // claim horizontal
+    const pcent = (dx / (width||1)) * 100;
+    slidesEl.style.transform = `translateX(calc(-${page*100}% + ${pcent}%))`;
+  }
+  function onEnd(){
+    if(!dragging) return; dragging=false;
+    const dx = curX - startX; const thr = (width||1) * threshold;
+    if(Math.abs(dx) > thr){ go(page + (dx < 0 ? 1 : -1)); } else { go(page); }
+    requestAnimationFrame(()=> slidesEl.style.transition = 'transform .35s ease');
+  }
+
+  slidesEl.addEventListener('pointerdown', e=>{ slidesEl.setPointerCapture?.(e.pointerId); onStart(e.clientX, e.clientY); }, {passive:true});
+  slidesEl.addEventListener('pointermove', e=> onMove(e.clientX, e.clientY, e), {passive:false});
+  slidesEl.addEventListener('pointerup',   ()=> onEnd(), {passive:true});
+  slidesEl.addEventListener('pointercancel',()=> onEnd(), {passive:true});
+
+  slidesEl.addEventListener('touchstart', e=>{ const t=e.touches[0]; onStart(t.clientX, t.clientY); }, {passive:true});
+  slidesEl.addEventListener('touchmove',  e=>{ const t=e.touches[0]; onMove(t.clientX, t.clientY, e); }, {passive:false});
+  slidesEl.addEventListener('touchend',   ()=> onEnd(), {passive:true});
+
+  prev?.addEventListener('click', ()=> go(page-1));
+  next?.addEventListener('click', ()=> go(page+1));
+  root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', auto);
+  window.addEventListener('resize', recalc, {passive:true});
   recalc(); auto();
-  return {recalc, go};
+  return { recalc, go };
 }
 
 /* -------------- Renderers -------------- */
-const cardsSlider = slider(document.getElementById('cardsSlider'), document.getElementById('cardsDots'), {per:[1,2,3], breakpoints:[0,600,900]});
-const offersSlider = slider(document.getElementById('offersSlider'), document.getElementById('offersDots'), {per:[1,2,3], breakpoints:[0,600,900]});
-const topSlider    = slider(document.getElementById('topSlider'), document.getElementById('topDots'), {per:[1,1,2], breakpoints:[0,700,980], autoplayMs:4000});
+const cardsSlider  = slider(document.getElementById('cardsSlider'),  {per:[1,2,3], breakpoints:[0,600,900]});
+const offersSlider = slider(document.getElementById('offersSlider'), {per:[1,2,3], breakpoints:[0,600,900]});
+const topSlider    = slider(document.getElementById('topSlider'),    {per:[1,1,2], breakpoints:[0,700,980], autoplayMs:4000});
+const storiesSL    = slider(document.getElementById('storiesSlider'),{per:[2,3,5], breakpoints:[0,600,980]});
 
 function cardHTML(item){
   return `<div class="card">
@@ -662,7 +703,7 @@ function cardHTML(item){
     <div class="tags">${(item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
       <button class="cta small btnSave ${MEMBER?'':'js-signin'}"><span class="material-symbols-outlined">grade</span> Save</button>
-      ${MEMBER && item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read →</a>` : `<span class="small muted js-locked-copy">Join to read</span>`}
+      ${item.url ? `<a class="small" href="${item.url}" target="_blank" rel="noopener">Read →</a>` : `<span class="small muted">—</span>`}
     </div></div>`;
 }
 function offerHTML(o){
@@ -673,7 +714,7 @@ function offerHTML(o){
     <div class="divider"></div>
     <div class="small"><b>Code:</b> ${o.code || 'N/A'}</div>
     <div class="small muted">${o.blurb||''}</div>
-    <div style="margin-top:10px"><a class="cta ${MEMBER?'':'js-signin'}" href="${MEMBER?(o.url||'#'):'#'}" target="_blank" rel="noopener"><span class="material-symbols-outlined">shopping_bag</span> Shop now</a></div>
+    <div style="margin-top:10px"><a class="cta" href="${o.url||'#'}" target="_blank" rel="noopener"><span class="material-symbols-outlined">shopping_bag</span> Shop now</a></div>
   </div>`;
 }
 function featHTML(a){
@@ -685,6 +726,59 @@ function featHTML(a){
     <div><a class="cta" href="${a.url}" target="_blank" rel="noopener"><span class="material-symbols-outlined">open_in_new</span> Read on Medium</a></div>
   </div>`;
 }
+function buildCountdownSlide(){
+  const target = new Date('2025-09-01T00:00:00+02:00');
+  const id = 'countdown';
+  const wrap = document.createElement('div');
+  wrap.className='slide';
+  wrap.innerHTML = `<div class="card" style="text-align:center">
+    <div class="meta">Announcement</div>
+    <h3>Relaunch Countdown</h3>
+    <div class="small muted">Official launch: <b>1 Sep 2025</b></div>
+    <div id="${id}" style="font-weight:800;font-size:clamp(18px,6vw,28px);margin:8px 0">--:--:--</div>
+    <p class="small muted">Sign up now for early access and giveaways!</p>
+    <button class="btn js-signup"><span class="material-symbols-outlined">event</span> Join early access</button>
+  </div>`;
+  function tick(){
+    const now = new Date();
+    const diff = target - now;
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(diff<=0){ el.textContent = '00:00:00'; return; }
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    el.textContent = `${d}d ${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+  setInterval(tick,1000); tick();
+  return wrap;
+}
+
+/* Featured Collections data */
+const FEATURED_CATS = [
+  {title:"⭐ Staff Picks: Product of the Month", blurb:"Curated skincare heroes with expert selections"},
+  {title:"🧴 DIY Skincare Recipe Series", blurb:"Step-by-step honey oat mask tutorial"},
+  {title:"🔬 Brand Spotlight", blurb:"Deep dives into innovative skincare brands"},
+  {title:"❌ Skincare Myths Debunked", blurb:"Science-backed myth-busting content"},
+  {title:"🍂 Seasonal Transition Guide", blurb:"Summer to fall skincare adaptation"},
+  {title:"🎯 Skin Concern Solutions", blurb:"30-day acne treatment plans"},
+  {title:"🧪 Ingredient Deep Dive", blurb:"Complete retinol usage guide"},
+  {title:"⏰ Lifestyle Routines", blurb:"3-step routines for busy professionals"},
+  {title:"✨ Community Transformations", blurb:"Real member success stories"},
+  {title:"🎙️ What’s In It For Me?", blurb:"[Gemini AI Notebook LM Audio Summaries]"},
+  {title:"🎁 Members-Only Rewards", blurb:"Sponsored giveaways & competitions"},
+];
+
+/* Stories sample data */
+const STORIES = [
+  {title:"SPF Re-Apply Hacks", cover:"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=800&auto=format&fit=crop"},
+  {title:"Winter → Spring Routine", cover:"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=800&auto=format&fit=crop"},
+  {title:"Retinol Ramp-Up", cover:"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=800&auto=format&fit=crop"},
+  {title:"PIH Care Basics", cover:"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=800&auto=format&fit=crop"},
+  {title:"Mineral vs Hybrid SPF", cover:"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=800&auto=format&fit=crop"}
+];
+
 function injectItemListSchema(items){
   try{
     const ld = {"@context":"https://schema.org","@type":"ItemList","itemListElement":items.slice(0,10).map((it,idx)=>({"@type":"ListItem","position":idx+1,"name":it.title,"url":it.url || "https://skinlabs.co.za/"}))};
@@ -694,29 +788,50 @@ function injectItemListSchema(items){
 
 function renderAll(){
   const list = CONTENT.filter(i => (active==='All'||i.type===active) && (q===''||(i.title||'').toLowerCase().includes(q.toLowerCase())));
-  // Cards
+
+  // Cards (show all even if not logged in)
   const cardsEl = document.getElementById('cardsSlides'); cardsEl.innerHTML='';
-  (MEMBER ? list : list.slice(0,3)).forEach(item=>{ const d=document.createElement('div'); d.className='slide'; d.innerHTML=cardHTML(item); cardsEl.appendChild(d); });
-  if(!MEMBER){ const d=document.createElement('div'); d.className='slide'; d.innerHTML='<div class="locked-note js-locked-copy">Sign up to unlock the full library and tools.</div>'; cardsEl.appendChild(d); }
+  list.forEach(item=>{ const d=document.createElement('div'); d.className='slide'; d.innerHTML=cardHTML(item); cardsEl.appendChild(d); });
   cardsSlider.recalc();
 
-  // Offers
+  // Offers (show all)
   const offersEl = document.getElementById('offersSlides'); offersEl.innerHTML='';
-  (MEMBER ? OFFERS : OFFERS.slice(0,2)).forEach(o=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=offerHTML(o); offersEl.appendChild(w); });
+  OFFERS.forEach(o=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=offerHTML(o); offersEl.appendChild(w); });
   offersSlider.recalc();
 
-  // Top
+  // Trending
   const topEl = document.getElementById('topSlides'); topEl.innerHTML='';
-  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,6).forEach(x=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=`<div class="card"><div class="meta">${x.type}</div><h3>${x.title}</h3><div class="rating">★ ${Number(x.rating||0).toFixed(1)}</div></div>`; topEl.appendChild(w); });
+  topEl.appendChild(buildCountdownSlide());
+  [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,6).forEach(x=>{
+    const w=document.createElement('div'); w.className='slide';
+    w.innerHTML=`<div class="card"><div class="meta">Trending</div><h3>${x.title}</h3><div class="rating">★ ${Number(x.rating||0).toFixed(1)}</div></div>`;
+    topEl.appendChild(w);
+  });
   topSlider.recalc();
 
-  // Reviews
-  const listR = JSON.parse(localStorage.getItem('skynn_reviews')||'[]');
-  const box = document.getElementById('reviewList');
-  box.innerHTML = MEMBER ? (listR.length? '' : '<div class="muted small">No reviews yet — be the first.</div>') : '<div class="locked-note js-locked-copy">Sign in to read community reviews.</div>';
-  if(MEMBER){ listR.slice(0,6).forEach(r=>{ const el=document.createElement('div'); el.className='review'; el.innerHTML = `<b>${r.title}</b> <span class="small muted">• ${r.skin}</span><div class="rating">★ ${Number(r.rating).toFixed(1)}</div><div class="small">${r.body}</div>`; box.appendChild(el); }); }
+  // Featured Collections carousel
+  const cats = document.getElementById('catsSlides'); cats.innerHTML='';
+  FEATURED_CATS.forEach(c=>{
+    const w=document.createElement('div'); w.className='slide';
+    w.innerHTML = `<div class="card"><div class="meta">Collection</div><h3 style="margin:6px 0 4px">${c.title}</h3><p class="small muted" style="margin:0">${c.blurb}</p></div>`;
+    cats.appendChild(w);
+  });
+  slider(document.getElementById('catsSlider'), {per:[1,2,3], breakpoints:[0,700,980]});
 
-  // SEO
+  // Stories smaller & bottom
+  const sWrap = document.getElementById('storiesSlides'); sWrap.innerHTML='';
+  STORIES.forEach(s=>{
+    const d=document.createElement('div'); d.className='slide';
+    d.innerHTML = `<div class="card story-card" style="overflow:hidden">
+      <img src="${s.cover}" alt="${s.title}" style="width:100%;height:180px;object-fit:cover;border-radius:10px"/>
+      <div class="meta" style="margin-top:6px">Story</div>
+      <h3>${s.title}</h3>
+    </div>`;
+    sWrap.appendChild(d);
+  });
+  storiesSL.recalc();
+
+  renderCommunity(); // forum
   injectItemListSchema(list);
 }
 
@@ -742,30 +857,112 @@ async function initData(){
 
 /* -------------- Featured (Medium) -------------- */
 const FEATURED = [
-  {title:"Derm‑Backed Sunscreen Guide for Every Skin Tone", excerpt:"SPF filters, PA ratings and re‑application tips tailored to South African sun.", img:"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=1600&auto=format&fit=crop", alt:"Sunscreen on skin", url:"https://blog.skinlabs.africa/sunscreen-for-every-skin-tone"},
-  {title:"Retinoids 101: Start Without Irritation", excerpt:"A gentle ramp‑up plan and what to combine (or avoid) in your night routine.", img:"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=1600&auto=format&fit=crop", alt:"Retinoid bottle", url:"https://blog.skinlabs.africa/retinoids-101-south-africa"},
-  {title:"Hyperpigmentation in SA: What Actually Works", excerpt:"Evidence‑based actives — azelaic acid, niacinamide, arbutin — and how to layer.", img:"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=1600&auto=format&fit=crop", alt:"Skincare routine", url:"https://blog.skinlabs.africa/hyperpigmentation-south-africa-guide"},
+  {title:"Derm-Backed Sunscreen Guide for Every Skin Tone", excerpt:"SPF filters, PA ratings and re-application tips tailored to South African sun.", img:"https://images.unsplash.com/photo-1505575967455-40e256f73376?q=80&w=1600&auto=format&fit=crop", alt:"Sunscreen on skin", url:"https://blog.skinlabs.africa/sunscreen-for-every-skin-tone"},
+  {title:"Retinoids 101: Start Without Irritation", excerpt:"A gentle ramp-up plan and what to combine (or avoid) in your night routine.", img:"https://images.unsplash.com/photo-1585238342028-4bbc91a30fa9?q=80&w=1600&auto=format&fit=crop", alt:"Retinoid bottle", url:"https://blog.skinlabs.africa/retinoids-101-south-africa"},
+  {title:"Hyperpigmentation in SA: What Actually Works", excerpt:"Evidence-based actives — azelaic acid, niacinamide, arbutin — and how to layer.", img:"https://images.unsplash.com/photo-1606836591695-4d58a73eba1e?q=80&w=1600&auto=format&fit=crop", alt:"Skincare routine", url:"https://blog.skinlabs.africa/hyperpigmentation-south-africa-guide"},
   {title:"Hydration Myths — and Products that Truly Help", excerpt:"Humectants vs emollients vs occlusives, simplified.", img:"https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=1600&auto=format&fit=crop", alt:"Water drop on leaf", url:"https://blog.skinlabs.africa/hydration-myths-products"},
-  {title:"Morning Routine Builder: 3 Price Tiers", excerpt:"Budget, mid‑range and premium picks you can buy locally.", img:"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=1600&auto=format&fit=crop", alt:"Bathroom counter", url:"https://blog.skinlabs.africa/morning-routine-builder-tiers"},
-  {title:"Sensitive Skin? A Fragrance‑Smart Routine", excerpt:"Reduce flare‑ups with simple swaps and smarter patch testing.", img:"https://images.unsplash.com/photo-1585238341951-452dc6e0f3a9?q=80&w=1600&auto=format&fit=crop", alt:"Serum dropper", url:"https://blog.skinlabs.africa/sensitive-skin-fragrance-smart"}
+  {title:"Morning Routine Builder: 3 Price Tiers", excerpt:"Budget, mid-range and premium picks you can buy locally.", img:"https://images.unsplash.com/photo-1512499617640-c2f999098c80?q=80&w=1600&auto=format&fit=crop", alt:"Bathroom counter", url:"https://blog.skinlabs.africa/morning-routine-builder-tiers"},
+  {title:"Sensitive Skin? A Fragrance-Smart Routine", excerpt:"Reduce flare-ups with simple swaps and smarter patch testing.", img:"https://images.unsplash.com/photo-1585238341951-452dc6e0f3a9?q=80&w=1600&auto=format&fit=crop", alt:"Serum dropper", url:"https://blog.skinlabs.africa/sensitive-skin-fragrance-smart"}
 ];
 (function renderFeatured(){
   const slides=document.getElementById('featSlides'); slides.innerHTML='';
   FEATURED.forEach(a=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=featHTML(a); slides.appendChild(w); });
-  slider(document.getElementById('featSlider'), document.getElementById('featDots'), {per:[1,2,3], breakpoints:[0,700,980]});
+  slider(document.getElementById('featSlider'), {per:[1,2,3], breakpoints:[0,700,980]});
 })();
 
-/* -------------- Reviews (submit) -------------- */
-document.getElementById('btnAddReview').onclick = ()=>{ if(!MEMBER){ openModal('loginModal'); return; } openModal('reviewModal'); };
-document.getElementById('revCancel').onclick = ()=> closeModal('reviewModal');
-document.getElementById('reviewForm').onsubmit = (e)=>{
-  e.preventDefault(); if(!MEMBER){ openModal('loginModal'); return; }
-  const fd=new FormData(e.target); const item=Object.fromEntries(fd.entries()); item.rating=Number(item.rating)||0;
-  const ar=JSON.parse(localStorage.getItem('skynn_reviews')||'[]'); ar.unshift({...item, ts:Date.now()}); localStorage.setItem('skynn_reviews', JSON.stringify(ar));
-  closeModal('reviewModal'); renderAll();
-};
+/* -------------- Community Forum (seed + features) -------------- */
+function seedForum(){
+  const has = JSON.parse(localStorage.getItem('skynn_forum_posts')||'[]');
+  if(has.length) return has;
+  const now = Date.now();
+  const posts = [
+    {title:"Sunscreen for darker tones (mineral vs hybrid)", product:"Heliocare 360", rating:5, skin:"Combination", verified:true, user:"Lerato P.", city:"Johannesburg", body:"No white cast with the gel oil-free. Reapplies well.", helpful:23, comments:5, views:612, ts: now-36*3600e3},
+    {title:"Azelaic acid for PIH", product:"The Ordinary Azelaic 10%", rating:4, skin:"Oily", verified:false, user:"Thabo K.", city:"Pretoria", body:"Took ~6 weeks. Pairing with niacinamide helped.", helpful:15, comments:3, views:421, ts: now-72*3600e3},
+    {title:"Budget moisturiser recs", product:"E45 / Nivea Soft", rating:4, skin:"Dry", verified:true, user:"Zanele M.", city:"Durban", body:"Layer with HA serum—great for winter.", helpful:12, comments:2, views:377, ts: now-9*3600e3},
+    {title:"30-day acne plan results", product:"Adapalene 0.1%", rating:5, skin:"Oily", verified:true, user:"Farai N.", city:"Cape Town", body:"Purge week 2–3, then clearer texture.", helpful:28, comments:7, views:818, ts: now-5*24*3600e3},
+    {title:"Retinol sandwich method", product:"Cerave PM + Retinol 0.3%", rating:4, skin:"Sensitive", verified:false, user:"Naledi S.", city:"Bloemfontein", body:"Less irritation, slower results but worth it.", helpful:9, comments:1, views:233, ts: now-14*3600e3},
+    {title:"Hybrid SPF dupes in SA", product:"Clicks Sun Protect", rating:3, skin:"Normal", verified:false, user:"Anika V.", city:"Gqeberha", body:"Finish is dewy; wish it was less fragranced.", helpful:6, comments:0, views:190, ts: now-11*24*3600e3},
+    {title:"Fragrance-free cleanser finds", product:"SVR Sensifine", rating:5, skin:"Sensitive", verified:true, user:"Aisha B.", city:"Polokwane", body:"Soothing; doesn’t strip. Great value online.", helpful:19, comments:3, views:402, ts: now-2*24*3600e3},
+    {title:"Vitamin C + Niacinamide layering", product:"SkinCeuticals CE Ferulic", rating:5, skin:"Combination", verified:true, user:"Sipho D.", city:"Midrand", body:"AM: Vit C → wait → Niacinamide → SPF. Glow!", helpful:31, comments:9, views:1021, ts: now-20*3600e3},
+    {title:"Maskne tips post-gym", product:"La Roche-Posay Cicaplast B5", rating:4, skin:"Normal", verified:false, user:"Gugu R.", city:"Pietermaritzburg", body:"Rinse ASAP, use light gel moisturiser + SPF.", helpful:8, comments:1, views:240, ts: now-3*24*3600e3},
+    {title:"Mineral SPF for kids", product:"Pure Beginnings Baby SPF", rating:5, skin:"Dry", verified:true, user:"Mpho T.", city:"Soweto", body:"No stinging, easy to remove.", helpful:17, comments:4, views:350, ts: now-7*24*3600e3}
+  ];
+  localStorage.setItem('skynn_forum_posts', JSON.stringify(posts));
+  return posts;
+}
+function timeAgo(ts){
+  const s = Math.max(1, Math.floor((Date.now()-ts)/1000));
+  const units = [[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];
+  for(const [sec,label] of units){ if(s>=sec) return Math.floor(s/sec)+label; }
+  return s+'s';
+}
+const POLL_KEY='skynn_poll_votes';
+function getPoll(){ return JSON.parse(localStorage.getItem(POLL_KEY) || '{"Q":"What’s your #1 skincare goal now?","opts":["Clear acne","Fade pigmentation","Reduce sensitivity","Anti-ageing"],"votes":[35,28,18,31]}'); }
+function savePoll(p){ localStorage.setItem(POLL_KEY, JSON.stringify(p)); }
+function renderPoll(container){
+  const p = getPoll(); const total = p.votes.reduce((a,b)=>a+b,0);
+  container.innerHTML = `
+    <div class="poll">
+      <div class="small muted" style="margin-bottom:6px">${p.Q}</div>
+      ${p.opts.map((o,i)=>{
+        const pct = total ? Math.round((p.votes[i]/total)*100) : 0;
+        return `<div style="margin:8px 0">
+          <div class="small" style="display:flex;justify-content:space-between">
+            <span>${o}</span><span class="muted">${pct}%</span>
+          </div>
+          <div class="bar"><span style="width:${pct}%"></span></div>
+          <button class="cta small" data-vote="${i}" style="margin-top:6px">Vote</button>
+        </div>`;
+      }).join('')}
+      <div class="small muted">Total votes: ${total}</div>
+    </div>`;
+  container.querySelectorAll('[data-vote]').forEach(btn=>{
+    btn.onclick = ()=>{
+      const idx = Number(btn.getAttribute('data-vote')); const cur = getPoll();
+      cur.votes[idx] += 1; savePoll(cur); renderPoll(container);
+    };
+  });
+}
+function renderCommunity(){
+  const listR = seedForum();
+  const wrap = document.getElementById('reviewList');
+  wrap.classList.add('forum');
+  wrap.innerHTML='';
+  listR.slice(0,10).forEach(r=>{
+    const stars = Array.from({length:5},(_,i)=> i<r.rating?'<span class="star">grade</span>':'<span class="star" style="opacity:.25">grade</span>').join('');
+    const ver = r.verified ? '<span class="verified" title="Verified user">verified</span>' : '';
+    const card = document.createElement('div');
+    card.className='review';
+    card.innerHTML = `
+      <b>${r.title}</b> ${ver}
+      <div class="post-meta">
+        <span>By ${r.user} • ${r.city}</span>
+        <span>${r.skin}</span>
+        <span>${timeAgo(r.ts)} ago</span>
+        <span>${r.views} views • ${r.comments} comments</span>
+      </div>
+      <div class="small muted">Product: <b>${r.product}</b></div>
+      <div class="rating" style="margin:4px 0">${stars}</div>
+      <div class="small" style="margin:6px 0">${r.body}</div>
+      <button class="helpful" data-helpful><span class="material-symbols-outlined">thumb_up</span><span>Helpful</span><span class="count">${r.helpful}</span></button>
+    `;
+    const btn = card.querySelector('[data-helpful]');
+    btn.onclick = ()=>{
+      const countEl = btn.querySelector('.count');
+      countEl.textContent = String(Number(countEl.textContent||0) + 1);
+    };
+    wrap.appendChild(card);
+  });
+  let pollBox = document.getElementById('forumPoll');
+  if(!pollBox){
+    pollBox = document.createElement('div');
+    pollBox.id='forumPoll'; pollBox.style.marginTop='10px';
+    wrap.parentElement.appendChild(pollBox);
+  }
+  renderPoll(pollBox);
+}
 
-/* -------------- AI Chat (gated, via Worker proxy to GPT‑5 mini) -------------- */
+/* -------------- AI Chat (gated) -------------- */
 const fab=document.getElementById('fabChat'); const chatPanel=document.getElementById('chatPanel'); const chatBody=document.getElementById('chatBody'); const chatInput=document.getElementById('chatInput');
 document.getElementById('chatClose').onclick=()=> chatPanel.style.display='none';
 fab.onclick=()=>{ if(!MEMBER){ openModal('loginModal'); return; } chatPanel.style.display = (chatPanel.style.display==='block'?'none':'block'); };
@@ -774,23 +971,26 @@ let convo=[{role:"system",content:"You are SKYNN AI. Provide evidence-based skin
 async function sendChat(){
   if(!MEMBER) return;
   const t=chatInput.value.trim(); if(!t) return; chatInput.value='';
-  chatBody.appendChild(msg('me', t)); chatBody.scrollTop=chatBody.scrollHeight;
+  chatBody.appendChild(Object.assign(document.createElement('div'),{className:'msg me',textContent:t}));
+  chatBody.scrollTop=chatBody.scrollHeight;
   try{
     const r=await fetch(`${API_BASE}/ai`, {method:'POST', headers:{'content-type':'application/json'}, credentials:'include', body: JSON.stringify({ messages:[...convo,{role:'user',content:t}] })});
-    const j=await r.json(); const out=j.output || 'Sorry, I could not reply.'; convo.push({role:'user',content:t},{role:'assistant',content:out});
-    chatBody.appendChild(msg('ai', out)); chatBody.scrollTop=chatBody.scrollHeight;
-  }catch(e){ chatBody.appendChild(msg('ai','Network error. Try again.')); }
+    const j=await r.json(); const out=j.output || 'Sorry, I could not reply.';
+    const a=document.createElement('div'); a.className='msg ai'; a.innerHTML = out.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\n/g,'<br/>'); chatBody.appendChild(a); chatBody.scrollTop=chatBody.scrollHeight;
+  }catch(e){
+    const a=document.createElement('div'); a.className='msg ai'; a.textContent='Network error. Try again.'; chatBody.appendChild(a);
+  }
 }
-function msg(cls,text){ const d=document.createElement('div'); d.className=`msg ${cls}`; d.innerHTML = text.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(/\n/g,'<br/>'); return d; }
 
 /* -------------- Boot -------------- */
 (async function boot(){
   renderChips();
   await initData();
   await fetchSession();
-  await handleReturn();    // claim cookie & show thank you if needed
+  await handleReturn();
   renderAll();
 })();
 </script>
 </body>
+</html>
 </html>
