@@ -33,33 +33,6 @@
   {"@context":"https://schema.org","@type":"WebSite","url":"https://skinlabs.co.za/","name":"SKINLABS","potentialAction":{"@type":"SearchAction","target":"https://skinlabs.co.za/?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
-  <!--
-    ==========================================================
-    IMPLEMENTATION NOTES / TODOs FOR PROD (summarised)
-    ==========================================================
-    ✓ Sliders: robust touch/drag + autoplay + arrows, dots removed
-    ✓ Header H1 updated
-    ✓ Multi-step signup modal fixed + progress bar + animations + switch link
-    ✓ App store badge placeholders unified (44px height); footer updated
-    ✓ “Top” → “Trending”; Featured Categories carousel added
-    ✓ Web Stories smaller & bottom, with uniform slider UI
-    ✓ All content readable while signed-out (links gated to sign-in)
-    ✓ Community Reviews → Community Forum (10 diverse seeded posts)
-      - stars, verified badge, helpful votes, 1-vote-only poll, metrics, timestamps
-    ✓ Added images to Trending; padding between forum and Medium
-    ✓ Content Preview Pages (client-router) for: Explore/Offers/Collections/Trending
-    ✓ Tiny content API via Service Worker: /api/featured-collections, /api/forum-posts, /api/poll, /api/poll/vote
-      (replace with real API later; see SW section for TODOs)
-    ✓ PWA: manifest (inline via blob), service worker (offline cache), push hooks
-      TODO: Replace VAPID_PUBLIC_KEY, handle subscription on backend (/push/subscribe)
-    ✓ SEO: improved meta/copy; structured ItemList injected; consistent image sizes
-    ✓ Performance: lazy images, intersection-based autoplay, minimal IO, preconnect
-    ✓ Accessibility: aria-live region, focusable controls, better contrast path
-    Security TODOs (server-side):
-      - CSRF protection; ITN signature verification; rate limits; CSP/Referrer/Permissions headers
-      - Sanitize UGC server-side; moderation endpoints
-  -->
-
   <style>
     :root{
       --bg:#0c0e10; --panel:#111418; --muted:#8ca5b3; --brand:#6ee7d2; --brand2:#b3e5ff; --text:#eef3f5;
@@ -141,11 +114,8 @@
     .verified{font-family:"Material Symbols Outlined";font-size:16px;color:#6ee7d2}
     .helpful{display:inline-flex;gap:6px;align-items:center;border:1px solid rgba(255,255,255,.1);padding:4px 8px;border-radius:999px;background:color-mix(in oklab, var(--panel) 96%, #0000)}
     .post-meta{font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
-    .poll{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px;background:color-mix(in oklab, var(--panel) 94%, #0000)}
-    .poll .bar{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
-    .poll .bar > span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .25s ease}
 
-    /* Featured (Medium) images: uniform size using placeholder */
+    /* Featured (Medium) images uniform */
     .feat-img{width:100%;height:220px;object-fit:cover;border-radius:10px}
 
     .adbox{display:flex;justify-content:center;margin:10px 0}
@@ -185,8 +155,6 @@
     #obStepsRow{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
     #onboardSteps .step{animation:.18s ease obStepFade}
     @keyframes obStepFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-    .step .chip{border-radius:999px;border:1px dashed rgba(255,255,255,.18);background:transparent;padding:6px 10px}
-    .step .chip input{margin-right:6px}
 
     /* Reveal animations */
     .reveal{opacity:0;transform:translateY(8px);transition:opacity .4s ease, transform .4s ease}
@@ -194,6 +162,9 @@
 
     /* Remove dots globally */
     .dots{display:none !important}
+
+    /* Hide Featured Collections section per request */
+    #featuredCats{display:none !important}
   </style>
 </head>
 <body>
@@ -282,7 +253,7 @@
     </div>
   </section>
 
-  <!-- Featured Collections -->
+  <!-- Featured Collections (hidden by request) -->
   <section id="featuredCats" class="panel reveal" style="padding:14px;margin-top:12px">
     <div class="section-title"><h2>Featured Collections</h2></div>
     <div class="slider" id="catsSlider">
@@ -325,6 +296,38 @@
       <button id="btnAddReview" class="cta js-signin"><span class="material-symbols-outlined">rate_review</span> Write a review</button>
     </div>
     <div class="review-list" id="reviewList"></div>
+
+    <!-- DISQUS THREAD + POLL (embedded as requested) -->
+    <div style="margin-top:16px">
+      <div id="disqus_thread"></div>
+      <script>
+        /*
+        var disqus_config = function () {
+          this.page.url = "https://skinlabs.co.za/";  // Replace PAGE_URL with your page's canonical URL
+          this.page.identifier = "communityforum";     // Replace with your page's unique identifier
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://skynn.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      <div class="disqus_poll" data-disqus-poll-id="413439891102786"></div>
+      <script>
+        (function() {
+          if (document.getElementById('disqus_polls_script')) return;
+          var d = document, s = d.createElement('script');
+          s.id = 'disqus_polls_script';
+          s.src = 'https://skynn.disqus.com/polls.js';
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the poll powered by Disqus.</noscript>
+    </div>
   </section>
 
   <!-- Web Stories (bottom) -->
@@ -373,37 +376,31 @@
     <div class="divider"></div>
     <div class="small">© 2025 SKINLABS® — Curated skincare for South Africa. Not medical advice.</div>
 
-    <!-- App store badge placeholders (replace src with real assets; equal height) -->
+    <!-- App store badge placeholders (equal height) -->
     <div class="store-badges">
-      <!-- TODO: replace with real badge images/links -->
       <a href="#" aria-label="Get it on Google Play"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='150'><rect width='100%' height='100%' fill='%23000'/><text x='50%' y='54%' fill='%23fff' font-family='Arial' font-size='28' text-anchor='middle'>Google Play</text></svg>" alt="Get it on Google Play" loading="lazy"></a>
       <a href="#" aria-label="Download on the App Store"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='500' height='150'><rect width='100%' height='100%' fill='%23000'/><text x='50%' y='54%' fill='%23fff' font-family='Arial' font-size='28' text-anchor='middle'>App Store</text></svg>" alt="Download on the App Store" loading="lazy"></a>
     </div>
 
     <div class="socials small" style="margin-top:12px">
       <a class="social-btn" href="https://facebook.com/skinlabs.co.za" target="_blank" rel="noopener" aria-label="Facebook">
-        <!-- Facebook icon -->
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9v-2.9h2.5V9.6c0-2.4 1.4-3.7 3.5-3.7c1 0 2 .2 2 .2v2.3h-1.1c-1.1 0-1.5.7-1.5 1.4v1.8h2.6l-.4 2.9h-2.2v7A10 10 0 0 0 22 12"/></svg>
         Facebook
       </a>
       <a class="social-btn" href="https://instagram.com/skinlabsza" target="_blank" rel="noopener" aria-label="Instagram">
-        <!-- Instagram icon -->
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3m-5 3a5 5 0 1 1 0 10a5 5 0 0 1 0-10m0 2.2a2.8 2.8 0 1 0 0 5.6a2.8 2.8 0 0 0 0-5.6M18 6.3a1.2 1.2 0 1 1 0 2.4a1.2 1.2 0 0 1 0-2.4"/></svg>
         Instagram
       </a>
       <a class="social-btn" href="https://wa.me/+27680200749" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <!-- WhatsApp icon -->
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.5 11.5 0 0 0 3.4 17.8L2 22l4.3-1.3A11.5 11.5 0 1 0 20.5 3.5m-8.9 17.2c-2 0-3.9-.6-5.5-1.8l-.4-.3L4.3 19l.4.2a9.7 9.7 0 1 1 3.3 1.3h-.4zm5.4-6.2c-.3-.2-1.7-.8-2-.9c-.3-.1-.5-.2-.7.2s-.8.9-1 1.1s-.4.2-.7.1c-.3-.2-1.3-.5-2.4-1.5c-.9-.8-1.5-1.7-1.7-2c-.2-.3 0-.5.1-.6c.1-.1.3-.4.4-.5c.1-.2.2-.3.3-.5c.1-.2 0-.4 0-.6c0-.2-.7-1.7-1-2.3s-.6-.5-.8-.5h-.6c-.2 0-.5.1-.8.4c-.3.3-1 1-1 2.4s1.1 2.8 1.3 3c.2.2 2.1 3.1 5.3 4.2c.7.3 1.3.5 1.7.6c.7.2 1.3.2 1.8.1c.6-.1 1.7-.7 2-1.4c.3-.7.3-1.3.2-1.4c0-.2-.2-.2-.5-.4"/></svg>
         WhatsApp
       </a>
       <a class="social-btn" href="https://tiktok.com/@skinlabsza" target="_blank" rel="noopener" aria-label="TikTok">
-        <!-- TikTok icon -->
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 2h2.1a5.9 5.9 0 0 0 4.2 4.1v2.1A8.1 8.1 0 0 1 16 6.6V15a5 5 0 1 1-5-5c.2 0 .4 0 .6.1V12A2.9 2.9 0 1 0 14 15V2z"/></svg>
         TikTok
       </a>
     </div>
 
-    <!-- Push notifications (demo button) -->
     <div style="margin-top:12px">
       <button id="btnNotify" class="cta"><span class="material-symbols-outlined">notifications_active</span> Enable notifications</button>
       <span id="notifyStatus" class="small muted"></span>
@@ -599,8 +596,8 @@ let SIGNED = false;     // any signed-in user
 
 function setSignedInUI(isActive, isSigned){
   MEMBER = !!isActive;
-  SIGNED = !!isSigned || !!isActive; // signed if backend says so OR active
-  document.querySelectorAll('.js-locked-copy').forEach(el=> el.classList.toggle('hidden', MEMBER)); // keep content visible
+  SIGNED = !!isSigned || !!isActive;
+  document.querySelectorAll('.js-locked-copy').forEach(el=> el.classList.toggle('hidden', MEMBER));
   document.querySelectorAll('.js-signup').forEach(el=> el.classList.toggle('hidden', MEMBER));
   document.querySelectorAll('.js-signin').forEach(el=> el.classList.toggle('hidden', SIGNED));
 }
@@ -631,15 +628,8 @@ document.getElementById('switchToSignup')?.addEventListener('click', (e)=>{ e.pr
 /* -------------- Onboarding (multi-step) -------------- */
 const steps = [...document.querySelectorAll('#onboardSteps .step')];
 let stepIdx = 0;
-function updateProgress(){
-  const pct = ((stepIdx+1)/steps.length)*100;
-  document.getElementById('obProgBar').style.width = pct + '%';
-}
-function showStep(i){
-  steps.forEach((s,k)=> s.classList.toggle('hidden', k!==i));
-  stepIdx=i; updateProgress();
-  document.getElementById('onboardSteps').dispatchEvent(new Event('change'));
-}
+function updateProgress(){ document.getElementById('obProgBar').style.width = (((stepIdx+1)/steps.length)*100) + '%'; }
+function showStep(i){ steps.forEach((s,k)=> s.classList.toggle('hidden', k!==i)); stepIdx=i; updateProgress(); document.getElementById('onboardSteps').dispatchEvent(new Event('change')); }
 document.querySelectorAll('[data-next]').forEach(b=> b.onclick=()=> showStep(Math.min(stepIdx+1, steps.length-1)));
 document.querySelectorAll('[data-prev]').forEach(b=> b.onclick=()=> showStep(Math.max(stepIdx-1, 0)));
 document.getElementById('obCancel').onclick = ()=> closeModal('onboardModal');
@@ -655,8 +645,7 @@ function gatherOnboard(){
 }
 document.querySelector('[data-step="4"]').addEventListener('show', ()=>{
   const d = gatherOnboard();
-  const ul = document.getElementById('obSummary');
-  ul.innerHTML = `
+  document.getElementById('obSummary').innerHTML = `
     <li>Email: ${d.email||'—'}</li>
     <li>Skin type: ${d.profile.skinType}</li>
     <li>Concerns: ${d.profile.concerns.join(', ')||'—'}</li>
@@ -697,8 +686,8 @@ document.getElementById('liGo').onclick = async ()=>{
 /* -------------- Return (thank you + claim cookie) -------------- */
 async function handleReturn(){
   const u = new URL(location.href);
-  const m = u.searchParams.get('m');        // m_payment_id
-  const ty = u.searchParams.get('thankyou'); // set by Worker redirect or PayFast return_url
+  const m = u.searchParams.get('m');
+  const ty = u.searchParams.get('thankyou');
   if(m){
     const start=Date.now();
     while(Date.now()-start < 60000){
@@ -723,50 +712,21 @@ function renderChips(){ chipWrap.innerHTML=''; chipWrap.appendChild(makeChip('Al
 document.getElementById('btnSearch')?.addEventListener('click', ()=>{ q = document.getElementById('q').value||''; renderAll(); });
 document.getElementById('q')?.addEventListener('keydown', e=>{ if(e.key==='Enter'){ q = e.target.value||''; renderAll(); }});
 
-/* -------------- Slider util (robust swipe + autoplay everywhere) -------------- */
+/* -------------- Slider util (robust swipe + autoplay) -------------- */
 const SLIDERS = new WeakMap();
 function slider(root, opts={per:[1,2,3], breakpoints:[0,600,900], autoplayMs:4500, pauseOnHover:true, pauseOnTouch:true}){
   if(!root) return null;
   if(SLIDERS.has(root)) return SLIDERS.get(root);
-
   const slidesEl = root.querySelector('.slides'), prev = root.querySelector('.prev'), next = root.querySelector('.next');
   let page=0, pages=1, timer=null, startX=0, startY=0, curX=0, dragging=false, width=1, threshold=0.18, paused=false;
-
-  function curPer(){
-    const w = root.clientWidth || window.innerWidth; let p = opts.per[0];
-    if(w>=opts.breakpoints[1]) p = opts.per[1]||p; if(w>=opts.breakpoints[2]) p = opts.per[2]||p;
-    slidesEl.dataset.per = String(p); return p;
-  }
-  function recalc(){
-    const p = curPer(); const n = slidesEl.children.length; pages = Math.max(1, Math.ceil(n/p));
-    page = Math.min(page, pages-1); go(page, true); width = root.clientWidth || slidesEl.clientWidth || 1;
-  }
-  function go(n, instant){
-    page = Math.max(0, Math.min(n, pages-1));
-    const x = page*100; slidesEl.style.transition = instant ? 'none' : 'transform .35s ease';
-    slidesEl.style.transform = `translateX(-${x}%)`;
-    document.getElementById('ariaStatus').textContent = `Slide ${page+1} of ${pages}`;
-  }
+  function curPer(){ const w = root.clientWidth || window.innerWidth; let p = opts.per[0]; if(w>=opts.breakpoints[1]) p = opts.per[1]||p; if(w>=opts.breakpoints[2]) p = opts.per[2]||p; slidesEl.dataset.per = String(p); return p; }
+  function recalc(){ const p = curPer(); const n = slidesEl.children.length; pages = Math.max(1, Math.ceil(n/p)); page = Math.min(page, pages-1); go(page, true); width = root.clientWidth || slidesEl.clientWidth || 1; }
+  function go(n, instant){ page = Math.max(0, Math.min(n, pages-1)); const x = page*100; slidesEl.style.transition = instant ? 'none' : 'transform .35s ease'; slidesEl.style.transform = `translateX(-${x}%)`; document.getElementById('ariaStatus').textContent = `Slide ${page+1} of ${pages}`; }
   function auto(){ if(!opts.autoplayMs || paused) return; stop(); timer = setInterval(()=> go((page+1)%pages), opts.autoplayMs); }
   function stop(){ if(timer){ clearInterval(timer); timer=null; } }
-
   function onStart(x, y){ dragging = true; startX = curX = x; startY = y; slidesEl.style.transition='none'; if(opts.pauseOnTouch){ paused = true; stop(); } }
-  function onMove(x, y, e){
-    if(!dragging) return;
-    curX = x; const dx = curX - startX; const dy = (y - startY);
-    if(Math.abs(dx) > Math.abs(dy) + 6){ e && e.preventDefault(); }
-    const pcent = (dx / width) * 100;
-    slidesEl.style.transform = `translateX(calc(-${page*100}% + ${pcent}%))`;
-  }
-  function onEnd(){
-    if(!dragging) return; dragging=false;
-    const dx = curX - startX; const thr = width * threshold;
-    if(Math.abs(dx) > thr){ go(page + (dx < 0 ? 1 : -1)); } else { go(page); }
-    requestAnimationFrame(()=> slidesEl.style.transition = 'transform .35s ease');
-    paused = false; auto();
-  }
-
-  // Pointer + Touch
+  function onMove(x, y, e){ if(!dragging) return; curX = x; const dx = curX - startX; const dy = (y - startY); if(Math.abs(dx) > Math.abs(dy) + 6){ e && e.preventDefault(); } const pcent = (dx / width) * 100; slidesEl.style.transform = `translateX(calc(-${page*100}% + ${pcent}%))`; }
+  function onEnd(){ if(!dragging) return; dragging=false; const dx = curX - startX; const thr = width * threshold; if(Math.abs(dx) > thr){ go(page + (dx < 0 ? 1 : -1)); } else { go(page); } requestAnimationFrame(()=> slidesEl.style.transition = 'transform .35s ease'); paused = false; auto(); }
   slidesEl.addEventListener('pointerdown', e=>{ slidesEl.setPointerCapture?.(e.pointerId); onStart(e.clientX, e.clientY); }, {passive:true});
   slidesEl.addEventListener('pointermove', e=> onMove(e.clientX, e.clientY, e), {passive:false});
   slidesEl.addEventListener('pointerup',   ()=> onEnd(), {passive:true});
@@ -774,30 +734,20 @@ function slider(root, opts={per:[1,2,3], breakpoints:[0,600,900], autoplayMs:450
   slidesEl.addEventListener('touchstart', e=>{ const t=e.touches[0]; onStart(t.clientX, t.clientY); }, {passive:true});
   slidesEl.addEventListener('touchmove',  e=>{ const t=e.touches[0]; onMove(t.clientX, t.clientY, e); }, {passive:false});
   slidesEl.addEventListener('touchend',   ()=> onEnd(), {passive:true});
-
   prev?.addEventListener('click', ()=> go(page-1));
   next?.addEventListener('click', ()=> go(page+1));
-
   if(opts.pauseOnHover){ root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', auto); }
   window.addEventListener('resize', recalc, {passive:true});
-
-  // Pause autoplay when offscreen
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ paused = !en.isIntersecting; if(paused) stop(); else auto(); });
-  }, {threshold:0.1});
+  const io = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ paused = !en.isIntersecting; if(paused) stop(); else auto(); }); }, {threshold:0.1});
   io.observe(root);
-
   recalc(); auto();
-
   const api = { recalc, go, stop, auto };
   SLIDERS.set(root, api);
   return api;
 }
 
 /* -------------- Reveal animation on scroll -------------- */
-const REVEAL = new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); REVEAL.unobserve(en.target);} });
-},{threshold:.12});
+const REVEAL = new IntersectionObserver((entries)=>{ entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); REVEAL.unobserve(en.target);} });},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=> REVEAL.observe(el));
 
 /* -------------- Preview Router (hash) -------------- */
@@ -828,8 +778,7 @@ const STORIES = [
   {title:"Mineral vs Hybrid SPF", cover:PLACEHOLDER_IMG}
 ];
 
-/* Featured (Medium) — images unified to placeholder as requested.
-   Replace PLACEHOLDER_IMG with your attached image URL if available. */
+/* Featured (Medium) — use uniform placeholder (swap with your image if desired) */
 const FEATURED = [
   {title:"Derm-Backed Sunscreen Guide for Every Skin Tone", excerpt:"SPF filters, PA ratings and re-application tips tailored to South African sun.", img:PLACEHOLDER_IMG, alt:"Sunscreen", url:"https://blog.skinlabs.africa/sunscreen-for-every-skin-tone"},
   {title:"Retinoids 101: Start Without Irritation", excerpt:"A gentle ramp-up plan and what to combine (or avoid) in your night routine.", img:PLACEHOLDER_IMG, alt:"Retinoid", url:"https://blog.skinlabs.africa/retinoids-101-south-africa"},
@@ -839,50 +788,22 @@ const FEATURED = [
   {title:"Sensitive Skin? A Fragrance-Smart Routine", excerpt:"Reduce flare-ups with simple swaps and smarter patch testing.", img:PLACEHOLDER_IMG, alt:"Serum", url:"https://blog.skinlabs.africa/sensitive-skin-fragrance-smart"},
 ];
 
-/* API-backed Featured Collections will be fetched from SW tiny API.
-   Fallback data while SW warms up: */
-const FEATURED_CATS_FALLBACK = [
-  {title:"⭐ Staff Picks: Product of the Month", blurb:"Curated skincare heroes with expert selections"},
-  {title:"🧴 DIY Skincare Recipe Series", blurb:"Step-by-step honey oat mask tutorial"},
-  {title:"🔬 Brand Spotlight", blurb:"Deep dives into innovative skincare brands"},
-  {title:"❌ Skincare Myths Debunked", blurb:"Science-backed myth-busting content"},
-  {title:"🍂 Seasonal Transition Guide", blurb:"Summer to fall skincare adaptation"},
-  {title:"🎯 Skin Concern Solutions", blurb:"30-day acne treatment plans"},
-  {title:"🧪 Ingredient Deep Dive", blurb:"Complete retinol usage guide"},
-  {title:"⏰ Lifestyle Routines", blurb:"3-step routines for busy professionals"},
-  {title:"✨ Community Transformations", blurb:"Real member success stories"},
-  {title:"🎙️ What’s In It For Me?", blurb:"[Gemini AI Notebook LM Audio Summaries]"},
-  {title:"🎁 Members-Only Rewards", blurb:"Sponsored giveaways & competitions"},
-];
-
-/* -------------- Tiny Content API via Service Worker --------------
-   The service worker below intercepts:
-     GET  /api/featured-collections   -> returns list
-     GET  /api/forum-posts            -> returns seeded posts (persist SW-lifetime)
-     GET  /api/poll                   -> returns poll data
-     POST /api/poll/vote {idx, clientId} -> increments vote once per clientId
-     POST /push/subscribe             -> (TODO server) placeholder to send to backend
-   Replace with real endpoints on your server when ready.
--------------------------------------------------------------------*/
-
-/* -------------- Community Forum (client render helpers) -------------- */
-function timeAgo(ts){
-  const s = Math.max(1, Math.floor((Date.now()-ts)/1000));
-  const units = [[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];
-  for(const [sec,label] of units){ if(s>=sec) return Math.floor(s/sec)+label; }
-  return s+'s';
-}
-
-/* One-vote-only poll: lock with localStorage key */
-const POLL_VOTE_KEY='sklabs_poll_voted';
-function getClientId(){
-  let id = localStorage.getItem('sklabs_client_id');
-  if(!id){ id = (crypto?.randomUUID?.() || String(Math.random()).slice(2)) + '-' + Date.now(); localStorage.setItem('sklabs_client_id', id); }
-  return id;
-}
+/* Static forum posts (since tiny content API is removed) */
+const FORUM_POSTS = (()=>{ const now=Date.now(); return [
+  {title:"Sunscreen for darker tones (mineral vs hybrid)", product:"Heliocare 360", rating:5, skin:"Combination", verified:true, user:"Lerato P.", city:"Johannesburg", body:"No white cast with the gel oil-free. Reapplies well.", helpful:23, comments:5, views:612, ts: now-36*3600e3},
+  {title:"Azelaic acid for PIH", product:"The Ordinary Azelaic 10%", rating:4, skin:"Oily", verified:false, user:"Thabo K.", city:"Pretoria", body:"Took ~6 weeks. Pairing with niacinamide helped.", helpful:15, comments:3, views:421, ts: now-72*3600e3},
+  {title:"Budget moisturiser recs", product:"E45 / Nivea Soft", rating:4, skin:"Dry", verified:true, user:"Zanele M.", city:"Durban", body:"Layer with HA serum—great for winter.", helpful:12, comments:2, views:377, ts: now-9*3600e3},
+  {title:"30-day acne plan results", product:"Adapalene 0.1%", rating:5, skin:"Oily", verified:true, user:"Farai N.", city:"Cape Town", body:"Purge week 2–3, then clearer texture.", helpful:28, comments:7, views:818, ts: now-5*24*3600e3},
+  {title:"Retinol sandwich method", product:"Cerave PM + Retinol 0.3%", rating:4, skin:"Sensitive", verified:false, user:"Naledi S.", city:"Bloemfontein", body:"Less irritation, slower results but worth it.", helpful:9, comments:1, views:233, ts: now-14*3600e3},
+  {title:"Hybrid SPF dupes in SA", product:"Clicks Sun Protect", rating:3, skin:"Normal", verified:false, user:"Anika V.", city:"Gqeberha", body:"Finish is dewy; wish it was less fragranced.", helpful:6, comments:0, views:190, ts: now-11*24*3600e3},
+  {title:"Fragrance-free cleanser finds", product:"SVR Sensifine", rating:5, skin:"Sensitive", verified:true, user:"Aisha B.", city:"Polokwane", body:"Soothing; doesn’t strip. Great value online.", helpful:19, comments:3, views:402, ts: now-2*24*3600e3},
+  {title:"Vitamin C + Niacinamide layering", product:"SkinCeuticals CE Ferulic", rating:5, skin:"Combination", verified:true, user:"Sipho D.", city:"Midrand", body:"AM: Vit C → wait → Niacinamide → SPF. Glow!", helpful:31, comments:9, views:1021, ts: now-20*3600e3},
+  {title:"Maskne tips post-gym", product:"La Roche-Posay Cicaplast B5", rating:4, skin:"Normal", verified:false, user:"Gugu R.", city:"Pietermaritzburg", body:"Rinse ASAP, use light gel moisturiser + SPF.", helpful:8, comments:1, views:240, ts: now-3*24*3600e3},
+  {title:"Mineral SPF for kids", product:"Pure Beginnings Baby SPF", rating:5, skin:"Dry", verified:true, user:"Mpho T.", city:"Soweto", body:"No stinging, easy to remove.", helpful:17, comments:4, views:350, ts: now-7*24*3600e3}
+];})();
 
 /* -------------- Renderers -------------- */
-let cardsSliderAPI, offersSliderAPI, topSliderAPI, storiesSliderAPI, catsSliderAPI, featSliderAPI;
+let cardsSliderAPI, offersSliderAPI, topSliderAPI, storiesSliderAPI, featSliderAPI;
 
 function cardHTML(item){
   const link = item.url || '#';
@@ -933,8 +854,7 @@ function trendingHTML(x){
 function buildCountdownSlide(){
   const target = new Date('2025-09-01T00:00:00+02:00');
   const id = 'countdown';
-  const wrap = document.createElement('div');
-  wrap.className='slide';
+  const wrap = document.createElement('div'); wrap.className='slide';
   wrap.innerHTML = `<div class="card" style="text-align:center">
     <div class="meta">Announcement</div>
     <h3>Relaunch Countdown</h3>
@@ -974,12 +894,12 @@ function renderAll(){
   // Cards
   const cardsEl = document.getElementById('cardsSlides'); cardsEl.innerHTML='';
   list.forEach(item=>{ const d=document.createElement('div'); d.className='slide'; d.innerHTML=cardHTML(item); cardsEl.appendChild(d); });
-  cardsSliderAPI = slider(document.getElementById('cardsSlider'), {per:[1,2,3,4], breakpoints:[0,600,900], autoplayMs:5000});
+  slider(document.getElementById('cardsSlider'), {per:[1,2,3,4], breakpoints:[0,600,900], autoplayMs:5000});
 
   // Offers
   const offersEl = document.getElementById('offersSlides'); offersEl.innerHTML='';
   OFFERS.forEach(o=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=offerHTML(o); offersEl.appendChild(w); });
-  offersSliderAPI = slider(document.getElementById('offersSlider'), {per:[1,2,3], breakpoints:[0,600,900], autoplayMs:4200});
+  slider(document.getElementById('offersSlider'), {per:[1,2,3], breakpoints:[0,600,900], autoplayMs:4200});
 
   // Trending
   const topEl = document.getElementById('topSlides'); topEl.innerHTML='';
@@ -987,23 +907,12 @@ function renderAll(){
   [...CONTENT].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)).slice(0,8).forEach(x=>{
     const w=document.createElement('div'); w.className='slide'; w.innerHTML=trendingHTML(x); topEl.appendChild(w);
   });
-  topSliderAPI = slider(document.getElementById('topSlider'), {per:[1,1,2,3], breakpoints:[0,700,980], autoplayMs:3800});
-
-  // Featured Collections (from tiny API)
-  fetch('/api/featured-collections').then(r=>r.json()).then(cats=>{
-    const container = document.getElementById('catsSlides'); container.innerHTML='';
-    (cats && cats.length ? cats : FEATURED_CATS_FALLBACK).forEach(c=>{
-      const w=document.createElement('div'); w.className='slide';
-      w.innerHTML = `<div class="card"><div class="meta">Collection</div><h3 style="margin:6px 0 4px">${c.title}</h3><p class="small muted" style="margin:0">${c.blurb||''}</p><div style="margin-top:8px"><a class="cta content-link" data-type="collection" data-title="${encodeURIComponent(c.title)}" data-url="#">Preview</a></div></div>`;
-      container.appendChild(w);
-    });
-    catsSliderAPI = slider(document.getElementById('catsSlider'), {per:[1,2,3], breakpoints:[0,700,980], autoplayMs:4600});
-  });
+  slider(document.getElementById('topSlider'), {per:[1,1,2,3], breakpoints:[0,700,980], autoplayMs:3800});
 
   // Featured (Medium)
   const slides=document.getElementById('featSlides'); slides.innerHTML='';
   FEATURED.forEach(a=>{ const w=document.createElement('div'); w.className='slide'; w.innerHTML=featHTML(a); slides.appendChild(w); });
-  featSliderAPI = slider(document.getElementById('featSlider'), {per:[1,2,3], breakpoints:[0,700,980], autoplayMs:4400});
+  slider(document.getElementById('featSlider'), {per:[1,2,3], breakpoints:[0,700,980], autoplayMs:4400});
 
   // Stories
   const sWrap = document.getElementById('storiesSlides'); sWrap.innerHTML='';
@@ -1016,58 +925,22 @@ function renderAll(){
     </div>`;
     sWrap.appendChild(d);
   });
-  storiesSliderAPI = slider(document.getElementById('storiesSlider'), {per:[2,3,5], breakpoints:[0,600,980], autoplayMs:4000});
+  slider(document.getElementById('storiesSlider'), {per:[2,3,5], breakpoints:[0,600,980], autoplayMs:4000});
 
   renderCommunity();
   injectItemListSchema(list);
 }
 
-/* -------------- Community Forum (load via tiny API) -------------- */
-async function fetchForum(){
-  try{
-    const r = await fetch('/api/forum-posts');
-    return await r.json();
-  }catch(e){
-    return []; // SW handles seeding
-  }
+/* -------------- Community Forum (static list + Disqus below) -------------- */
+function timeAgo(ts){
+  const s = Math.max(1, Math.floor((Date.now()-ts)/1000));
+  const units = [[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];
+  for(const [sec,label] of units){ if(s>=sec) return Math.floor(s/sec)+label; } return s+'s';
 }
-function renderPoll(container){
-  fetch('/api/poll').then(r=>r.json()).then(p=>{
-    const total = p.votes.reduce((a,b)=>a+b,0);
-    container.innerHTML = `
-      <div class="poll">
-        <div class="small muted" style="margin-bottom:6px">${p.Q}</div>
-        ${p.opts.map((o,i)=>{
-          const pct = total ? Math.round((p.votes[i]/total)*100) : 0;
-          const voted = localStorage.getItem(POLL_VOTE_KEY)==='1';
-          return `<div style="margin:8px 0">
-            <div class="small" style="display:flex;justify-content:space-between">
-              <span>${o}</span><span class="muted">${pct}%</span>
-            </div>
-            <div class="bar"><span style="width:${pct}%"></span></div>
-            <button class="cta small" data-vote="${i}" ${voted?'disabled':''} style="margin-top:6px">${voted?'Voted':'Vote'}</button>
-          </div>`;
-        }).join('')}
-        <div class="small muted">Total votes: ${total}</div>
-      </div>`;
-    container.querySelectorAll('[data-vote]').forEach(btn=>{
-      btn.onclick = async ()=>{
-        if(localStorage.getItem(POLL_VOTE_KEY)==='1') return;
-        const idx = Number(btn.getAttribute('data-vote'));
-        try{
-          await fetch('/api/poll/vote', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({ idx, clientId: getClientId() })});
-          localStorage.setItem(POLL_VOTE_KEY,'1'); renderPoll(container);
-        }catch(e){ alert('Vote failed'); }
-      };
-    });
-  });
-}
-async function renderCommunity(){
-  const listR = await fetchForum();
+function renderCommunity(){
   const wrap = document.getElementById('reviewList');
-  wrap.classList.add('forum');
-  wrap.innerHTML='';
-  listR.slice(0,10).forEach(r=>{
+  wrap.classList.add('forum'); wrap.innerHTML='';
+  FORUM_POSTS.slice(0,10).forEach(r=>{
     const stars = Array.from({length:5},(_,i)=> i<r.rating?'<span class="star">grade</span>':'<span class="star" style="opacity:.25">grade</span>').join('');
     const ver = r.verified ? '<span class="verified" title="Verified user">verified</span>' : '';
     const card = document.createElement('div');
@@ -1086,18 +959,9 @@ async function renderCommunity(){
       <button class="helpful" data-helpful><span class="material-symbols-outlined">thumb_up</span><span>Helpful</span><span class="count">${r.helpful}</span></button>
     `;
     const btn = card.querySelector('[data-helpful]');
-    btn.onclick = ()=>{
-      const countEl = btn.querySelector('.count'); countEl.textContent = String(Number(countEl.textContent||0) + 1);
-    };
+    btn.onclick = ()=>{ const countEl = btn.querySelector('.count'); countEl.textContent = String(Number(countEl.textContent||0) + 1); };
     wrap.appendChild(card);
   });
-  let pollBox = document.getElementById('forumPoll');
-  if(!pollBox){
-    pollBox = document.createElement('div');
-    pollBox.id='forumPoll'; pollBox.style.marginTop='10px';
-    wrap.parentElement.appendChild(pollBox);
-  }
-  renderPoll(pollBox);
 }
 
 /* -------------- Link gating + Preview -------------- */
@@ -1154,10 +1018,9 @@ async function initData(){
   }
 }
 
-/* -------------- PWA: manifest + service worker + push -------------- */
+/* -------------- PWA: manifest + service worker (no tiny content API) + push -------------- */
 (async function registerPWA(){
   try{
-    // Build manifest blob
     const manifest = {
       name: "SKINLABS",
       short_name: "SKINLABS",
@@ -1175,75 +1038,21 @@ async function initData(){
     const mUrl = URL.createObjectURL(mBlob);
     const link = document.createElement('link'); link.rel='manifest'; link.href=mUrl; document.head.appendChild(link);
 
-    // Build service worker blob (tiny content API + caching + push handler)
+    // Minimal service worker (cache-first + push handlers)
     const swCode = `
-      const CACHE_NAME = 'sklabs-v1';
-      const API = {
-        featured: ${JSON.stringify(FEATURED_CATS_FALLBACK)},
-        forum: (()=>{
-          const now = Date.now();
-          return [
-            {title:"Sunscreen for darker tones (mineral vs hybrid)", product:"Heliocare 360", rating:5, skin:"Combination", verified:true, user:"Lerato P.", city:"Johannesburg", body:"No white cast with the gel oil-free. Reapplies well.", helpful:23, comments:5, views:612, ts: now-36*3600e3},
-            {title:"Azelaic acid for PIH", product:"The Ordinary Azelaic 10%", rating:4, skin:"Oily", verified:false, user:"Thabo K.", city:"Pretoria", body:"Took ~6 weeks. Pairing with niacinamide helped.", helpful:15, comments:3, views:421, ts: now-72*3600e3},
-            {title:"Budget moisturiser recs", product:"E45 / Nivea Soft", rating:4, skin:"Dry", verified:true, user:"Zanele M.", city:"Durban", body:"Layer with HA serum—great for winter.", helpful:12, comments:2, views:377, ts: now-9*3600e3},
-            {title:"30-day acne plan results", product:"Adapalene 0.1%", rating:5, skin:"Oily", verified:true, user:"Farai N.", city:"Cape Town", body:"Purge week 2–3, then clearer texture.", helpful:28, comments:7, views:818, ts: now-5*24*3600e3},
-            {title:"Retinol sandwich method", product:"Cerave PM + Retinol 0.3%", rating:4, skin:"Sensitive", verified:false, user:"Naledi S.", city:"Bloemfontein", body:"Less irritation, slower results but worth it.", helpful:9, comments:1, views:233, ts: now-14*3600e3},
-            {title:"Hybrid SPF dupes in SA", product:"Clicks Sun Protect", rating:3, skin:"Normal", verified:false, user:"Anika V.", city:"Gqeberha", body:"Finish is dewy; wish it was less fragranced.", helpful:6, comments:0, views:190, ts: now-11*24*3600e3},
-            {title:"Fragrance-free cleanser finds", product:"SVR Sensifine", rating:5, skin:"Sensitive", verified:true, user:"Aisha B.", city:"Polokwane", body:"Soothing; doesn’t strip. Great value online.", helpful:19, comments:3, views:402, ts: now-2*24*3600e3},
-            {title:"Vitamin C + Niacinamide layering", product:"SkinCeuticals CE Ferulic", rating:5, skin:"Combination", verified:true, user:"Sipho D.", city:"Midrand", body:"AM: Vit C → wait → Niacinamide → SPF. Glow!", helpful:31, comments:9, views:1021, ts: now-20*3600e3},
-            {title:"Maskne tips post-gym", product:"La Roche-Posay Cicaplast B5", rating:4, skin:"Normal", verified:false, user:"Gugu R.", city:"Pietermaritzburg", body:"Rinse ASAP, use light gel moisturiser + SPF.", helpful:8, comments:1, views:240, ts: now-3*24*3600e3},
-            {title:"Mineral SPF for kids", product:"Pure Beginnings Baby SPF", rating:5, skin:"Dry", verified:true, user:"Mpho T.", city:"Soweto", body:"No stinging, easy to remove.", helpful:17, comments:4, views:350, ts: now-7*24*3600e3}
-          ];
-        })(),
-        poll: {"Q":"What’s your #1 skincare goal now?","opts":["Clear acne","Fade pigmentation","Reduce sensitivity","Anti-ageing"],"votes":[35,28,18,31],"voters":{}}
-      };
+      const CACHE_NAME = 'sklabs-v2';
       self.addEventListener('install', (e)=> {
         e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(['/'])).then(()=>self.skipWaiting()));
       });
       self.addEventListener('activate', (e)=> e.waitUntil(self.clients.claim()));
-
-      async function handleAPI(req){
-        const url = new URL(req.url);
-        if(url.pathname==='/api/featured-collections'){
-          return new Response(JSON.stringify(API.featured), {headers:{'content-type':'application/json'}});
-        }
-        if(url.pathname==='/api/forum-posts'){
-          return new Response(JSON.stringify(API.forum), {headers:{'content-type':'application/json'}});
-        }
-        if(url.pathname==='/api/poll'){
-          return new Response(JSON.stringify({Q:API.poll.Q, opts:API.poll.opts, votes:API.poll.votes}), {headers:{'content-type':'application/json'}});
-        }
-        if(url.pathname==='/api/poll/vote' && req.method==='POST'){
-          const body = await req.clone().json().catch(()=>({}));
-          const idx = Number(body.idx);
-          const cid = body.clientId || '';
-          if(!API.poll.voters[cid] && !Number.isNaN(idx) && idx>=0 && idx<API.poll.votes.length){
-            API.poll.votes[idx] += 1;
-            API.poll.voters[cid] = 1;
-          }
-          return new Response(JSON.stringify({ok:true, votes:API.poll.votes}), {headers:{'content-type':'application/json'}});
-        }
-        if(url.pathname==='/push/subscribe' && req.method==='POST'){
-          // TODO: send subscription to your backend for storage and sending pushes.
-          return new Response(JSON.stringify({ok:true}), {headers:{'content-type':'application/json'}});
-        }
-        return fetch(req);
-      }
-
       self.addEventListener('fetch', (e)=>{
         const url = new URL(e.request.url);
-        if(url.pathname.startsWith('/api/')){ e.respondWith(handleAPI(e.request)); return; }
-        // Cache-first for GET navigation and static
-        if(e.request.method==='GET' && (url.origin===location.origin)){
+        if(e.request.method==='GET' && url.origin===location.origin){
           e.respondWith(caches.match(e.request).then(r=> r || fetch(e.request).then(resp=>{
-            const clone = resp.clone();
-            caches.open(CACHE_NAME).then(c=>c.put(e.request, clone));
-            return resp;
+            const clone = resp.clone(); caches.open(CACHE_NAME).then(c=>c.put(e.request, clone)); return resp;
           }).catch(()=> caches.match('/'))));
         }
       });
-
-      // Push notifications
       self.addEventListener('push', (event)=>{
         let data={title:'SKINLABS', body:'New skincare picks are live.', url:'/'};
         try{ if(event.data){ data = {...data, ...event.data.json()}; } }catch(e){}
@@ -1259,7 +1068,7 @@ async function initData(){
   }catch(e){ console.warn('PWA registration failed', e); }
 })();
 
-/* Push subscription UI */
+/* Push subscription UI (requires backend endpoint to store subscription) */
 document.getElementById('btnNotify')?.addEventListener('click', async ()=>{
   const status = document.getElementById('notifyStatus');
   if(!('serviceWorker' in navigator) || !('PushManager' in window)){ status.textContent=' Push not supported on this browser.'; return; }
@@ -1270,8 +1079,7 @@ document.getElementById('btnNotify')?.addEventListener('click', async ()=>{
     userVisibleOnly:true,
     applicationServerKey: (function urlB64ToUint8Array(base64String){const padding='='.repeat((4-base64String.length%4)%4);const base64=(base64String+padding).replace(/-/g,'+').replace(/_/g,'/');const raw=atob(base64);const output=new Uint8Array(raw.length);for(let i=0;i<raw.length;++i){output[i]=raw.charCodeAt(i);}return output;})(VAPID_PUBLIC_KEY)
   });
-  // TODO: send to backend /push/subscribe
-  await fetch('/push/subscribe', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(sub)});
+  // TODO: send to backend /push/subscribe (implement server-side)
   status.textContent=' Notifications enabled.';
 });
 
@@ -1285,7 +1093,7 @@ document.getElementById('btnNotify')?.addEventListener('click', async ()=>{
 })();
 </script>
 
-<script id="dsq-count-scr" src="//skynn.disqus.com/count.js" async></script>
-
+<!-- Disqus noscript fallback (global) -->
+<noscript>Please enable JavaScript to view comments powered by Disqus.</noscript>
 </body>
 </html>
